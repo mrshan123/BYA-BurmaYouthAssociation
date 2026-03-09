@@ -127,6 +127,8 @@
             box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
         }
     </style>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 
@@ -727,6 +729,15 @@
         }
 
         window.addEventListener('DOMContentLoaded', updateImpactStats);
+    </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('BYA App: Service Worker Registered'))
+                    .catch(err => console.log('BYA App: Service Worker Failed', err));
+            });
+        }
     </script>
 </body>
 <div id="ai-chat-toggle" class="fixed bottom-6 right-6 z-[100] group">
