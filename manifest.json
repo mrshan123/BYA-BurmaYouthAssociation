@@ -1,0 +1,16 @@
+{
+  "name": "Burma Youth Association",
+  "short_name": "BYA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "To provide every Myanmar youth free access to education.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
