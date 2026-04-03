@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="my" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burma Youth Association | BYA</title>
+    
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+    <meta name="description" content="Burma Youth Association (BYA) - မြန်မာလူငယ်များအတွက် ပညာရပ်လေ့လာရန်နှင့် အလုပ်အကိုင်ရှာဖွေရန် အကောင်းဆုံးနေရာ။">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --maroon-main: #800000;
+            --maroon-dark: #4d0000;
+        }
+
+        .dark {
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+        }
+
+        body { 
+            transition: background-color 0.3s, color 0.3s; 
+            overflow-x: hidden; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        .dark body { background-color: var(--bg-body); color: var(--text-main); }
+        .dark .bg-white { background-color: var(--bg-card) !important; color: var(--text-main); }
+        .dark .bg-gray-50, .dark .bg-gray-100 { background-color: #181818 !important; }
+        .dark .text-gray-600, .dark .text-gray-800, .dark .text-gray-500 { color: var(--text-muted) !important; }
+        .dark .border-gray-100 { border-color: #333 !important; }
+
+        .bg-maroon { background-color: var(--maroon-main); }
+        .text-maroon { color: var(--maroon-main); }
+        .border-maroon { border-color: var(--maroon-main); }
+        html { scroll-behavior: smooth; }
+        
+        /* Reveal Animation on Scroll */
+        .reveal { position: relative; transform: translateY(50px); opacity: 0; transition: all 0.8s ease-out; }
+        .reveal.active { transform: translateY(0); opacity: 1; }
+
+        .card-hover:hover { transform: translateY(-10px) scale(1.02); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn-active:active { transform: scale(0.95); transition: 0.1s; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating { animation: float 4s ease-in-out infinite; }
+
+        #backToTop { position: fixed; bottom: 30px; right: 30px; display: none; z-index: 100; }
+
+        /* Language Switcher Logic */
+        [data-lang="en"] { display: none; }
+        .lang-en [data-lang="my"] { display: none; }
+        .lang-en [data-lang="en"] { display: inline; }
+
+        /* --- 3D SECTION & PREMIUM CARDS CSS --- */
+        .perspective-2000 { perspective: 2000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .rotate-3d-hover:hover { transform: rotateY(15deg) rotateX(10deg); }
+
+        /* Learning Lab Premium Card Engine */
+        .premium-card {
+            background: #ffffff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .dark .premium-card { background: var(--bg-card); }
+
+        .group:hover .premium-card {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px -10px rgba(128, 0, 0, 0.3);
+        }
+
+        .premium-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, #800000);
+            animation: rotateGlow 4s linear infinite;
+            opacity: 0;
+            z-index: -2;
+        }
+
+        .group:hover .premium-card::before { opacity: 1; }
+
+        .premium-card::after {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            background: white;
+            border-radius: 2.4rem;
+            z-index: -1;
+        }
+
+        .dark .premium-card::after { background: #1e1e1e !important; }
+        .dark-card::after { background: #09090b !important; }
+ 
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Link fixed: Ensure clickable area is on top */
+        .card-link-overlay { position: absolute; inset: 0; z-index: 100; display: block; cursor: pointer; }
+
+        .icon-box { transition: all 0.4s ease; }
+        .group:hover .icon-box {
+            transform: scale(1.1) rotate(8deg);
+            background-color: #800000 !important;
+            color: white !important;
+            box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <a href="#" id="backToTop" class="bg-maroon text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hover:bg-red-700 transition-all scale-100 hover:scale-110 active:scale-90">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </a>
+
+    <nav class="bg-maroon text-white p-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-full border-2 border-white/20">
+                    <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover scale-150">
+                </div>
+                <h1 class="text-2xl font-bold tracking-tighter">BYA</h1>
+            </div>
+            
+            <ul class="hidden lg:flex space-x-6">
+                <li><a href="index.html" class="hover:text-red-200 transition"><span data-lang="my">ပင်မစာမျက်နှာ</span><span data-lang="en">Home</span></a></li>
+                <li><a href="about.html" class="hover:text-red-200 transition"><span data-lang="my">ကျွန်ုပ်တို့အကြောင်း</span><span data-lang="en">About</span></a></li>
+                <li><a href="learning.html" class="hover:text-red-200 transition"><span data-lang="my">လေ့လာရန်</span><span data-lang="en">Learning</span></a></li>
+                <li><a href="#carrier" class="hover:text-red-200 transition"><span data-lang="my">လုပ်ငန်းခွင် လမ်းညွှန်</span><span data-lang="en">Carrer Center</span></a></li>
+                <li><a href="#news" class="hover:text-red-200 transition"><span data-lang="my">သတင်းများ</span><span data-lang="en">News</span></a></li>
+            </ul>
+
+            <div class="flex items-center space-x-3 md:space-x-5">
+                <button onclick="toggleTheme()" class="p-2 hover:bg-red-900 rounded-full transition">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleLang()" class="bg-white/20 px-3 py-1 rounded text-sm font-bold border border-white/30 hover:bg-white/40 transition">
+                    <span id="lang-btn-text">EN</span>
+                </button>
+                <button onclick="openModal()" class="hidden sm:block bg-white text-maroon px-6 py-2 rounded-full font-bold hover:bg-red-50 transition shadow-md">BECOME A MEMBER</button>
+                <button id="menu-btn" class="lg:hidden text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-maroon-dark">
+            <ul class="flex flex-col p-4 space-y-4 text-center">
+                <li><a href="index.html" class="block hover:text-red-200"><span data-lang="my">ပင်မစာမျက်နှာ</span><span data-lang="en">Home</span></a></li>
+                <li><a href="about.html" class="block hover:text-red-200"><span data-lang="my">ကျွန်ုပ်တို့အကြောင်း</span><span data-lang="en">About</span></a></li>
+                <li><a href="learning.html" class="block hover:text-red-200"><span data-lang="my">လေ့လာရန်</span><span data-lang="en">Learning</span></a></li>
+                <li><a href="#carrier" class="block hover:text-red-200">Career Center</a></li>
+                <li><a href="#news" class="block hover:text-red-200">News</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="relative h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200" class="absolute inset-0 w-full h-full object-cover z-0" alt="Youth Education">
+        <div class="relative z-20 px-4 max-w-3xl floating">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                <span data-lang="my">မြန်မာလူငယ်တို့၏ <br><span class="text-red-400">အနာဂတ်လမ်းပြ</span></span>
+                <span data-lang="en">The Future Guide <br><span class="text-red-400">For Myanmar Youth</span></span>
+            </h2>
+            <p class="text-lg md:text-xl mb-10 opacity-90">
+                <span data-lang="my">ပညာရပ်များကို လေ့လာပါ၊ အလုပ်အကိုင်များ ရှာဖွေပါ၊ တစ်စိတ်တစ်ဝမ်းတည်း တည်ဆောက်ပါ။</span>
+                <span data-lang="en">Learn skills, explore job opportunities, and grow together.</span>
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#learning" class="bg-white text-maroon px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl transition-all btn-active">
+                    <span data-lang="my">သင်တန်းများကြည့်မည်</span><span data-lang="en">Browse Courses</span>
+                </a>
+                <a href="#carrier" class="border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-maroon transition-all btn-active">
+                    <span data-lang="my">အလုပ်ရှာမည်</span><span data-lang="en">Find Jobs</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="learning" class="py-24 px-6 bg-white dark:bg-white reveal">
+    <div class="container mx-auto max-w-7xl">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl md:text-7xl font-black text-Black-900 tracking-tighter dark:text-gray-600">
+                Learning <span class="text-[#800000]">Lab</span>
+            </h2>
+            <div class="w-24 h-1.5 bg-[#800000] mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-500 dark:text-gray-400 mt-6 font-medium italic">
+                <span data-lang="my">"အသိပညာသည် ပိုမိုတောက်ပသော အနာဂတ်ဆီသို့ သွားရာတံခါးပေါက်ဖြစ်သည်"</span>
+                <span data-lang="en">"Knowledge is the Gateway to a Brighter Future"</span>
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://www.khanacademy.org" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/30">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">Khan Academy</h4>
+                    <p class="text-gray-200 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">သင်္ချာ၊ သိပ္ပံနှင့် နည်းပညာအခြေခံများမှသည် စီးပွားရေးနှင့် ကွန်ပျူတာပရိုဂရမ်မင်းအထိ ဘာသာရပ်စုံကို အခမဲ့လေ့လာနိုင်သောနေရာ။</span>
+                        <span data-lang="en">World-class digital classroom for Math, Science, and Computing.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 relative z-10">
+                        <span>Explore Now</span><i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://www.coursera.org" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/30">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">Coursera</h4>
+                    <p class="text-gray-200 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">ကမ္ဘာ့ထိပ်တန်းတက္ကသိုလ်များနှင့် လုပ်ငန်းစုကြီးများမှ Professional သင်တန်းများကို လေ့လာပြီး Certificate များ ရယူနိုင်သည်။</span>
+                        <span data-lang="en">Professional certifications and specialized programs from top-tier universities worldwide.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 relative z-10">
+                        <span>Get Certified</span><i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"alt="edX Academic Background">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://www.edx.org" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/30">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">edX Platform</h4>
+                    <p class="text-gray-200 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">Harvard နှင့် MIT ကဲ့သို့သော ကမ္ဘာ့အဆင့်မြင့်တက္ကသိုလ်များမှ အရည်အသွေးမြင့် ပညာရပ်များကို လေ့လာနိုင်မည့်နေရာ။</span>
+                        <span data-lang="en">High-quality, university-level education from prestigious institutions like Harvard and MIT.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 relative z-10">
+                        <span>Academic</span><i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://www.udemy.com" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/30">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">Udemy</h4>
+                    <p class="text-gray-200 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">နည်းပညာ၊ ဒီဇိုင်းနှင့် စီးပွားရေးနယ်ပယ်အသီးသီးမှ ခေတ်မီကျွမ်းကျင်မှုများကို လက်တွေ့သင်ယူနိုင်မည့် Marketplace။</span>
+                        <span data-lang="en">Learn practical, up-to-date techniques in technology, design, and business from practitioners.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 relative z-10">
+                        <span>Practical</span><i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://www.freecodecamp.org" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/10 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/20">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">freeCodeCamp</h4>
+                    <p class="text-zinc-300 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">လက်တွေ့ Project များစွာကို ကိုယ်တိုင်ရေးသားရင်း Full-stack Developer ဖြစ်လာစေမည့် လမ်းကြောင်း။</span>
+                        <span data-lang="en">Master coding skills from scratch and build a professional portfolio as a Full-stack Developer.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white relative z-10">
+                        <span>Coding</span><i class="fas fa-terminal"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://mymyeo.com/learning" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/30">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">MYEO Learning</h4>
+                    <p class="text-gray-200 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">ဒစ်ဂျစ်တယ်နည်းပညာနှင့် Soft Skills များကို ဖုန်းတစ်လုံးရှိရုံဖြင့် အခမဲ့သင်ယူနိုင်မည့် မြန်မာ့ပညာရေး Platform။</span>
+                        <span data-lang="en">A mobile-first platform providing free digital literacy and soft skills training to empower Myanmar youth.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 relative z-10">
+                        <span>Learn Now</span><i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.pexels.com/photos/4050291/pexels-photo-4050291.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://www.duolingo.com" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/30">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">Duolingo</h4>
+                    <p class="text-gray-200 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">ဘာသာစကားအသစ်များကို ဂိမ်းကစားသလို ပျော်ရွှင်စွာဖြင့် အခြေခံမှစ၍ အခမဲ့လေ့လာနိုင်သော ကမ္ဘာ့အကြီးဆုံး platform။</span>
+                        <span data-lang="en">The world's most popular way to learn languages through fun, bite-sized lessons.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 relative z-10">
+                        <span>Start Learning</span><i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+               </div>
+            </div>
+
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://www.skillshare.com" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/30">
+                         <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">Skillshare</h4>
+                    <p class="text-gray-200 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">Graphic Design, Photography နှင့် Video Editing စသည့် ဖန်တီးမှုပညာရပ်များကို လက်တွေ့သင်ယူနိုင်သော နေရာ။</span>
+                        <span data-lang="en">Explore your creativity with thousands of hands-on classes in design, photography, and more.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 relative z-10">
+                        <span>Explore Creativity</span><i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative flex flex-col h-full">
+                <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
+                    <div class="absolute inset-0 z-0">
+                        <img src="https://images.pexels.com/photos/3758105/pexels-photo-3758105.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
+                    </div>
+                    <a href="https://ed.ted.com" target="_blank" class="card-link-overlay z-30"></a>
+                    <div class="icon-box w-16 h-16 bg-white/20 backdrop-blur-md text-white rounded-2xl flex items-center justify-center text-3xl mb-8 relative z-10 border border-white/30">
+                         <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4 class="text-2xl font-black text-white mb-3 relative z-10">TED-Ed</h4>
+                    <p class="text-gray-200 text-sm leading-relaxed flex-grow relative z-10">
+                        <span data-lang="my">စိတ်ဝင်စားဖွယ် အထွေထွေဗဟုသုတများကို Animation များဖြင့် ရိုးရှင်းလွယ်ကူစွာ သင်ယူနိုင်မည့် platform။</span>
+                        <span data-lang="en">Engaging educational videos and animations designed to spark curiosity and spread great ideas.</span>
+                    </p>
+                    <div class="mt-8 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 relative z-10">
+                        <span>Stay Curious</span><i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<style>
+    /* Compact Vivid Resource Styles */
+    .resource-vivid-card {
+        position: relative;
+        height: 320px; /* ကျစ်ကျစ်လျစ်လျစ်ဖြစ်အောင် ထပ်လျှော့ထားသည် */
+        border-radius: 3.5rem;
+        overflow: hidden;
+        background-color: #000;
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        border: 4px solid #ffffff;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    /* Background Image - High Vividness */
+    .rv-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        opacity: 0.9; /* မူရင်းအတိုင်း လင်းနေစေရန် */
+        transition: transform 0.8s ease, opacity 0.5s ease;
+    }
+
+    /* စာသားဖတ်ရလွယ်အောင် အောက်ခြေကိုပဲ အမှောင်ပေးထားသည် */
+    .rv-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, 
+            rgba(0,0,0,0) 0%, 
+            rgba(0,0,0,0.2) 40%, 
+            rgba(0,0,0,0.85) 100%);
+        z-index: 2;
+    }
+
+    .resource-vivid-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 30px 60px rgba(128, 0, 0, 0.2);
+        border-color: #800000;
+    }
+
+    .resource-vivid-card:hover .rv-bg {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    /* Content Layout */
+    .rv-content {
+        position: relative;
+        z-index: 10;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+    }
+
+    .rv-title {
+        color: #ffffff;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        font-size: 1.8rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+
+    .rv-desc {
+        color: rgba(255,255,255,0.95);
+        text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    /* Floating Icon */
+    .rv-icon-box {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        background: #ffffff;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #800000;
+        z-index: 15;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+</style>
+
+<section id="resources" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6">
+        
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tighter uppercase">
+                Premium <span class="text-maroon">Resources</span>
+            </h2>
+            <div class="w-16 h-1.5 bg-maroon mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="resource-vivid-card group">
+                <div class="rv-bg" style="background-image: url('https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="rv-overlay"></div>
+                <div class="rv-icon-box"><i class="fas fa-file-invoice"></i></div>
+                <div class="rv-content">
+                    <h4 class="rv-title">CV Templates</h4>
+                    <p class="rv-desc font-medium">
+                        <span data-lang="my">အလုပ်ရရှိနိုင်ခြေ မြင့်မားစေမည့် ATS-Friendly ခေတ်မီ CV ပုံစံများကို အခမဲ့ ရယူပြင်ဆင်ပါ။</span>
+                        <span data-lang="en">Craft High-Impact, ATS-Friendly Resumes with Modern Templates.</span>
+                    </p>
+                    <a href="https://www.canva.com/resumes/templates/" target="_blank" 
+                       class="py-3 bg-white text-black text-center rounded-xl font-black uppercase tracking-widest hover:bg-maroon hover:text-white transition-all shadow-lg">
+                        GET TEMPLATES
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-vivid-card group">
+                <div class="rv-bg" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="rv-overlay"></div>
+                <div class="rv-icon-box"><i class="fas fa-check-double"></i></div>
+                <div class="rv-content">
+                    <h4 class="rv-title">Resume Score</h4>
+                    <p class="rv-desc font-medium">
+                        <span data-lang="my">အလုပ်အကိုင် အခွင့်အလမ်းကောင်းများ ရရှိစေရန် သင့် CV ကို AI အကူအညီဖြင့် အဆင့်မြှင့်တင်လိုက်ပါ။</span>
+                        <span data-lang="en">Optimize Your CV with AI to Stand Out to Top Employers.</span>
+                    </p>
+                    <a href="https://careerset.com/" target="_blank" 
+                       class="py-3 bg-white text-black text-center rounded-xl font-black uppercase tracking-widest hover:bg-maroon hover:text-white transition-all shadow-lg">
+                        SCORE MY RESUME
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-vivid-card group">
+                <div class="rv-bg" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="rv-overlay"></div>
+                <div class="rv-icon-box"><i class="fas fa-graduation-cap"></i></div>
+                <div class="rv-content">
+                    <h4 class="rv-title">Interview Guide</h4>
+                    <p class="rv-desc font-medium">
+                        <span data-lang="my">အင်တာဗျူးတွင် အမေးများဆုံး မေးခွန်းများကို အပိုင်ဖြေဆိုနိုင်မည့် စံပြအဖြေလွှာများနှင့် လေ့ကျင့်ပါ။</span>
+                        <span data-lang="en">Master the Most Frequent Interview Questions with Expert Answers.</span>
+                    </p>
+                    <a href="https://targetjobs.co.uk/careers-advice/interview-techniques/top-10-interview-questions-and-answers" target="_blank" 
+                       class="py-3 bg-white text-black text-center rounded-xl font-black uppercase tracking-widest hover:bg-maroon hover:text-white transition-all shadow-lg">
+                        READ GUIDE
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-vivid-card group">
+                <div class="rv-bg" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="rv-overlay"></div>
+                <div class="rv-icon-box"><i class="fas fa-robot"></i></div>
+                <div class="rv-content">
+                    <h4 class="rv-title">AI Study Prompts</h4>
+                    <p class="rv-desc font-medium">
+                        <span data-lang="my">AI ၏ စွမ်းဆောင်ရည်ကို အပြည့်အဝ အသုံးချနိုင်ရန် ထိရောက်ပြီး တိကျသော မေးခွန်းမေးနည်းများကို လေ့လာပါ။</span>
+                        <span data-lang="en">Unlock the Full Potential of AI with Expert-Level Prompting.</span>
+                    </p>
+                    <a href="https://learnprompting.org/" target="_blank" 
+                       class="py-3 bg-white text-black text-center rounded-xl font-black uppercase tracking-widest hover:bg-maroon hover:text-white transition-all shadow-lg">
+                        GET PROMPTS
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-vivid-card group">
+                <div class="rv-bg" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="rv-overlay"></div>
+                <div class="rv-icon-box"><i class="fas fa-crown"></i></div>
+                <div class="rv-content">
+                    <h4 class="rv-title">Soft Skills</h4>
+                    <p class="rv-desc font-medium">
+                        <span data-lang="my">သင့်ဘဝနှင့် အလုပ်အကိုင်ကို တစ်ဆင့်မြှင့်တင်ပေးမည့် လက်တွေ့ကျသော Career သင်ခန်းစာများကို အခမဲ့ ရယူပါ။</span>
+                        <span data-lang="en">Transform Your Future with Proven Strategies for Career Excellence.</span>
+                    </p>
+                    <a href="https://www.facebook.com/uphonekyaw" target="_blank" 
+                       class="py-3 bg-white text-black text-center rounded-xl font-black uppercase tracking-widest hover:bg-maroon hover:text-white transition-all shadow-lg">
+                        LEARN MORE
+                    </a>
+                </div>
+            </div>
+
+            <div class="resource-vivid-card group">
+                <div class="rv-bg" style="background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1000&q=80');"></div>
+                <div class="rv-overlay"></div>
+                <div class="rv-icon-box"><i class="fas fa-map-marked-alt"></i></div>
+                <div class="rv-content">
+                    <h4 class="rv-title">Learning Roadmap</h4>
+                    <p class="rv-desc font-medium">
+                        <span data-lang="my">အခြေခံမှသည် ကျွမ်းကျင်အဆင့်အထိ ဘယ်အရာတွေကို အရင်လေ့လာရမလဲဆိုတာ လမ်းပျောက်မသွားစေရန် တိကျစွာ လေ့လာပါ။</span>
+                        <span data-lang="en">Clear Career Paths: From Beginner to Expert Level.</span>
+                    </p>
+                    <a href="https://linkedin.github.io/career-explorer/" target="_blank" 
+                       class="py-3 bg-white text-black text-center rounded-xl font-black uppercase tracking-widest hover:bg-maroon hover:text-white transition-all shadow-lg">
+                      VIEW ROADMAP
+                    </a>
+                </div>
+           </div>
+
+        </div>
+    </div>
+</section>
+<footer class="bg-maroon text-white py-16 px-4">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+        <div>
+            <h4 class="text-3xl font-black mb-6">BYA</h4>
+            <p class="text-sm opacity-70">
+                <span data-lang="my">မြန်မာလူငယ်များ အချင်းချင်း ချိတ်ဆက်မိစေရန် ရည်ရွယ်ပါသည်။</span>
+                <span data-lang="en">Connecting Myanmar youth to opportunities.</span>
+            </p>
+        </div>
+
+        <div>
+            <h5 class="text-lg font-bold mb-6">Quick Links</h5>
+            <ul class="text-sm space-y-4 opacity-70">
+                <li><a href="index.html" class="hover:text-red-300 transition">Home</a></li>
+                <li><a href="about.html" class="hover:text-red-300 transition">About Us</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h5 class="text-lg font-bold mb-6">Contact</h5>
+            <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+                <a href="https://www.facebook.com/61576906013024" class="hover:text-red-300 transition"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-red-300 transition"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+
+        <div>
+            <h5 class="text-lg font-bold mb-4 text-white">Contact Us</h5>
+            <button onclick="openContactModal()" class="bg-white text-maroon px-6 py-2 rounded-full font-bold hover:bg-red-50 transition shadow-md uppercase text-sm">
+                Send a Message
+            </button>
+        </div>
+    </div> <div class="container mx-auto w-full text-center mt-16 pt-8 border-t border-red-900/40 text-xs text-white/40">
+        © 2026 BYA - BURMA YOUTH ASSOCIATION.
+    </div>
+</footer>
+
+    <script>
+        // Reveal on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal_item = reveals[i];
+                    reveal_item.classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Back to Top
+        const backToTop = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTop.style.display = "flex";
+            } else {
+                backToTop.style.display = "none";
+            }
+            reveal();
+        };
+        backToTop.onclick = function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Mobile Menu
+        const menuBtn = document.getElementById("menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+
+        // Dark Theme
+        function toggleTheme() {
+            const html = document.getElementById('html-tag');
+            const icon = document.getElementById('theme-icon');
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Language Switcher
+        let currentLang = 'my';
+        function toggleLang() {
+            const body = document.body;
+            const btnText = document.getElementById('lang-btn-text');
+            if (currentLang === 'my') {
+                body.classList.add('lang-en');
+                btnText.innerText = 'MY';
+                currentLang = 'en';
+            } else {
+                body.classList.remove('lang-en');
+                btnText.innerText = 'EN';
+                currentLang = 'my';
+            }
+        }
+
+        // Initialize Theme
+        if (localStorage.getItem('theme') === 'dark') {
+            document.getElementById('html-tag').classList.add('dark');
+            document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
+        }
+
+        // Auto Increment Stats Logic
+        function updateImpactStats() {
+            const startDate = new Date('2024-01-01'); 
+            const today = new Date();
+            const timeDiff = today - startDate;
+            const daysPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const totalEducated = 120 + daysPassed; 
+            const totalJobs = 35 + daysPassed;
+            if(document.getElementById('graduated-count')) {
+                document.getElementById('graduated-count').innerText = totalEducated;
+            }
+            if(document.getElementById('jobs-count')) {
+                document.getElementById('jobs-count').innerText = totalJobs;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', updateImpactStats);
+    </script>
+
+<div id="registerModal" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; font-family: sans-serif;">
+    <div style="background: #fff; width: 95%; max-width: 450px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); max-height: 90vh; overflow-y: auto;">
+        
+        <button onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer; line-height: 1;">&times;</button>
+
+        <div style="padding: 40px 30px;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <h2 style="color: #800000; font-size: 24px; font-weight: 800; margin: 0; letter-spacing: 1px;">BECOME A MEMBER</h2>
+                <div style="width: 40px; height: 3px; background: #800000; margin: 10px auto;"></div>
+                <p style="color: #666; font-size: 13px; margin-top: 5px;">BYA မိသားစုဝင်အဖြစ် စတင်ပူးပေါင်းလိုက်ပါ</p>
+            </div>
+
+            <form id="bya-sheet-form" style="display: flex; flex-direction: column; gap: 15px;">
+                <input name="Name" type="text" placeholder="သင့်နာမည် အပြည့်အစုံ" required 
+                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; transition: 0.3s;">
+
+                <input name="Email" type="email" placeholder="အီးမေးလ် လိပ်စာ" required 
+                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+
+                <input name="Phone" type="tel" placeholder="ဖုန်းနံပါတ် (၀၉xxxxxxxxx)" required 
+                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+
+                <input name="Address" type="text" placeholder="နေရပ်လိပ်စာ (မြို့နယ်)" required 
+                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+
+                <select name="Skill" required 
+                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
+                    <option value="" disabled selected>ကျွမ်းကျင်မှု / ဝါသနာ</option>
+                    <option value="IT/Technology">IT / နည်းပညာ</option>
+                    <option value="Design/Art">Design / အနုပညာ</option>
+                    <option value="Leadership">ဦးဆောင်မှု (Leadership)</option>
+                    <option value="Social-Work">ပရဟိတ / လူမှုရေး</option>
+                    <option value="Writing">စာရေးသားခြင်း</option>
+                    <option value="Other">အခြား...</option>
+                </select>
+                
+                <button type="button" onclick="handleByaSubmit()" id="submit-btn" 
+                    style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; transition: 0.3s; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">
+                    REGISTER NOW
+                </button>
+            </form>
+
+            <div id="success-msg" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 12px; border-radius: 12px; background: #f0fff4; animation: fadeIn 0.5s;">
+                ✅ လျှောက်ထားမှု အောင်မြင်ပါသည်။
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('registerModal');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxb8iFHB3hMM9K73CQocwZuNOgmXUtyOy6S3R9-rw6EhI51h4ZbVqExcnKD2HFKPBUJeQ/exec';
+
+    function openModal() {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    async function handleByaSubmit() {
+        const form = document.getElementById('bya-sheet-form');
+        const btn = document.getElementById("submit-btn");
+        const successBox = document.getElementById("success-msg");
+
+        // Validation: အကုန်ဖြည့်ထားလား စစ်ဆေးခြင်း
+        if (!form.Name.value || !form.Email.value || !form.Phone.value || !form.Address.value || !form.Skill.value) {
+            alert("ကျေးဇူးပြု၍ အချက်အလက်များ အားလုံး ပြည့်စုံစွာ ဖြည့်ပေးပါ။");
+            return;
+        }
+
+        btn.innerHTML = "ခဏစောင့်ပါ...";
+        btn.disabled = true;
+        btn.style.opacity = "0.7";
+
+        try {
+            await fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors', 
+                body: new FormData(form)
+            });
+
+            successBox.style.display = "block";
+            btn.innerHTML = "အောင်မြင်ပါသည်!";
+            btn.style.background = "#28a745";
+            form.reset();
+
+            setTimeout(() => {
+                closeModal();
+                successBox.style.display = "none";
+                btn.innerHTML = "REGISTER NOW";
+                btn.style.background = "#800000";
+                btn.disabled = false;
+                btn.style.opacity = "1";
+            }, 3000);
+
+        } catch (error) {
+            console.error('Error!', error.message);
+            alert("တစ်ခုခု မှားယွင်းနေပါသည်။ ပြန်လည် ကြိုးစားကြည့်ပါ။");
+            btn.disabled = false;
+            btn.innerHTML = "REGISTER NOW";
+        }
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) { closeModal(); }
+    }
+</script>
+
+<style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    #bya-sheet-form input:focus { border-color: #800000 !important; background: #fff !important; }
+</style>
+<div id="contactModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center;">
+    <div style="background: #fff; width: 90%; max-width: 450px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+        
+        <button onclick="closeContactModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer;">&times;</button>
+
+        <div style="padding: 40px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 style="color: #800000; font-size: 24px; font-weight: 800; margin: 0;">CONTACT BYA</h2>
+                <p style="color: #666; font-size: 13px; margin-top: 5px;">ကျွန်ုပ်တို့ထံ စာတိုပေးပို့ မေးမြန်းနိုင်ပါသည်</p>
+            </div>
+
+            <form id="contact-form-modal">
+                <div style="margin-bottom: 15px;">
+                    <input name="Name" type="text" placeholder="သင့်နာမည်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <input name="Contact" type="text" placeholder="အီးမေးလ် သို့မဟုတ် ဖုန်းနံပါတ်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <select name="Subject" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
+                        <option value="" disabled selected>ဘာအကြောင်းအရာလဲ?</option>
+                        <option value="စုံစမ်းရန်">စုံစမ်းမေးမြန်းရန်</option>
+                        <option value="အကြံပေးရန်">အကြံပေးရန်</option>
+                        <option value="ပူးပေါင်းဆောင်ရွက်ရန်">ပူးပေါင်းဆောင်ရွက်ရန်</option>
+                        <option value="အခြား">အခြား...</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <textarea name="Message" placeholder="သင်ပြောချင်တဲ့ အကြောင်းအရာ..." rows="4" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; font-family: sans-serif; resize: none;"></textarea>
+                </div>
+                
+                <button type="button" onclick="handleContactSubmit()" id="contact-sub-btn" style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; transition: 0.3s; text-transform: uppercase;">
+                    SEND MESSAGE
+                </button>
+            </form>
+
+            <div id="contact-success-msg" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 10px; border-radius: 10px; background: #f0fff4;">
+                ✅ ပေးပို့မှု အောင်မြင်ပါသည်။
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const contactModal = document.getElementById('contactModal');
+    const contactURL = 'https://script.google.com/macros/s/AKfycbw0KdGF_YKiHks__LguOxin0ZaodL1MEbgudG6Jdm_gFP3-E50u_-mTDOYN8Fls-MHfJg/exec';
+
+    function openContactModal() {
+        contactModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeContactModal() {
+        contactModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    async function handleContactSubmit() {
+        const form = document.getElementById('contact-form-modal');
+        const btn = document.getElementById("contact-sub-btn");
+        const successBox = document.getElementById("contact-success-msg");
+
+        // Input စစ်ဆေးတဲ့နေရာမှာ Contact အကွက်ကိုပါ ထည့်စစ်ထားပါတယ်
+        if (!form.Name.value || !form.Contact.value || !form.Subject.value || !form.Message.value) {
+            alert("ကျေးဇူးပြု၍ အချက်အလက်များ အားလုံး ပြည့်စုံစွာ ဖြည့်ပေးပါ။");
+            return;
+        }
+
+        btn.innerHTML = "SENDING...";
+        btn.disabled = true;
+
+        try {
+            await fetch(contactURL, { 
+                method: 'POST', 
+                mode: 'no-cors', 
+                body: new FormData(form)
+            });
+
+            successBox.style.display = "block";
+            btn.innerHTML = "SENT!";
+            btn.style.background = "#28a745";
+            form.reset();
+
+            setTimeout(() => {
+                closeContactModal();
+                successBox.style.display = "none";
+                btn.innerHTML = "SEND MESSAGE";
+                btn.style.background = "#800000";
+                btn.disabled = false;
+            }, 3000);
+
+        } catch (error) {
+            alert("တစ်ခုခုမှားယွင်းနေပါသည်။");
+            btn.disabled = false;
+            btn.innerHTML = "SEND MESSAGE";
+        }
+    }
+
+    window.addEventListener('click', function(event) {
+        if (event.target == contactModal) { closeContactModal(); }
+    });
+</script>
+</body>
+<div id="ai-chat-toggle" class="fixed bottom-6 right-6 z-[100] group">
+    <div class="relative">
+        <div class="absolute -top-1 -right-1 flex h-4 w-4">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600 border-2 border-white"></span>
+        </div>
+        <button class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
+            <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
+        </button>
+    </div>
+</div>
+
+<div id="ai-window" class="fixed bottom-4 md:bottom-24 right-4 md:right-8 w-[92%] md:w-[380px] h-[500px] max-h-[70dvh] md:max-h-[80vh] bg-white dark:bg-[#1a1a1a] rounded-[2.5rem] shadow-[0_25px_70px_rgba(0,0,0,0.5)] z-[101] hidden flex-col overflow-hidden border border-gray-100 dark:border-white/10 transition-all duration-300 translate-y-4 opacity-0">
+    
+    <div class="h-[70px] bg-maroon p-5 text-white flex justify-between items-center relative overflow-hidden shrink-0">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="flex items-center gap-3 relative z-10">
+            <div class="w-10 h-10 rounded-full border-2 border-white/30 p-0.5 bg-white shadow-sm">
+                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" class="w-full h-full object-cover rounded-full">
+            </div>
+            <div>
+                <h4 class="font-black text-sm tracking-tight">BYA Smart AI</h4>
+                <div class="flex items-center gap-1.5 text-[9px] font-bold text-red-200 uppercase tracking-widest">
+                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse shadow-[0_0_5px_#4ade80]"></span> Active Now
+                </div>
+            </div>
+        </div>
+        <button id="close-ai" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
+            <i class="fas fa-times text-sm"></i>
+        </button>
+    </div>
+
+    <div id="chat-box" class="flex-grow overflow-y-auto p-5 space-y-4 bg-gray-50 dark:bg-[#121212] scroll-smooth" 
+         style="touch-action: pan-y; -webkit-overflow-scrolling: touch;">
+        <div class="flex gap-2">
+            <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm">
+                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" class="w-full h-full object-cover">
+            </div>
+            <div class="bg-white dark:bg-zinc-800 p-3 rounded-2xl rounded-tl-none shadow-sm text-[13px] leading-relaxed dark:text-gray-200 border border-gray-100 dark:border-white/5 max-w-[85%]">
+                <span data-lang="my">မင်္ဂလာပါ! BYA AI မှ ကြိုဆိုပါတယ်။ ဘာများကူညီပေးရမလဲ?</span>
+                <span data-lang="en" class="hidden">Hello! Welcome to BYA AI. How can I assist you?</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="ai-typing" class="hidden px-6 py-2 h-8 bg-gray-50 dark:bg-[#121212] shrink-0">
+        <div class="flex gap-1 items-center opacity-60">
+            <div class="w-1.5 h-1.5 bg-maroon rounded-full animate-bounce"></div>
+            <div class="w-1.5 h-1.5 bg-maroon rounded-full animate-bounce [animation-delay:0.2s]"></div>
+            <div class="w-1.5 h-1.5 bg-maroon rounded-full animate-bounce [animation-delay:0.4s]"></div>
+        </div>
+    </div>
+
+    <div class="p-4 bg-white dark:bg-[#1a1a1a] border-t dark:border-white/10 shrink-0 relative">
+        <div class="flex gap-2 items-center bg-gray-100 dark:bg-zinc-800/50 p-1.5 pl-4 rounded-full border border-transparent focus-within:border-maroon/20 focus-within:bg-white dark:focus-within:bg-zinc-800 transition-all shadow-inner">
+            <input type="text" id="user-input" autocomplete="off" 
+                   placeholder="စာရိုက်ရန်..." 
+                   class="bg-transparent flex-grow text-[14px] outline-none dark:text-white py-1.5">
+            <button id="send-ai" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
+                <i class="fas fa-paper-plane text-[12px]"></i>
+            </button>
+        </div>
+        <p class="text-[8px] text-center text-gray-400 mt-2 font-bold tracking-widest uppercase">BYA Next-Gen Assistant</p>
+    </div>
+</div>
+
+<script>
+    const AI_KNOWLEDGE = [
+        { keys: ["မင်္ဂလာပါ", "hi", "hello", "ဟိုင်း"], my: "မင်္ဂလာပါ! BYA AI မှ ကြိုဆိုပါတယ်။ ဘာများကူညီပေးရမလဲ?", en: "Hello! Welcome to BYA AI. How can I assist you?" },
+        { keys: ["bya", "အကြောင်း", "association", "အဖွဲ့အစည်း",], my: "BYA သည် မြန်မာလူငယ်များအတွက် ပညာရပ်နှင့် အလုပ်အကိုင်များကို တစ်နေရာတည်းတွင် ဖန်တီးပေးသော Community ဖြစ်သည်။", en: "BYA is a community for Myanmar youth." },
+        { keys: ["founder", "ဘယ်သူ", "တည်ထောင်", "နာမည်",], my: "BYA ကို Founder <b>Mr. Aung Shan Hein</b> မှ ဦးစီးတည်ထောင်ခဲ့ပါသည်။", en: "BYA was founded by <b>Mr. Aung Shan Hein</b>." },
+        { keys: ["သင်တန်း", "course", "study", "လေ့လာ", "ဘာတွေ", "ဘလို",], my: "ကျွန်ုပ်တို့၏ Learning Lab တွင် ကမ္ဘာ့အဆင့်မီ Free Courses များကို လေ့လာနိုင်ပါသည်။", en: "You can explore free courses in our Learning Lab." },
+        { keys: ["facebook", "fb", "page"], my: "ကျွန်ုပ်တို့၏ Facebook Page ကို <a href='https://www.facebook.com/61576906013024' target='_blank' class='text-maroon font-bold underline'>ဒီမှာ</a> သွားနိုင်ပါသည်။", en: "Visit our Facebook Page <a href='https://www.facebook.com/61576906013024' target='_blank' class='text-maroon font-bold underline'>here</a>." },
+        { keys: ["ကျေးဇူး", "thanks", "thank"], my: "ရပါတယ်ခင်ဗျာ။ အမြဲကူညီဖို့ အသင့်ရှိပါတယ်။", en: "You're welcome!" }
+    ];
+
+    const aiToggle = document.getElementById('ai-chat-toggle');
+    const aiWin = document.getElementById('ai-window');
+    const closeAi = document.getElementById('close-ai');
+    const sendBtn = document.getElementById('send-ai');
+    const userInput = document.getElementById('user-input');
+    const chatBox = document.getElementById('chat-box');
+    const typing = document.getElementById('ai-typing');
+
+    // Smooth Scroll Logic
+    function scrollToBottom() {
+        chatBox.scrollTo({
+            top: chatBox.scrollHeight,
+            behavior: 'smooth'
+        });
+    }
+
+    aiToggle.onclick = () => {
+        aiWin.classList.toggle('hidden');
+        setTimeout(() => {
+            aiWin.classList.toggle('translate-y-4');
+            aiWin.classList.toggle('opacity-0');
+            aiWin.classList.toggle('translate-y-0');
+            aiWin.classList.toggle('opacity-100');
+            scrollToBottom();
+        }, 10);
+    };
+
+    closeAi.onclick = () => {
+        aiWin.classList.add('translate-y-4', 'opacity-0');
+        aiWin.classList.remove('translate-y-0', 'opacity-100');
+        setTimeout(() => aiWin.classList.add('hidden'), 300);
+    };
+
+    // Fix for Keyboard and Scrolling
+    userInput.addEventListener('focus', () => {
+        setTimeout(scrollToBottom, 300);
+    });
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+            if (!aiWin.classList.contains('hidden')) {
+                scrollToBottom();
+            }
+        });
+    }
+
+    function addMessage(sender, text) {
+        const div = document.createElement('div');
+        div.className = sender === 'user' ? 'flex justify-end' : 'flex gap-2';
+        const msgStyle = sender === 'user' 
+            ? 'bg-maroon text-white rounded-2xl rounded-tr-none shadow-md' 
+            : 'bg-white dark:bg-zinc-800 p-3 rounded-2xl rounded-tl-none shadow-sm dark:text-gray-200 border border-gray-100 dark:border-white/5';
+        
+        div.innerHTML = `
+            ${sender === 'ai' ? '<div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" class="w-full h-full object-cover"></div>' : ''}
+            <div class="${msgStyle} px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed">${text}</div>
+        `;
+        chatBox.appendChild(div);
+        setTimeout(scrollToBottom, 100);
+    }
+
+    function processAI(input) {
+        const query = input.toLowerCase();
+        const lang = typeof currentLang !== 'undefined' ? currentLang : 'my';
+        let answer = lang === 'my' 
+            ? "စိတ်မရှိပါနဲ့၊ ကျွန်တော် မသိသေးလို့ Facebook Page မှာ မေးကြည့်ပေးပါဦး။" 
+            : "I'm sorry, I don't know that yet. Please ask on our Facebook Page.";
+        
+        for (let item of AI_KNOWLEDGE) {
+            if (item.keys.some(key => query.includes(key))) {
+                answer = lang === 'my' ? item.my : item.en;
+                break;
+            }
+        }
+        
+        typing.classList.remove('hidden');
+        scrollToBottom();
+        
+        setTimeout(() => {
+            typing.classList.add('hidden');
+            addMessage('ai', answer);
+        }, 800);
+    }
+
+    function handleSend() {
+        const val = userInput.value.trim();
+        if (val) {
+            addMessage('user', val);
+            userInput.value = '';
+            processAI(val);
+        }
+    }
+
+    sendBtn.onclick = handleSend;
+    userInput.onkeydown = (e) => { if(e.key === 'Enter') handleSend(); };
+</script>
+
+</html>
