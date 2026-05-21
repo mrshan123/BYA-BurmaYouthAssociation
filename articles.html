@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="my" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Burma Youth Association | BYA - ဗဟုသုတနှင့်ဆောင်းပါးများ</title>
+    
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="description" content="Burma Youth Association (BYA) - မြန်မာလူငယ်များအတွက် ပညာရပ်လေ့လာရန်နှင့် အလုပ်အကိုင်ရှာဖွေရန် အကောင်းဆုံးနေရာ။">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --maroon-main: #800000;
+            --maroon-dark: #4d0000;
+        }
+
+        .dark {
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+        }
+
+        body { 
+            transition: background-color 0.3s, color 0.3s; 
+            overflow-x: hidden; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        .dark body { background-color: var(--bg-body); color: var(--text-main); }
+        .dark .bg-white { background-color: var(--bg-card) !important; color: var(--text-main); }
+        .dark .bg-gray-50, .dark .bg-gray-100 { background-color: #181818 !important; }
+        .dark .text-gray-600, .dark .text-gray-800, .dark .text-gray-500 { color: var(--text-muted) !important; }
+        .dark .border-gray-100 { border-color: #333 !important; }
+
+        .bg-maroon { background-color: var(--maroon-main); }
+        .text-maroon { color: var(--maroon-main); }
+        .border-maroon { border-color: var(--maroon-main); }
+        html { scroll-behavior: smooth; }
+        
+        /* Reveal Animation on Scroll */
+        .reveal { position: relative; transform: translateY(50px); opacity: 0; transition: all 0.8s ease-out; }
+        .reveal.active { transform: translateY(0); opacity: 1; }
+
+        .card-hover:hover { transform: translateY(-10px) scale(1.02); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn-active:active { transform: scale(0.95); transition: 0.1s; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating { animation: float 4s ease-in-out infinite; }
+
+        #backToTop { position: fixed; bottom: 30px; right: 30px; display: none; z-index: 100; }
+
+        /* Language Switcher Logic */
+        [data-lang="en"] { display: none; }
+        .lang-en [data-lang="my"] { display: none; }
+        .lang-en [data-lang="en"] { display: inline; }
+
+        /* Premium Card Styles */
+        .premium-card {
+            background: #ffffff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .dark .premium-card { background: var(--bg-card); }
+        .group:hover .premium-card {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px -10px rgba(128, 0, 0, 0.3);
+        }
+        .premium-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, #800000);
+            animation: rotateGlow 4s linear infinite;
+            opacity: 0;
+            z-index: -2;
+        }
+        .group:hover .premium-card::before { opacity: 1; }
+        .premium-card::after {
+            content: "";
+            position: absolute;
+            inset: 2px;
+            background: white;
+            border-radius: 2.4rem;
+            z-index: -1;
+        }
+        .dark .premium-card::after { background: #1e1e1e !important; }
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .icon-box { transition: all 0.4s ease; }
+        .group:hover .icon-box {
+            transform: scale(1.1) rotate(8deg);
+            background-color: #800000 !important;
+            color: white !important;
+            box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
+        }
+        
+        /* Glassmorphism Styles */
+        .glass-hero-backdrop {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-radius: clamp(24px, 5vw, 48px);
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+            overflow: hidden;
+        }
+        .dark .glass-hero-backdrop { background: rgba(20, 20, 40, 0.4); }
+        
+        .floating-shape {
+            position: absolute;
+            z-index: 0;
+            border-radius: 48% 52% 32% 68% / 54% 44% 56% 46%;
+            background: linear-gradient(135deg, rgba(128, 0, 32, 0.2), rgba(158, 42, 58, 0.15));
+            filter: blur(30px);
+            pointer-events: none;
+        }
+        .shape-1 { width: 200px; height: 200px; top: -50px; left: -50px; animation: floatShape 22s infinite alternate ease-in-out; }
+        .shape-2 { width: 300px; height: 300px; bottom: -60px; right: -80px; animation: floatShape 26s infinite alternate ease-in-out reverse; }
+        .shape-3 { width: 140px; height: 140px; top: 30%; left: 75%; animation: floatShape 19s infinite alternate ease-in-out; }
+        .shape-4 { width: 180px; height: 180px; bottom: 15%; left: 5%; animation: floatShape 24s infinite alternate ease-in-out reverse; }
+        
+        @keyframes floatShape {
+            0% { transform: translate(0px, 0px) rotate(0deg) scale(1); }
+            100% { transform: translate(30px, -20px) rotate(8deg) scale(1.08); }
+        }
+        
+        .bya-premium-card {
+            position: relative;
+            z-index: 3;
+            max-width: 1280px;
+            margin: clamp(15px, 4vw, 30px) auto;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: clamp(20px, 4vw, 32px);
+            box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .dark .bya-premium-card { background: rgba(30, 30, 45, 0.94); border-color: rgba(60, 60, 80, 0.5); }
+        
+        .bya-card-banner {
+            background: linear-gradient(125deg, rgba(44, 20, 28, 0.9) 0%, rgba(20, 28, 36, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80') center/cover no-repeat;
+            background-blend-mode: overlay;
+            padding: clamp(40px, 10vw, 70px) clamp(16px, 5vw, 32px);
+            text-align: center;
+            border-bottom: 2px solid rgba(128, 0, 32, 0.5);
+        }
+        
+        .bya-banner-title {
+            color: #fff8f0;
+            font-size: clamp(1.6rem, 6vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.35;
+            margin-bottom: 20px;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.25);
+        }
+        
+        .bya-badge {
+            background: rgba(128, 0, 32, 0.35);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(128, 0, 32, 0.5);
+            color: #fff2e6;
+            padding: 5px 16px;
+            font-size: clamp(0.7rem, 3vw, 0.8rem);
+            font-weight: 600;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .bya-lang-switcher {
+            padding: clamp(20px, 4vw, 28px) clamp(20px, 5vw, 40px) 0;
+            text-align: right;
+        }
+        .bya-lang-btn {
+            background: rgba(128, 0, 32, 0.9);
+            border: none;
+            color: white;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .bya-lang-btn:hover { background: #9e2a3a; }
+        
+        .bya-content-wrapper {
+            padding: clamp(20px, 4vw, 32px) clamp(20px, 5vw, 40px) 20px;
+        }
+        
+        .bya-lang-tag {
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 14px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 18px;
+        }
+        .tag-my { background: #fef1f0; color: #800020; border-left: 3px solid #800020; }
+        .tag-en { background: #fef5e8; color: #8b3a1c; border-left: 3px solid #8b3a1c; }
+        .dark .tag-my { background: #2a1a1a; color: #e8a0a0; border-left-color: #e8a0a0; }
+        .dark .tag-en { background: #2a2218; color: #e8c8a0; border-left-color: #e8c8a0; }
+        
+        .bya-intro-text {
+            font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+            line-height: 1.65;
+            color: #2d3e50;
+            text-align: justify;
+        }
+        .dark .bya-intro-text { color: #cbd5e1; }
+        
+        .bya-feature-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: clamp(20px, 3vw, 28px);
+            padding: clamp(20px, 4vw, 28px);
+            margin-bottom: 28px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(20px, 4vw, 32px);
+            align-items: center;
+            border: 1px solid rgba(128, 0, 32, 0.1);
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.05);
+        }
+        .dark .bya-feature-box { background: #252525; }
+        
+        .bya-feature-box:hover {
+            border-left: 4px solid #800020;
+            transform: translateY(-5px);
+            box-shadow: 0 22px 32px -14px rgba(128, 0, 32, 0.4), 
+                        0 0 0 2px rgba(128, 0, 32, 0.2) inset, 
+                        0 0 20px rgba(128, 0, 32, 0.45);
+        }
+        
+        .bya-image-wrapper { overflow: hidden; border-radius: 20px; }
+        .bya-responsive-img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            border-radius: 18px;
+            transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .bya-feature-box:hover .bya-responsive-img { transform: scale(1.04); }
+        
+        .bya-feature-title {
+            font-size: clamp(1.3rem, 4vw, 1.6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #800020 0%, #a03545 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+        }
+        
+        .bya-feature-desc {
+            font-size: clamp(0.88rem, 3vw, 0.98rem);
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        .dark .bya-feature-desc { color: #b0b8c5; }
+        
+        .bya-premium-footer {
+            background: linear-gradient(115deg, #6b0018, #3d000c);
+            padding: clamp(24px, 5vw, 36px) clamp(20px, 5vw, 36px);
+            border-radius: 24px;
+            margin-top: 28px;
+            border-top: 3px solid #9e2a3a;
+        }
+        .bya-footer-title {
+            font-size: clamp(1.3rem, 5vw, 1.7rem);
+            font-weight: 800;
+            color: #e8c8b8;
+            margin-bottom: 12px;
+        }
+        
+        .bya-collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+        
+        .bya-action-btn-wrapper {
+            text-align: center;
+            padding: 15px clamp(20px, 5vw, 40px) clamp(35px, 6vw, 50px);
+        }
+        .bya-trigger-btn {
+            background: #800020;
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 16px rgba(128, 0, 32, 0.3);
+        }
+        .bya-trigger-btn:hover { background: #9e2a3a; transform: translateY(-2px); }
+        
+        @media (max-width: 680px) {
+            .bya-feature-box { grid-template-columns: 1fr; gap: 18px; }
+            .bya-image-wrapper { order: -1; }
+            .bya-trigger-btn { width: 100%; max-width: 320px; }
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed; z-index: 10000; left: 0; top: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background: #fff; width: 95%; max-width: 450px;
+            border-radius: 25px; overflow: hidden; max-height: 90vh; overflow-y: auto;
+        }
+        .dark .modal-content { background: #1e1e1e; }
+        .modal-content input, .modal-content select, .modal-content textarea {
+            width: 100%; padding: 14px; margin-bottom: 15px;
+            border-radius: 12px; border: 1px solid #eee;
+            background: #f9f9f9; outline: none;
+        }
+        .dark .modal-content input, .dark .modal-content select, .dark .modal-content textarea {
+            background: #2a2a35; border-color: #333; color: #e5e7eb;
+        }
+        
+        /* AI Chat */
+        #ai-window {
+            position: fixed; bottom: 20px; right: 20px; width: 92%; max-width: 380px;
+            height: 500px; max-height: 70vh; background: white;
+            border-radius: 2rem; box-shadow: 0 25px 70px rgba(0,0,0,0.5);
+            z-index: 101; display: none; flex-direction: column; overflow: hidden;
+        }
+        .dark #ai-window { background: #1a1a1a; }
+        @media (min-width: 768px) { #ai-window { bottom: 100px; right: 24px; height: 520px; } }
+        
+        #chat-box { background: #f5f5f5; flex-grow: 1; overflow-y: auto; padding: 20px; }
+        .dark #chat-box { background: #121212; }
+        .chat-message-user { background: #800000; color: white; border-radius: 20px 20px 5px 20px; padding: 10px 16px; max-width: 80%; margin-left: auto; }
+        .chat-message-ai { background: white; color: #333; border-radius: 20px 20px 20px 5px; padding: 10px 16px; max-width: 80%; border: 1px solid #eee; }
+        .dark .chat-message-ai { background: #2a2a35; color: #e5e7eb; border-color: #444; }
+        
+        button:focus-visible { outline: 3px solid #800020; outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+            .floating-shape { display: none; }
+        }
+    </style>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <a href="#" id="backToTop" class="bg-maroon text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hover:bg-red-700 transition-all scale-100 hover:scale-110 active:scale-90">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </a>
+
+    <nav class="bg-maroon text-white p-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-full border-2 border-white/20">
+                    <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover scale-150">
+                </div>
+                <h1 class="text-2xl font-bold tracking-tighter">BYA</h1>
+            </div>
+            
+            <ul class="hidden lg:flex space-x-6">
+                <li><a href="index.html" class="hover:text-red-200 transition"><span data-lang="my">ပင်မစာမျက်နှာ</span><span data-lang="en">Home</span></a></li>
+                <li><a href="about.html" class="hover:text-red-200 transition"><span data-lang="my">ကျွန်ုပ်တို့အကြောင်း</span><span data-lang="en">About</span></a></li>
+                <li><a href="learning.html" class="hover:text-red-200 transition"><span data-lang="my">လေ့လာရန်</span><span data-lang="en">Learning</span></a></li>
+                <li><a href="index.html" class="hover:text-red-200 transition"><span data-lang="my">လုပ်ငန်းခွင် လမ်းညွှန်</span><span data-lang="en">Career Center</span></a></li>
+                <li><a href="articles.html" class="hover:text-red-200 transition"><span data-lang="my">ဆောင်းပါးများ</span><span data-lang="en">Articles</span></a></li>
+            </ul>
+
+            <div class="flex items-center space-x-3 md:space-x-5">
+                <button onclick="toggleTheme()" class="p-2 hover:bg-red-900 rounded-full transition">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleLang()" class="bg-white/20 px-3 py-1 rounded text-sm font-bold border border-white/30 hover:bg-white/40 transition">
+                    <span id="lang-btn-text">EN</span>
+                </button>
+                <button onclick="openModal()" class="hidden sm:block bg-white text-maroon px-6 py-2 rounded-full font-bold hover:bg-red-50 transition shadow-md">BECOME A MEMBER</button>
+                <button id="menu-btn" class="lg:hidden text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden bg-maroon-dark mt-4">
+            <ul class="flex flex-col p-4 space-y-4 text-center">
+                <li><a href="index.html" class="block hover:text-red-200"><span data-lang="my">ပင်မစာမျက်နှာ</span><span data-lang="en">Home</span></a></li>
+                <li><a href="about.html" class="block hover:text-red-200"><span data-lang="my">ကျွန်ုပ်တို့အကြောင်း</span><span data-lang="en">About</span></a></li>
+                <li><a href="learning.html" class="block hover:text-red-200"><span data-lang="my">လေ့လာရန်</span><span data-lang="en">Learning</span></a></li>
+                <li><a href="index.html" class="block hover:text-red-200"><span data-lang="my">လုပ်ငန်းခွင် လမ်းညွှန်</span><span data-lang="en">Career Center</span></a></li>
+                <li><a href="articles.html" class="block hover:text-red-200"><span data-lang="my">ဆောင်းပါးများ</span><span data-lang="en">Articles</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="relative h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200" class="absolute inset-0 w-full h-full object-cover z-0" alt="Youth Education">
+        <div class="relative z-20 px-4 max-w-3xl floating">
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                <span data-lang="my">မြန်မာလူငယ်တို့၏ <br><span class="text-red-400">အနာဂတ်လမ်းပြ</span></span>
+                <span data-lang="en">The Future Guide <br><span class="text-red-400">For Myanmar Youth</span></span>
+            </h2>
+            <p class="text-lg md:text-xl mb-10 opacity-90">
+                <span data-lang="my">ပညာရပ်များကို လေ့လာပါ၊ အလုပ်အကိုင်များ ရှာဖွေပါ၊ တစ်စိတ်တစ်ဝမ်းတည်း တည်ဆောက်ပါ။</span>
+                <span data-lang="en">Learn skills, explore job opportunities, and grow together.</span>
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="learning.html" class="bg-white text-maroon px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl transition-all btn-active">
+                    <span data-lang="my">သင်တန်းများကြည့်မည်</span><span data-lang="en">Browse Courses</span>
+                </a>
+                <a href="index.html" class="border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-maroon transition-all btn-active">
+                    <span data-lang="my">အလုပ်ရှာမည်</span><span data-lang="en">Find Jobs</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== UPGRADED KNOWLEDGE & ARTICLES SECTION ==================== -->
+    <section class="relative min-h-[650px] overflow-hidden bg-white transition-colors duration-500">
+        <!-- Background Grid -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(0deg, transparent 24%, #800000 25%, #800000 26%, transparent 27%, transparent 74%, #800000 75%, #800000 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, #800000 25%, #800000 26%, transparent 27%, transparent 74%, #800000 75%, #800000 76%, transparent 77%, transparent); background-size: 60px 60px;"></div>
+
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Side: Editorial Content -->
+                <div class="flex flex-col justify-center">
+                    <div class="inline-flex items-center space-x-2 bg-maroon/10 text-maroon px-4 py-1.5 rounded-full mb-6 w-fit border border-maroon/20">
+                        <span class="w-2 h-2 rounded-full bg-maroon animate-pulse"></span>
+                        <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
+                            <span data-lang="my">ဗဟုသုတ အကြောင်းအရာ</span>
+                            <span data-lang="en">Knowledge Hub</span>
+                        </span>
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl font-black leading-[1.1] mb-6 tracking-tight text-gray-900">
+                        <span data-lang="my">ဗဟုသုတ နှင့်</span>
+                        <span data-lang="en">Knowledge &</span><br>
+                        <span class="text-maroon">
+                            <span data-lang="my">ဆောင်းပါးများ</span>
+                            <span data-lang="en">Articles</span>
+                        </span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-600 leading-relaxed mb-10 max-w-lg">
+                        <span data-lang="my">Burma Youth Association မှ စုစည်းထားသော ကျွမ်းကျင်သူများ၏ အကြံပြုချက်များ၊ ပညာရေးဆိုင်ရာ အကြောင်းအရာများနှင့် အသက်မွေးဝမ်းကျောင်း လမ်းညွှန်ချက်များ။</span>
+                        <span data-lang="en">Curated by Burma Youth Association — expert insights, educational topics, and career guidance from professionals.</span>
+                    </p>
+
+                    <!-- Search Input Group -->
+                    <div class="relative max-w-md group">
+                        <input type="text" id="articleSearchInput" placeholder="ဆောင်းပါး ခေါင်းစဉ်ကို ရှာဖွေပါ..." class="w-full bg-white border-2 border-gray-100 p-4 rounded-2xl shadow-sm focus:border-maroon focus:ring-4 focus:ring-maroon/10 outline-none transition-all">
+                        <button id="searchArticlesBtn" class="absolute right-2 top-2 bg-maroon text-white p-3 rounded-xl hover:bg-red-900 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Search Result Message -->
+                    <div id="searchResultMsg" class="text-sm text-maroon mt-3 hidden"></div>
+                </div>
+
+                <!-- Right Side: Upgraded Floating Elements -->
+                <div class="relative h-[450px] flex items-center justify-center">
+                    <!-- Main Circular Design -->
+                    <div class="w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-3xl bg-maroon rotate-3 flex items-center justify-center relative shadow-2xl">
+                        <div class="w-full h-full -rotate-3 overflow-hidden rounded-3xl">
+                            <img src="https://i.ibb.co/0jntWsGY/Gemini-Generated-Image-yb0ht1yb0ht1yb0h.png" class="w-full h-full object-cover opacity-90 scale-110" alt="BYA Knowledge">
+                        </div>
+                    </div>
+
+                    <!-- Floating Article Stat Cards -->
+                    <div class="absolute -top-4 -right-4 md:top-10 md:right-0 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-gray-100 floating">
+                        <div class="text-maroon font-black text-2xl">50+</div>
+                        <div class="text-xs text-gray-500 font-bold uppercase tracking-wider">
+                            <span data-lang="my">ကျွမ်းကျင်ဆောင်းပါး</span>
+                            <span data-lang="en">Expert Articles</span>
+                        </div>
+                        <div class="text-[10px] text-gray-400 mt-1">
+                            <span data-lang="my">စစ်မှန်သော ဗဟုသုတ</span>
+                            <span data-lang="en">Authentic Knowledge</span>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-10 left-0 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-gray-100 floating" style="animation-delay: 1s;">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-maroon text-xl">📚</div>
+                            <div>
+                                <div class="text-sm font-bold text-gray-900">
+                                    <span data-lang="my">အပတ်စဉ် အသစ်</span>
+                                    <span data-lang="en">Weekly Updates</span>
+                                </div>
+                                <div class="text-[10px] text-gray-400">
+                                    <span data-lang="my">ခေတ်မီ ဆောင်းပါးများ</span>
+                                    <span data-lang="en">Fresh insights</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glassmorphism Article Section -->
+    <div id="glass-article" class="glass-hero-backdrop">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        
+        <div class="bya-premium-card">
+            <header class="bya-card-banner">
+                <h1 class="bya-banner-title">
+                    <span data-lang="my">ဒီနေ့ခေတ်လူငယ်တွေ ဘဝအောင်မြင်ဖို့ အမြန်ဆုံးမွေးမြူရမည့် လုပ်ငန်းခွင်အရည်အချင်း (၅) ခု</span>
+                    <span data-lang="en">5 Essential Workplace Skills for Youth Success in Today's Era</span>
+                </h1>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="bya-badge">BYA Premium</span>
+                    <span class="bya-badge">Career Guidance</span>
+                    <span class="bya-badge">Burgundy Glow</span>
+                </div>
+            </header>
+
+            <div class="bya-lang-switcher">
+                <button class="bya-lang-btn" id="articleLangToggleBtn">
+                    <span data-lang="my">English Version</span>
+                    <span data-lang="en">မြန်မာစာ</span>
+                </button>
+            </div>
+
+            <div class="bya-content-wrapper">
+                <!-- MYANMAR CONTENT -->
+                <div id="articleContentMy">
+                    <span class="bya-lang-tag tag-my">🇲🇲 မြန်မာဘာသာ</span>
+                    <p class="bya-intro-text">
+                        ယနေ့ခေတ် ၂၁ ရာစု Digital ကမ္ဘာကြီးတွင် နည်းပညာနှင့် စီးပွားရေးကဏ္ဍများသည် နေ့စဉ်နှင့်အမျှ အံ့ဩဖွယ်ရာ အရှိန်အဟုန်ဖြင့် ပြောင်းလဲတိုးတက်နေပါသည်။ ထိုကဲ့သို့ အပြိုင်အဆိုင်ပြင်းထန်လှသော ခေတ်ကာလကြီးထဲတွင် လူငယ်များနှင့် ကျောင်းသားလူငယ်များအနေဖြင့် ကျောင်းစာ သို့မဟုတ် ဘွဲ့လက်မှတ်တစ်ခုတည်းကိုပဲ အားကိုးပြီး ဘဝအောင်မြင်မှုရရှိရန် မလွယ်ကူတော့ပေ။
+                    </p>
+                    <div class="bya-collapsible-content" id="articleFullMy">
+                        <div style="padding-top: 20px;">
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">၁။ စဉ်ဆက်မပြတ် လေ့လာသင်ယူလိုစိတ်ရှိခြင်း</h3><p class="bya-feature-desc">ခေတ်ရေစီးကြောင်းသည် အမြဲတမ်း ရှေ့သို့ရွေ့လျားနေသည့်အတွက် မိမိသိထားသော ပညာရပ်တစ်ခုတည်းဖြင့် ရပ်တည်၍ မရနိုင်တော့ပါ။ အောင်မြင်သော လူငယ်တစ်ဦးဖြစ်ရန် "ငါ အကုန်သိပြီးပြီ" ဆိုသည့် စိတ်ဓာတ်ကို ဖျောက်ဖျက်ပြီး အသစ်အသစ်သော နည်းပညာများကို စဉ်ဆက်မပြတ် လေ့လာနေရပါမည်။</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">၂။ ပြဿနာကို စနစ်တကျ ဖြေရှင်းနိုင်စွမ်း</h3><p class="bya-feature-desc">လုပ်ငန်းခွင်သို့ ဝင်ရောက်သည့်အခါ စိန်ခေါ်မှုများနှင့် အခက်အခဲများစွာကို ရင်ဆိုင်ရမည် ဖြစ်သည်။ အခက်အခဲတွေ့လျှင် နောက်ဆုတ်သွားခြင်းမျိုး မဟုတ်ဘဲ စနစ်တကျ ပြဿနာဖြေရှင်းနည်းများကို လေ့ကျင့်ထားရပါမည်။</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">၃။ နည်းပညာနှင့် အိုင်တီဗဟုသုတ ကြွယ်ဝခြင်း</h3><p class="bya-feature-desc">ဘယ်လုပ်ငန်းခွင်မှာပဲ အလုပ်လုပ်လုပ် ယနေ့ခေတ်တွင် နည်းပညာနှင့် ကွန်ပြူတာအခြေခံကို ကျွမ်းကျင်စွာ အသုံးမချနိုင်ပါက နောက်ကောက်ကျန်ခဲ့မှာ သေချာပါသည်။ AI နည်းပညာများကို လုပ်ငန်းခွင်တွင် အသုံးချတတ်ရပါမည်။</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">၄။ ပူးပေါင်းဆောင်ရွက်မှုနှင့် ဆက်ဆံရေး အရည်အချင်း</h3><p class="bya-feature-desc">ကြီးမားသော အောင်မြင်မှုများကို တစ်ယောက်တည်း တည်ဆောက်၍ မရနိုင်ပါ။ အဖွဲ့အစည်းတစ်ခုတွင် အလုပ်လုပ်သည့်အခါ အခြားသူများနှင့် စနစ်တကျ ပူးပေါင်းဆောင်ရွက်တတ်ရန် အရေးကြီးပါသည်။</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">၅။ စည်းကမ်းရှိခြင်းနှင့် စံနှုန်းများ သတ်မှတ်နိုင်ခြင်း</h3><p class="bya-feature-desc">လုပ်ငန်းခွင်တစ်ခုကို တည်ငြိမ်အောင် ထိန်းသိမ်းရာတွင် ကိုယ်ပိုင်စည်းကမ်းနှင့် 5S ကဲ့သို့သော မူဝါဒများကို နေ့စဉ် လိုက်နာကျင့်သုံးသွားရပါမည်။</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <footer class="bya-premium-footer"><h4 class="bya-footer-title">နိဂုံး</h4><p class="bya-intro-text" style="color:#fff5ee;">ဘဝအောင်မြင်မှုဆိုသည်မှာ မိမိ၏ အရည်အချင်းများကို နေ့စဉ် စနစ်တကျ ပြုစုပျိုးထောင်ခြင်း၏ ရလဒ် ဖြစ်သည်။ Burma Youth Association (BYA) မြန်မာလူငယ်များ ဘဝပန်းတိုင်များကို အောင်မြင်စွာ လှမ်းကိုင်နိုင်ရန် ဆက်လက် ပံ့ပိုးကူညီပေးသွားမည် ဖြစ်ပါသည်။</p></footer>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ENGLISH CONTENT -->
+                <div id="articleContentEn" style="display: none;">
+                    <span class="bya-lang-tag tag-en">🇬🇧 ENGLISH EDITION</span>
+                    <p class="bya-intro-text">In today's 21st-century digital world, technology and business sectors are evolving at an incredible pace. In this highly competitive era, young people and students can no longer rely solely on academic degrees to achieve success. To stand out as a true professional in the real workforce, you need more than just a certificate — you need essential soft skills that employers are actively seeking.</p>
+                    <div class="bya-collapsible-content" id="articleFullEn">
+                        <div style="padding-top: 20px;">
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">1. Continuous Learning Mindset</h3><p class="bya-feature-desc">Trends change rapidly, so you cannot rely on a single skill for years. Eliminate the "I know everything" mindset and constantly learn new technologies and management styles. The most successful professionals are those who never stop learning.</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">2. Problem Solving Ability</h3><p class="bya-feature-desc">Challenges arise daily in every workplace. Cultivate a "Can-Do" attitude and master structured problem-solving methods to systematically overcome issues. Employers value those who can find solutions, not just identify problems.</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">3. Digital Literacy & Tech Skills</h3><p class="bya-feature-desc">No matter your industry, failing to leverage technology means falling behind. Modern employers value candidates who can effectively use AI tools, data analysis software, and digital collaboration platforms. Basic coding knowledge is becoming increasingly valuable.</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">4. Teamwork & Communication</h3><p class="bya-feature-desc">Great achievements are never built alone. Expressing ideas clearly, listening respectfully, and collaborating effectively will pave your path to leadership. Strong interpersonal skills are often the difference between good and great employees.</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <div class="bya-feature-box"><div><h3 class="bya-feature-title">5. Discipline & Standardization</h3><p class="bya-feature-desc">Maintaining stability in any organization requires personal discipline and adherence to operational standards. Implementing frameworks like 5S, time management systems, and quality control measures ensures an efficient and professional work environment.</p></div><div class="bya-image-wrapper"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" class="bya-responsive-img" loading="lazy"></div></div>
+                            <footer class="bya-premium-footer"><h4 class="bya-footer-title">Conclusion</h4><p class="bya-intro-text" style="color:#fff5ee;">Success is the result of consistently building your skills every day. Burma Youth Association (BYA) remains committed to empowering Myanmar youth with essential professional insights and practical guidance for their career journey.</p></footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bya-action-btn-wrapper">
+                <button class="bya-trigger-btn" id="articleReadMoreBtn">
+                    <span data-lang="my">ဆက်လက်ဖတ်ရှုရန်</span>
+                    <span data-lang="en">Read More</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-maroon text-white py-16 px-4">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+                <h4 class="text-3xl font-black mb-6">BYA</h4>
+                <p class="text-sm opacity-70">
+                    <span data-lang="my">မြန်မာလူငယ်များ အချင်းချင်း ချိတ်ဆက်မိစေရန် ရည်ရွယ်ပါသည်။</span>
+                    <span data-lang="en">Connecting Myanmar youth to opportunities.</span>
+                </p>
+            </div>
+            <div>
+                <h5 class="text-lg font-bold mb-6">Quick Links</h5>
+                <ul class="text-sm space-y-4 opacity-70">
+                    <li><a href="index.html" class="hover:text-red-300 transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-red-300 transition">About Us</a></li>
+                    <li><a href="learning.html" class="hover:text-red-300 transition">Learning</a></li>
+                    <li><a href="articles.html" class="hover:text-red-300 transition">Articles</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-lg font-bold mb-6">Contact</h5>
+                <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+                    <a href="https://www.facebook.com/61576906013024" class="hover:text-red-300 transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-red-300 transition"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h5 class="text-lg font-bold mb-4 text-white">Contact Us</h5>
+                <button onclick="openContactModal()" class="bg-white text-maroon px-6 py-2 rounded-full font-bold hover:bg-red-50 transition shadow-md uppercase text-sm">
+                    Send a Message
+                </button>
+            </div>
+        </div>
+        <div class="container mx-auto w-full text-center mt-16 pt-8 border-t border-red-900/40 text-xs text-white/40">
+            © 2026 BYA - BURMA YOUTH ASSOCIATION.
+        </div>
+    </footer>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal-overlay">
+        <div class="modal-content">
+            <button onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; cursor: pointer;">&times;</button>
+            <div style="padding: 40px 30px;">
+                <h2 style="color: #800000; text-align: center; font-size: 24px; font-weight: 800;">BECOME A MEMBER</h2>
+                <div style="width: 40px; height: 3px; background: #800000; margin: 10px auto;"></div>
+                <form id="registerForm">
+                    <input name="Name" type="text" placeholder="သင့်နာမည် အပြည့်အစုံ" required>
+                    <input name="Email" type="email" placeholder="အီးမေးလ် လိပ်စာ" required>
+                    <input name="Phone" type="tel" placeholder="ဖုန်းနံပါတ်" required>
+                    <select name="Skill" required>
+                        <option value="" disabled selected>ကျွမ်းကျင်မှု / ဝါသနာ</option>
+                        <option value="IT">IT / နည်းပညာ</option>
+                        <option value="Design">Design / အနုပညာ</option>
+                        <option value="Leadership">ဦးဆောင်မှု</option>
+                    </select>
+                    <button type="button" onclick="handleRegister()" style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold;">REGISTER</button>
+                </form>
+                <div id="registerSuccess" style="display:none; text-align:center; color:green; margin-top:15px;">✅ လျှောက်ထားမှု အောင်မြင်ပါသည်။</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button onclick="closeContactModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; cursor: pointer;">&times;</button>
+            <div style="padding: 40px;">
+                <h2 style="color: #800000; text-align: center; font-size: 24px; font-weight: 800;">CONTACT BYA</h2>
+                <div style="width: 40px; height: 3px; background: #800000; margin: 10px auto;"></div>
+                <form id="contactForm">
+                    <input name="Name" type="text" placeholder="သင့်နာမည်" required>
+                    <input name="Contact" type="text" placeholder="အီးမေးလ် သို့မဟုတ် ဖုန်းနံပါတ်" required>
+                    <select name="Subject" required>
+                        <option value="" disabled selected>ဘာအကြောင်းအရာလဲ?</option>
+                        <option value="စုံစမ်းရန်">စုံစမ်းမေးမြန်းရန်</option>
+                        <option value="အကြံပေးရန်">အကြံပေးရန်</option>
+                        <option value="ပူးပေါင်းဆောင်ရွက်ရန်">ပူးပေါင်းဆောင်ရွက်ရန်</option>
+                    </select>
+                    <textarea name="Message" placeholder="သင်ပြောချင်တဲ့ အကြောင်းအရာ..." rows="4" required></textarea>
+                    <button type="button" onclick="handleContact()" style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold;">SEND MESSAGE</button>
+                </form>
+                <div id="contactSuccess" style="display:none; text-align:center; color:green; margin-top:15px;">✅ ပေးပို့မှု အောင်မြင်ပါသည်။</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Toggle -->
+    <div id="ai-chat-toggle" class="fixed bottom-6 right-6 z-[100] group cursor-pointer">
+        <div class="relative">
+            <div class="absolute -top-1 -right-1">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600 border-2 border-white"></span>
+            </div>
+            <button class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 transition-all">
+                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
+            </button>
+        </div>
+    </div>
+
+    <!-- AI Chat Window -->
+    <div id="ai-window">
+        <div style="background: #800000; padding: 15px 20px; color: white; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 35px; height: 35px; border-radius: 50%; background: white; overflow: hidden;">
+                    <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div>
+                    <h4 style="font-weight: bold;">BYA Smart AI</h4>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <span style="width: 8px; height: 8px; background: #4ade80; border-radius: 50%;"></span>
+                        <span style="font-size: 10px;">Active Now</span>
+                    </div>
+                </div>
+            </div>
+            <button id="close-ai" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">&times;</button>
+        </div>
+        
+        <div id="chat-box" style="flex-grow: 1; overflow-y: auto; padding: 20px;">
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <div style="width: 30px; height: 30px; border-radius: 50%; background: #800000; overflow: hidden;">
+                    <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="chat-message-ai">
+                    <span data-lang="my">မင်္ဂလာပါ! BYA AI မှ ကြိုဆိုပါတယ်။ ဘာများကူညီပေးရမလဲ?</span>
+                    <span data-lang="en" style="display:none;">Hello! Welcome to BYA AI. How can I assist you?</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="ai-typing" style="padding: 10px 20px; display: none;">
+            <div style="width: 8px; height: 8px; background: #800000; border-radius: 50%; display: inline-block; margin-right: 4px; animation: bounce 1.4s infinite ease-in-out;"></div>
+            <div style="width: 8px; height: 8px; background: #800000; border-radius: 50%; display: inline-block; margin-right: 4px; animation: bounce 1.4s infinite ease-in-out 0.2s;"></div>
+            <div style="width: 8px; height: 8px; background: #800000; border-radius: 50%; display: inline-block; animation: bounce 1.4s infinite ease-in-out 0.4s;"></div>
+        </div>
+        
+        <div style="padding: 15px; border-top: 1px solid #eee;">
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="aiInput" placeholder="စာရိုက်ရန်..." style="flex-grow: 1; padding: 12px; border-radius: 25px; border: 1px solid #ddd; outline: none;">
+                <button id="sendAiBtn" style="background: #800000; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer;">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes bounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+        #ai-window { transition: all 0.3s ease; }
+        .dark #ai-window .chat-message-ai { background: #2a2a35; color: #e5e7eb; }
+        .dark #ai-window input { background: #2a2a35; border-color: #444; color: #e5e7eb; }
+    </style>
+
+    <script>
+        // ==================== DARK MODE ====================
+        function toggleTheme() {
+            const html = document.getElementById('html-tag');
+            const icon = document.getElementById('theme-icon');
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        
+        if (localStorage.getItem('theme') === 'dark') {
+            document.getElementById('html-tag').classList.add('dark');
+            document.getElementById('theme-icon')?.classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        // ==================== LANGUAGE SWITCHER (Navbar) ====================
+        let globalLang = localStorage.getItem('bya_lang') || 'my';
+        function applyGlobalLanguage(lang) {
+            const body = document.body;
+            const btnText = document.getElementById('lang-btn-text');
+            if (lang === 'en') {
+                body.classList.add('lang-en');
+                btnText.innerText = 'MY';
+                globalLang = 'en';
+            } else {
+                body.classList.remove('lang-en');
+                btnText.innerText = 'EN';
+                globalLang = 'my';
+            }
+            localStorage.setItem('bya_lang', globalLang);
+            
+            // Update search placeholder
+            const searchInput = document.getElementById('articleSearchInput');
+            if (searchInput) {
+                searchInput.placeholder = globalLang === 'my' ? 'ဆောင်းပါး ခေါင်းစဉ်ကို ရှာဖွေပါ...' : 'Search for articles...';
+            }
+        }
+        
+        function toggleLang() {
+            const newLang = globalLang === 'my' ? 'en' : 'my';
+            applyGlobalLanguage(newLang);
+        }
+        
+        // Apply saved language on load
+        applyGlobalLanguage(globalLang);
+        
+        // ==================== ARTICLE READ MORE & LANGUAGE TOGGLE ====================
+        (function() {
+            let articleLang = 'MY';
+            let expanded = false;
+            const contentMy = document.getElementById('articleContentMy');
+            const contentEn = document.getElementById('articleContentEn');
+            const langBtn = document.getElementById('articleLangToggleBtn');
+            const actionBtn = document.getElementById('articleReadMoreBtn');
+            const fullMy = document.getElementById('articleFullMy');
+            const fullEn = document.getElementById('articleFullEn');
+            
+            function closePanels() {
+                if (fullMy) fullMy.style.maxHeight = null;
+                if (fullEn) fullEn.style.maxHeight = null;
+                expanded = false;
+                if (actionBtn) {
+                    const isMy = (articleLang === 'MY');
+                    actionBtn.innerHTML = isMy ? '<span data-lang="my">ဆက်လက်ဖတ်ရှုရန်</span><span data-lang="en">Read More</span>' : '<span data-lang="my">ဆက်လက်ဖတ်ရှုရန်</span><span data-lang="en">Read More</span>';
+                    actionBtn.style.background = "#800020";
+                }
+            }
+            
+            if (langBtn) {
+                langBtn.onclick = function() {
+                    closePanels();
+                    if (articleLang === 'MY') {
+                        articleLang = 'EN';
+                        contentMy.style.display = 'none';
+                        contentEn.style.display = 'block';
+                        langBtn.innerHTML = '<span data-lang="my">English Version</span><span data-lang="en">မြန်မာစာ</span>';
+                    } else {
+                        articleLang = 'MY';
+                        contentMy.style.display = 'block';
+                        contentEn.style.display = 'none';
+                        langBtn.innerHTML = '<span data-lang="my">English Version</span><span data-lang="en">မြန်မာစာ</span>';
+                    }
+                };
+            }
+            
+            if (actionBtn) {
+                actionBtn.onclick = function() {
+                    const active = (articleLang === 'MY') ? fullMy : fullEn;
+                    if (!active) return;
+                    if (!expanded) {
+                        active.style.maxHeight = active.scrollHeight + "px";
+                        expanded = true;
+                        actionBtn.innerHTML = (articleLang === 'MY') ? '<span data-lang="my">ပြန်ဝှက်ရန်</span><span data-lang="en">Hide</span>' : '<span data-lang="my">ပြန်ဝှက်ရန်</span><span data-lang="en">Hide</span>';
+                        actionBtn.style.background = "#9e2a3a";
+                    } else {
+                        active.style.maxHeight = null;
+                        expanded = false;
+                        actionBtn.innerHTML = '<span data-lang="my">ဆက်လက်ဖတ်ရှုရန်</span><span data-lang="en">Read More</span>';
+                        actionBtn.style.background = "#800020";
+                    }
+                };
+            }
+            
+            if (contentMy) contentMy.style.display = 'block';
+            if (contentEn) contentEn.style.display = 'none';
+            closePanels();
+        })();
+        
+        // ==================== SEARCH FUNCTIONALITY ====================
+        (function() {
+            const searchInput = document.getElementById('articleSearchInput');
+            const searchBtn = document.getElementById('searchArticlesBtn');
+            const resultMsg = document.getElementById('searchResultMsg');
+            
+            // Article titles and keywords to search
+            const articleKeywords = [
+                { my: "လုပ်ငန်းခွင်အရည်အချင်း", en: "workplace skills" },
+                { my: "စဉ်ဆက်မပြတ်လေ့လာခြင်း", en: "continuous learning" },
+                { my: "ပြဿနာဖြေရှင်းနည်း", en: "problem solving" },
+                { my: "နည်းပညာ", en: "technology" },
+                { my: "အိုင်တီ", en: "IT" },
+                { my: "ပူးပေါင်းဆောင်ရွက်မှု", en: "teamwork" },
+                { my: "စည်းကမ်း", en: "discipline" }
+            ];
+            
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+                if (!query) {
+                    resultMsg.classList.add('hidden');
+                    return;
+                }
+                
+                const currentLang = document.body.classList.contains('lang-en') ? 'en' : 'my';
+                let found = false;
+                
+                for (let kw of articleKeywords) {
+                    if (kw[currentLang].toLowerCase().includes(query) || query.includes(kw[currentLang].toLowerCase())) {
+                        found = true;
+                        break;
+                    }
+                }
+                
+                if (found) {
+                    resultMsg.innerHTML = currentLang === 'my' ? 
+                        '✅ သင့်ရှာဖွေမှုနှင့် ကိုက်ညီသော ဆောင်းပါးများ ရှိပါသည်။ အပေါ်တွင် ဆက်လက်ဖတ်ရှုနိုင်ပါသည်။' :
+                        '✅ Articles matching your search found. Scroll up to read more.';
+                    resultMsg.classList.remove('hidden');
+                    
+                    // Auto-expand article if collapsed
+                    const actionBtn = document.getElementById('articleReadMoreBtn');
+                    const fullMy = document.getElementById('articleFullMy');
+                    const fullEn = document.getElementById('articleFullEn');
+                    const articleLang = document.getElementById('articleContentMy').style.display !== 'none' ? 'MY' : 'EN';
+                    const active = (articleLang === 'MY') ? fullMy : fullEn;
+                    if (active && (!active.style.maxHeight || active.style.maxHeight === '0px')) {
+                        actionBtn?.click();
+                    }
+                } else {
+                    resultMsg.innerHTML = currentLang === 'my' ? 
+                        '⚠️ မတွေ့ပါ။ အခြားသော ခေါင်းစဉ်ဖြင့် ထပ်မံရှာဖွေနိုင်ပါသည်။' :
+                        '⚠️ No matches found. Please try different keywords.';
+                    resultMsg.classList.remove('hidden');
+                }
+                
+                setTimeout(() => {
+                    setTimeout(() => resultMsg.classList.add('hidden'), 5000);
+                }, 100);
+            }
+            
+            if (searchBtn) searchBtn.addEventListener('click', performSearch);
+            if (searchInput) searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
+        })();
+        
+        // ==================== MODALS ====================
+        const registerModal = document.getElementById('registerModal');
+        const contactModal = document.getElementById('contactModal');
+        
+        function openModal() { registerModal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeModal() { registerModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function openContactModal() { contactModal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeContactModal() { contactModal.style.display = 'none'; document.body.style.overflow = 'auto'; }
+        
+        function handleRegister() {
+            alert("Registration successful! (Demo mode)");
+            closeModal();
+        }
+        
+        function handleContact() {
+            alert("Message sent! (Demo mode)");
+            closeContactModal();
+        }
+        
+        // ==================== AI CHAT ====================
+        const aiWin = document.getElementById('ai-window');
+        const aiToggle = document.getElementById('ai-chat-toggle');
+        const closeAi = document.getElementById('close-ai');
+        const sendAiBtn = document.getElementById('sendAiBtn');
+        const aiInput = document.getElementById('aiInput');
+        const chatBox = document.getElementById('chat-box');
+        const typingDiv = document.getElementById('ai-typing');
+        
+        function openAIChat() {
+            aiWin.style.display = 'flex';
+            setTimeout(() => chatBox.scrollTop = chatBox.scrollHeight, 100);
+        }
+        
+        aiToggle?.addEventListener('click', openAIChat);
+        closeAi?.addEventListener('click', () => { aiWin.style.display = 'none'; });
+        
+        const AI_RESPONSES = [
+            { keys: ["မင်္ဂလာပါ", "ဟိုင်း", "hello", "hi"], my: "မင်္ဂလာပါ! BYA AI မှ ကြိုဆိုပါတယ်။ ဘာများကူညီပေးရမလဲ?", en: "Hello! Welcome to BYA AI. How can I assist you?" },
+            { keys: ["bya", "အကြောင်း"], my: "BYA သည် မြန်မာလူငယ်များအတွက် ပညာရပ်နှင့် အလုပ်အကိုင်များ ဖန်တီးပေးသော Community ဖြစ်သည်။", en: "BYA is a community for Myanmar youth." },
+            { keys: ["သင်တန်း", "course"], my: "ကျွန်ုပ်တို့၏ Learning Lab တွင် Free Courses များကို လေ့လာနိုင်ပါသည်။", en: "You can explore free courses in our Learning Lab." },
+            { keys: ["facebook", "fb"], my: "Facebook Page: https://www.facebook.com/61576906013024", en: "Facebook: https://www.facebook.com/61576906013024" },
+            { keys: ["ကျေးဇူး", "thanks"], my: "ရပါတယ်ခင်ဗျာ။ အမြဲကူညီဖို့ အသင့်ရှိပါတယ်။", en: "You're welcome!" },
+            { keys: ["ဆောင်းပါး", "article"], my: "ကျွန်ုပ်တို့၏ ဆောင်းပါးများကို အထက်တွင် ဖတ်ရှုနိုင်ပါသည်။ အရည်အချင်း (၅) ချက် ပါဝင်ပါသည်။", en: "You can read our articles above. It includes 5 essential workplace skills." }
+        ];
+        
+        function getAIResponse(msg, lang) {
+            const lower = msg.toLowerCase();
+            for (let item of AI_RESPONSES) {
+                if (item.keys.some(k => lower.includes(k))) {
+                    return lang === 'my' ? item.my : item.en;
+                }
+            }
+            return lang === 'my' ? "စိတ်မရှိပါနဲ့၊ Facebook Page မှာ မေးကြည့်ပေးပါဦး။" : "Sorry, I don't know that. Please ask on our Facebook Page.";
+        }
+        
+        function addAIMessage(sender, text) {
+            const div = document.createElement('div');
+            div.style.marginBottom = "15px";
+            div.style.display = "flex";
+            div.style.gap = "10px";
+            if (sender === 'user') {
+                div.style.justifyContent = "flex-end";
+                div.innerHTML = `<div class="chat-message-user">${text}</div>`;
+            } else {
+                div.innerHTML = `<div style="width:30px; height:30px; border-radius:50%; background:#800000; overflow:hidden;"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" style="width:100%; height:100%; object-fit:cover;"></div><div class="chat-message-ai">${text}</div>`;
+            }
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        
+        function sendAIMessage() {
+            const msg = aiInput.value.trim();
+            if (!msg) return;
+            const currentLang = document.body.classList.contains('lang-en') ? 'en' : 'my';
+            addAIMessage('user', msg);
+            aiInput.value = '';
+            typingDiv.style.display = 'block';
+            chatBox.scrollTop = chatBox.scrollHeight;
+            setTimeout(() => {
+                typingDiv.style.display = 'none';
+                const response = getAIResponse(msg, currentLang);
+                addAIMessage('ai', response);
+            }, 800);
+        }
+        
+        sendAiBtn?.addEventListener('click', sendAIMessage);
+        aiInput?.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendAIMessage(); });
+        
+        // ==================== BACK TO TOP ====================
+        const backToTop = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTop.style.display = "flex";
+            } else {
+                backToTop.style.display = "none";
+            }
+            document.querySelectorAll(".reveal").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add("active");
+            });
+        };
+        backToTop.onclick = function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+        
+        // ==================== MOBILE MENU ====================
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        
+        // Close modals on outside click
+        window.onclick = function(event) {
+            if (event.target === registerModal) closeModal();
+            if (event.target === contactModal) closeContactModal();
+        };
+        
+        // Reveal on load
+        document.querySelectorAll(".reveal").forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add("active");
+        });
+    </script>
+</body>
+</html>
