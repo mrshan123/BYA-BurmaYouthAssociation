@@ -1045,5 +1045,13 @@
             if (el.getBoundingClientRect().top < window.innerHeight - 150) el.classList.add("active");
         });
     </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('Service Worker Registered Successfully'));
+    });
+  }
+</script>
 </body>
 </html>
