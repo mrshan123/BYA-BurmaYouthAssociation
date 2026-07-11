@@ -1111,6 +1111,14 @@
         if (event.target == contactModal) { closeContactModal(); }
     });
 </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('Service Worker Registered Successfully'));
+    });
+  }
+</script>
 </body>
 <div id="ai-chat-toggle" class="fixed bottom-6 right-6 z-[100] group">
     <div class="relative">
