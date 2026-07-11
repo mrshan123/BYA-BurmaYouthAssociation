@@ -1,29 +1,42 @@
-const CACHE_NAME = 'bya-cache-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/favicon.ico',
-  '/manifest.json'
-];
+const CACHE_NAME = 'bya-cache-v2';
 
-// Service Worker ကို စတင် Install လုပ်ခြင်း
+// 1. Install လုပ်တဲ့အခါ Cache အဟောင်းတွေကို ဖျက်ပြီး အသစ်ယူမယ်
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-  );
+  self.skipWaiting();
 });
 
-// အချက်အလက်များကို Fetch လုပ်ခြင်း (Offline သုံးနိုင်ရန်)
+// 2. Fetch လုပ်တဲ့အခါ Cache ထဲမှာရှိရင် ပြမယ်၊ မရှိရင် အင်တာနက်ကနေယူပြီး Cache ထဲ အလိုအလျောက်သိမ်းမယ်
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Cache ထဲမှာရှိရင် အဲဒါကိုသုံးမယ်၊ မရှိရင် network ကနေဆွဲမယ်
-        return response || fetch(event.request);
+        if (response) {
+          return response; // Cache ထဲမှာရှိရင် အဲဒါကိုသုံးမယ်
+        }
+        
+        // မရှိရင် Network ကနေဆွဲမယ်
+        return fetch(event.request).then(networkResponse => {
+          // ရလာတဲ့ Data ကို Cache ထဲ အလိုအလျောက် သိမ်းပေးမယ်
+          return caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+        });
       })
+  );
+});
+
+// 3. Cache အဟောင်းတွေကို ရှင်းလင်းပေးခြင်း
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
   );
 });
