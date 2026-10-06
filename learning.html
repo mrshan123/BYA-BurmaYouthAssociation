@@ -5,14 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning Center | BYA</title>
     
-<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<link rel="shortcut icon" href="favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-
-    
-    
-    <script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { darkMode: "class" };</script>
+<script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -141,8 +135,10 @@
 <meta property="og:url" content="https://mrshan123.github.io/BYA-BurmaYouthAssociation/learning.html">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/css/bya-global.css">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
     <a href="#" id="backToTop" class="bg-maroon text-white w-12 h-12 rounded-full flex items-center justify-center shadow-2xl hover:bg-red-700 transition-all scale-100 hover:scale-110 active:scale-90">
         <i class="fas fa-arrow-up text-xl"></i>
@@ -164,15 +160,17 @@
 <li><a href="get-involved.html"><span data-lang="my">ပါဝင်ရန်</span><span data-lang="en">Get Involved</span></a></li>
 </ul>
 <div class="flex items-center gap-2">
-<button onclick="toggleTheme()" class="p-2 rounded-full" aria-label="Toggle theme"><i id="theme-icon" class="fas fa-moon"></i></button>
-<button onclick="toggleLang()" class="bg-white/15 px-3 py-1 rounded-full text-xs font-bold" aria-label="Switch language"><span id="lang-btn-text">EN</span></button>
+<button type="button" onclick="toggleTheme()" class="p-2 rounded-full" aria-label="Toggle theme"><i id="theme-icon" class="fas fa-moon"></i></button>
+<button type="button" onclick="toggleLang()" class="bg-white/15 px-3 py-1 rounded-full text-xs font-bold" aria-label="Switch language"><span id="lang-btn-text">EN</span></button>
 <a href="get-involved.html" class="hidden md:inline-block bg-white text-maroon px-5 py-2 rounded-full font-bold text-sm no-nav-line">JOIN BYA</a>
-<button id="menu-btn" class="xl:hidden text-2xl" aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+<button type="button" id="menu-btn" class="xl:hidden text-2xl" aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
 </div></div>
 <div id="mobile-menu" class="hidden xl:hidden bg-maroon-dark mt-3 rounded-xl">
 <ul class="flex flex-col p-5 gap-4 text-center font-semibold">
 <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="learning.html">Learning</a></li><li><a href="opportunities.html">Opportunities</a></li><li><a href="articles.html">Stories</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="transparency.html">Transparency</a></li><li><a href="contact.html">Contact</a></li>
 </ul></div></nav>
+<main id="main-content">
+
 
     <section class="relative h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
         <div class="absolute inset-0 bg-black/60 z-10"></div>
@@ -215,7 +213,7 @@
             <div class="group relative flex flex-col h-full">
                 <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800" alt="BYA learning and youth development resource image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
                     </div>
                     <a href="https://www.khanacademy.org" target="_blank" class="card-link-overlay z-30"></a>
@@ -236,7 +234,7 @@
             <div class="group relative flex flex-col h-full">
                 <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800" alt="BYA learning and youth development resource image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
                     </div>
                     <a href="https://www.coursera.org" target="_blank" class="card-link-overlay z-30"></a>
@@ -278,7 +276,7 @@
             <div class="group relative flex flex-col h-full">
                 <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800" alt="BYA learning and youth development resource image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
                     </div>
                     <a href="https://www.udemy.com" target="_blank" class="card-link-overlay z-30"></a>
@@ -299,7 +297,7 @@
             <div class="group relative flex flex-col h-full">
                 <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-zinc-900">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=800" alt="BYA learning and youth development resource image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90"></div>
                     </div>
                     <a href="https://www.freecodecamp.org" target="_blank" class="card-link-overlay z-30"></a>
@@ -320,7 +318,7 @@
             <div class="group relative flex flex-col h-full">
                 <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" alt="BYA learning and youth development resource image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
                     </div>
                     <a href="https://mymyeo.com/learning" target="_blank" class="card-link-overlay z-30"></a>
@@ -341,7 +339,7 @@
             <div class="group relative flex flex-col h-full">
                 <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.pexels.com/photos/4050291/pexels-photo-4050291.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.pexels.com/photos/4050291/pexels-photo-4050291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="BYA learning and youth development resource image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
                     </div>
                     <a href="https://www.duolingo.com" target="_blank" class="card-link-overlay z-30"></a>
@@ -362,7 +360,7 @@
             <div class="group relative flex flex-col h-full">
                 <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800" alt="BYA learning and youth development resource image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
                     </div>
                     <a href="https://www.skillshare.com" target="_blank" class="card-link-overlay z-30"></a>
@@ -383,7 +381,7 @@
             <div class="group relative flex flex-col h-full">
                 <div class="premium-card p-10 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full relative overflow-hidden bg-white dark:bg-zinc-900">
                     <div class="absolute inset-0 z-0">
-                        <img src="https://images.pexels.com/photos/3758105/pexels-photo-3758105.jpeg?auto=compress&cs=tinysrgb&w=800" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="https://images.pexels.com/photos/3758105/pexels-photo-3758105.jpeg?auto=compress&cs=tinysrgb&w=800" alt="BYA learning and youth development resource image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/70 to-black/90"></div>
                     </div>
                     <a href="https://ed.ted.com" target="_blank" class="card-link-overlay z-30"></a>
@@ -613,6 +611,8 @@
         </div>
     </div>
 </section>
+
+</main>
 <footer class="bg-maroon text-white py-16 px-4">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
         <div>
@@ -643,7 +643,7 @@
 
         <div>
             <h5 class="text-lg font-bold mb-4 text-white">Contact Us</h5>
-            <button onclick="openContactModal()" class="bg-white text-maroon px-6 py-2 rounded-full font-bold hover:bg-red-50 transition shadow-md uppercase text-sm">
+            <button type="button" onclick="openContactModal()" class="bg-white text-maroon px-6 py-2 rounded-full font-bold hover:bg-red-50 transition shadow-md uppercase text-sm">
                 Send a Message
             </button>
         </div>
@@ -735,7 +735,7 @@
 <div id="registerModal" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; font-family: sans-serif;">
     <div style="background: #fff; width: 95%; max-width: 450px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); max-height: 90vh; overflow-y: auto;">
         
-        <button onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer; line-height: 1;">&times;</button>
+        <button type="button" onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer; line-height: 1;">&times;</button>
 
         <div style="padding: 40px 30px;">
             <div style="text-align: center; margin-bottom: 25px;">
@@ -851,7 +851,7 @@
 <div id="contactModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center;">
     <div style="background: #fff; width: 90%; max-width: 450px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
         
-        <button onclick="closeContactModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer;">&times;</button>
+        <button type="button" onclick="closeContactModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer;">&times;</button>
 
         <div style="padding: 40px;">
             <div style="text-align: center; margin-bottom: 30px;">
@@ -955,14 +955,14 @@
 </script>
     
     <script src="assets/js/bya-v2.js" defer></script>
-</body>
+
 <div id="ai-chat-toggle" class="fixed bottom-6 right-6 z-[100] group">
     <div class="relative">
         <div class="absolute -top-1 -right-1 flex h-4 w-4">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600 border-2 border-white"></span>
         </div>
-        <button class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
+        <button type="button" class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
             <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
         </button>
     </div>
@@ -974,16 +974,16 @@
         <div class="absolute inset-0 bg-black/10"></div>
         <div class="flex items-center gap-3 relative z-10">
             <div class="w-10 h-10 rounded-full border-2 border-white/30 p-0.5 bg-white shadow-sm">
-                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" class="w-full h-full object-cover rounded-full">
+                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
             </div>
             <div>
-                <h4 class="font-black text-sm tracking-tight">BYA Smart AI</h4>
+                <h4 class="font-black text-sm tracking-tight">BYA Information Assistant</h4>
                 <div class="flex items-center gap-1.5 text-[9px] font-bold text-red-200 uppercase tracking-widest">
-                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse shadow-[0_0_5px_#4ade80]"></span> Active Now
+                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse shadow-[0_0_5px_#4ade80]"></span> Information Assistant
                 </div>
             </div>
         </div>
-        <button id="close-ai" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
+        <button type="button" id="close-ai" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
             <i class="fas fa-times text-sm"></i>
         </button>
     </div>
@@ -992,7 +992,7 @@
          style="touch-action: pan-y; -webkit-overflow-scrolling: touch;">
         <div class="flex gap-2">
             <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm">
-                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" class="w-full h-full object-cover">
+                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover">
             </div>
             <div class="bg-white dark:bg-zinc-800 p-3 rounded-2xl rounded-tl-none shadow-sm text-[13px] leading-relaxed dark:text-gray-200 border border-gray-100 dark:border-white/5 max-w-[85%]">
                 <span data-lang="my">မင်္ဂလာပါ! BYA AI မှ ကြိုဆိုပါတယ်။ ဘာများကူညီပေးရမလဲ?</span>
@@ -1014,11 +1014,11 @@
             <input type="text" id="user-input" autocomplete="off" 
                    placeholder="စာရိုက်ရန်..." 
                    class="bg-transparent flex-grow text-[14px] outline-none dark:text-white py-1.5">
-            <button id="send-ai" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
+            <button type="button" id="send-ai" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
                 <i class="fas fa-paper-plane text-[12px]"></i>
             </button>
         </div>
-        <p class="text-[8px] text-center text-gray-400 mt-2 font-bold tracking-widest uppercase">BYA Next-Gen Assistant</p>
+        <p class="text-[8px] text-center text-gray-400 mt-2 font-bold tracking-widest uppercase">BYA Information Assistant</p>
     </div>
 </div>
 
@@ -1081,14 +1081,18 @@
     function addMessage(sender, text) {
         const div = document.createElement('div');
         div.className = sender === 'user' ? 'flex justify-end' : 'flex gap-2';
-        const msgStyle = sender === 'user' 
-            ? 'bg-maroon text-white rounded-2xl rounded-tr-none shadow-md' 
+        const msgStyle = sender === 'user'
+            ? 'bg-maroon text-white rounded-2xl rounded-tr-none shadow-md'
             : 'bg-white dark:bg-zinc-800 p-3 rounded-2xl rounded-tl-none shadow-sm dark:text-gray-200 border border-gray-100 dark:border-white/5';
-        
-        div.innerHTML = `
-            ${sender === 'ai' ? '<div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" class="w-full h-full object-cover"></div>' : ''}
-            <div class="${msgStyle} px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed">${text}</div>
-        `;
+
+        if (sender === 'user') {
+            const bubble = document.createElement('div');
+            bubble.className = msgStyle + ' px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed';
+            bubble.textContent = text;
+            div.appendChild(bubble);
+        } else {
+            div.innerHTML = `<div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA" class="w-full h-full object-cover"></div><div class="${msgStyle} px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed">${text}</div>`;
+        }
         chatBox.appendChild(div);
         setTimeout(scrollToBottom, 100);
     }
@@ -1129,4 +1133,6 @@
     userInput.onkeydown = (e) => { if(e.key === 'Enter') handleSend(); };
 </script>
 
+
+</body>
 </html>
