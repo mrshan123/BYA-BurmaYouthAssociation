@@ -7,7 +7,7 @@
   const savedLang=localStorage.getItem("bya_lang");
   if(savedLang==="en") body.classList.add("lang-en");
 
-  // Upgrade existing language switchers where the legacy function is present.
+  // Unified language control. Preserve the legacy engine where present, otherwise provide a standalone fallback.
   const legacyToggle=window.toggleLang;
   if(typeof legacyToggle==="function"){
     window.toggleLang=function(){
@@ -15,9 +15,34 @@
       const lang=body.classList.contains("lang-en")?"en":"my";
       localStorage.setItem("bya_lang",lang);
       root.lang=lang==="en"?"en":"my";
+      const label=document.getElementById("lang-btn-text");
+      if(label) label.textContent=lang==="en"?"MY":"EN";
+    };
+  }else{
+    window.toggleLang=function(){
+      const lang=body.classList.contains("lang-en")?"my":"en";
+      body.classList.toggle("lang-en",lang==="en");
+      localStorage.setItem("bya_lang",lang);
+      root.lang=lang;
+      const label=document.getElementById("lang-btn-text");
+      if(label) label.textContent=lang==="en"?"MY":"EN";
     };
   }
   root.lang=body.classList.contains("lang-en")?"en":"my";
+  const initialLangLabel=document.getElementById("lang-btn-text");
+  if(initialLangLabel) initialLangLabel.textContent=root.lang==="en"?"MY":"EN";
+
+  // Unified theme control for pages that do not have the legacy inline theme engine.
+  if(typeof window.toggleTheme!=="function"){
+    window.toggleTheme=function(){
+      root.classList.toggle("dark");
+      const dark=root.classList.contains("dark");
+      localStorage.setItem("theme",dark?"dark":"light");
+      const icon=document.getElementById("theme-icon");
+      if(icon) icon.classList.toggle("fa-moon",!dark), icon.classList.toggle("fa-sun",dark);
+    };
+  }
+  if(localStorage.getItem("theme")==="dark") root.classList.add("dark");
 
   // Active navigation.
   const page=(location.pathname.split("/").pop()||"index.html").toLowerCase();
