@@ -1,0 +1,18 @@
+{
+  "version":"12.0",
+  "status":"policy-definition-only",
+  "defaultDeny":true,
+  "roles":{
+    "super_admin":"*",
+    "admin":["members","applications","events","opportunities","learning","reports","settings"],
+    "program_manager":["programs","events","applications"],
+    "community_manager":["members","volunteers","events"],
+    "learning_manager":["courses","resources","enrollments","certificates"],
+    "research_lead":["research","publications","impact"],
+    "partnership_manager":["partners"],
+    "safeguarding_officer":["safeguarding"],
+    "content_editor":["content","resources","news"],
+    "viewer":["read:approved-public-data"]
+  },
+  "rules":["authorization must execute server-side","least privilege","privileged actions are audited","safeguarding records are restricted","public users never receive private member data"]
+}
