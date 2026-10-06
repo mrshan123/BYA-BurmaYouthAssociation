@@ -18,7 +18,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="shortcut icon" href="favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-<link rel="manifest" href="site.webmanifest" />
+
     <meta name="description" content="Burma Youth Association (BYA) - မြန်မာလူငယ်များအတွက် ပညာရပ်လေ့လာရန်နှင့် အလုပ်အကိုင်ရှာဖွေရန် အကောင်းဆုံးနေရာ။">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -138,8 +138,10 @@
             box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
         }
     </style>
-    <link rel="manifest" href="manifest.json">
+    
 <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="assets/css/bya-v2.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 
@@ -160,7 +162,7 @@
                 <li><a href="index.html" class="hover:text-red-200 transition"><span data-lang="my">ပင်မစာမျက်နှာ</span><span data-lang="en">Home</span></a></li>
                 <li><a href="about.html" class="hover:text-red-200 transition"><span data-lang="my">ကျွန်ုပ်တို့အကြောင်း</span><span data-lang="en">About</span></a></li>
                 <li><a href="learning.html" class="hover:text-red-200 transition"><span data-lang="my">လေ့လာရန်</span><span data-lang="en">Learning</span></a></li>
-                <li><a href="#carrier" class="hover:text-red-200 transition"><span data-lang="my">လုပ်ငန်းခွင် လမ်းညွှန်</span><span data-lang="en">Carrer Center</span></a></li>
+                <li><a href="#carrier" class="hover:text-red-200 transition"><span data-lang="my">လုပ်ငန်းခွင် လမ်းညွှန်</span><span data-lang="en">Career Center</span></a></li>
                 <li><a href="articles.html" class="hover:text-red-200 transition"><span data-lang="my">ဆောင်းပါးများ</span><span data-lang="en">Articles</span></a></li>
             </ul>
 
@@ -850,7 +852,8 @@
         }
 
         // Language Switcher
-        let currentLang = 'my';
+        let currentLang = localStorage.getItem('bya_lang') || 'my';
+        if (currentLang === 'en') document.body.classList.add('lang-en');
         function toggleLang() {
             const body = document.body;
             const btnText = document.getElementById('lang-btn-text');
@@ -858,10 +861,12 @@
                 body.classList.add('lang-en');
                 btnText.innerText = 'MY';
                 currentLang = 'en';
+                localStorage.setItem('bya_lang', 'en');
             } else {
                 body.classList.remove('lang-en');
                 btnText.innerText = 'EN';
                 currentLang = 'my';
+                localStorage.setItem('bya_lang', 'my');
             }
         }
 
@@ -871,23 +876,6 @@
             document.getElementById('theme-icon').classList.replace('fa-moon', 'fa-sun');
         }
 
-        // Auto Increment Stats Logic
-        function updateImpactStats() {
-            const startDate = new Date('2024-01-01'); 
-            const today = new Date();
-            const timeDiff = today - startDate;
-            const daysPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-            const totalEducated = 120 + daysPassed; 
-            const totalJobs = 35 + daysPassed;
-            if(document.getElementById('graduated-count')) {
-                document.getElementById('graduated-count').innerText = totalEducated;
-            }
-            if(document.getElementById('jobs-count')) {
-                document.getElementById('jobs-count').innerText = totalJobs;
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', updateImpactStats);
     </script>
 
 <div id="registerModal" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; font-family: sans-serif;">
@@ -1119,6 +1107,7 @@
     });
   }
 </script>
+    <script src="assets/js/bya-v2.js" defer></script>
 </body>
 <div id="ai-chat-toggle" class="fixed bottom-6 right-6 z-[100] group">
     <div class="relative">
