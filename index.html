@@ -132,7 +132,7 @@
             box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
         }
     </style>
-    
+<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
 <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="assets/css/bya-v2.css">
     <link rel="manifest" href="manifest.json">
@@ -157,7 +157,7 @@
     <nav class="bg-maroon text-white p-4 sticky top-0 z-50 shadow-lg" aria-label="Primary navigation">
 <div class="global-container flex justify-between items-center">
 <a href="index.html" class="flex items-center gap-3 no-nav-line" aria-label="Burma Youth Association home">
-<img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-11 h-11 rounded-full object-cover border border-white/20">
+<img src="favicon.svg" alt="BYA Logo" class="w-11 h-11 rounded-full object-cover border border-white/20">
 <strong class="text-2xl tracking-tight">BYA</strong>
 </a>
 <ul class="hidden xl:flex items-center gap-5 text-sm font-semibold">
@@ -185,10 +185,10 @@
         <div class="absolute inset-0 bg-black/60 z-10"></div>
         <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200" class="absolute inset-0 w-full h-full object-cover z-0" alt="Youth Education">
         <div class="relative z-20 px-4 max-w-3xl floating">
-            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                 <span data-lang="my">မြန်မာလူငယ်တို့၏ <br><span class="text-red-400">အနာဂတ်လမ်းပြ</span></span>
                 <span data-lang="en">The Future Guide <br><span class="text-red-400">For Myanmar Youth</span></span>
-            </h2>
+            </h1>
             <p class="text-lg md:text-xl mb-10 opacity-90">
                 <span data-lang="my">ပညာရပ်များကို လေ့လာပါ၊ အလုပ်အကိုင်များ ရှာဖွေပါ၊ တစ်စိတ်တစ်ဝမ်းတည်း တည်ဆောက်ပါ။</span>
                 <span data-lang="en">Learn skills, explore job opportunities, and grow together.</span>
@@ -225,7 +225,7 @@
                 
                 <p class="text-base md:text-lg text-gray-600 leading-relaxed mb-10 max-w-xl">
                     <span data-lang="my">Burma Youth Association ကျွန်ုပ်တို့သည် မြန်မာလူငယ်များအတွက် အခမဲ့ပညာရပ်များ၊ အလုပ်အကိုင်လမ်းညွှန်ချက်နှင့် ခိုင်မာသော အသိုက်အဝန်းကို ပေးအပ်နေပါသည်။</span>
-                    <span data-lang="en" class="hidden">BYA provides free access to world-class educational resources, career guidance, and a supportive community for Myanmar youth worldwide.</span>
+                    <span data-lang="en" class="hidden">BYA is building a trusted gateway to learning, career exploration and youth participation for Myanmar youth.</span>
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 max-w-md">
@@ -233,7 +233,7 @@
                         <span data-lang="my">သင်တန်းများကြည့်မည်</span><span data-lang="en" class="hidden">Start Learning</span>
                     </a>
                     <a href="opportunities.html" class="border-2 border-maroon text-maroon px-8 py-4 rounded-lg font-bold text-center hover:bg-maroon hover:text-white transition-all btn-active">
-                        <span data-lang="my">အလုပ်ရှာမည်</span><span data-lang="en" class="hidden">Watch Our Story</span>
+                        <span data-lang="my">အလုပ်ရှာမည်</span><span data-lang="en" class="hidden">Find Jobs</span>
                     </a>
                 </div>
             </div>
@@ -244,7 +244,7 @@
                     <div class="absolute w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full shadow-2xl flex items-center justify-center floating overflow-hidden border-4 border-white/10 bg-white">
     
                             <!-- ငှက် Logo ကို ရှင်းရှင်းလင်းလင်းနဲ့ အနီးကပ် မြင်ရအောင် ထားရှိမှု -->
-                           <img src="https://i.ibb.co/k6khrdX9/favicon.svg"alt="BYA Logo" class="w-full h-full object-cover transform scale-125 object-center antialiased"style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality; backface-visibility: hidden;">
+                           <img src="favicon.svg"alt="BYA Logo" class="w-full h-full object-cover transform scale-125 object-center antialiased"style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality; backface-visibility: hidden;">
                            <!-- စာသားများကို အောက်ခြေနား ရောက်အောင် justify-end နှင့် အောက်ကနေ အကွာအဝေး pb-1 (Desktop တွင် pb-5) ထည့်သွင်းထားပါတယ် -->
                         <div class="absolute inset-0 flex flex-col items-center justify-end pb-1 md:pb-5 pointer-events-none bg-gradient-to-t from-black/30 via-transparent to-transparent">
                             <div class="font-black text-4xl md:text-5xl text-maroon drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]">BYA</div>
@@ -307,11 +307,11 @@
                     <div class="text-xs font-bold text-gray-500 uppercase tracking-widest">Bilingual Platform</div>
                 </div>
                 <div class="bg-maroon p-8 rounded-[2rem] text-center card-hover shadow-xl reveal" style="transition-delay: 0.2s;">
-                    <div id="graduated-count" class="text-4xl font-black text-white mb-2">0</div>
+                    <div class="text-2xl font-black text-white mb-2">LAUNCH STAGE</div>
                     <div class="text-xs font-bold text-red-200 uppercase tracking-widest">Educated Youths</div>
                 </div>
                 <div class="bg-zinc-900 p-8 rounded-[2rem] text-center card-hover shadow-xl reveal" style="transition-delay: 0.3s;">
-                    <div id="jobs-count" class="text-4xl font-black text-white mb-2">0</div>
+                    <div class="text-2xl font-black text-white mb-2">BUILDING</div>
                     <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">Jobs Secured</div>
                 </div>
             </div>
@@ -342,7 +342,7 @@
                         <div class="p-4 flex items-center gap-3">
                             <div class="w-10 h-10 bg-amber-50 text-amber-600 flex items-center justify-center rounded-xl shrink-0"><i class="fas fa-crown"></i></div>
                             <div>
-                                <div class="font-bold text-sm">Kingdom Of Business</div>
+                                <div class="font-bold text-sm">Business & Entrepreneurship</div>
                                 <div class="text-[9px] text-gray-400 font-bold uppercase tracking-wider">Management & Growth</div>
                             </div>
                         </div>
@@ -640,7 +640,7 @@
                             <div class="flex flex-col items-center text-center">
                                 <div class="relative mb-8">
                                     <div class="w-24 h-24 rounded-3xl bg-gradient-to-tr from-maroon to-red-500 rotate-12 absolute inset-0 blur-lg opacity-50 group-hover:opacity-100 transition-all"></div>
-                                    <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-24 h-24 rounded-3xl relative z-10 object-cover border border-white/20">
+                                    <img src="favicon.svg" alt="BYA Logo" class="w-24 h-24 rounded-3xl relative z-10 object-cover border border-white/20">
                                 </div>
                                 <h3 class="text-3xl font-bold text-white mb-2">BYA Official</h3>
                                 <p class="text-maroon font-bold tracking-[0.4em] text-xs uppercase mb-8">Youth Community</p>
@@ -747,8 +747,7 @@
             </div>
         </div>
     </section>
-    <script async="async" data-cfasync="false" src="https://pl29501555.effectivecpmnetwork.com/ec129af8ff3713ce2adc6afe0421d387/invoke.js"></script>
-<div id="container-ec129af8ff3713ce2adc6afe0421d387"></div>
+    
 
 
 
@@ -776,7 +775,7 @@
             <h5 class="text-lg font-bold mb-6">Contact</h5>
             <div class="flex justify-center md:justify-start space-x-6 text-2xl">
                 <a href="https://www.facebook.com/61576906013024" class="hover:text-red-300 transition"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hover:text-red-300 transition"><i class="fab fa-telegram"></i></a>
+                <a href="contact.html" class="hover:text-red-300 transition" aria-label="Contact BYA"><i class="fab fa-telegram"></i></a>
             </div>
         </div>
 
@@ -884,19 +883,19 @@
             </div>
 
             <form id="bya-sheet-form" style="display: flex; flex-direction: column; gap: 15px;">
-                <input name="Name" type="text" placeholder="သင့်နာမည် အပြည့်အစုံ" required 
+                <label for="member-name" class="sr-only">Full name</label><input id="member-name" name="Name" type="text" placeholder="သင့်နာမည် အပြည့်အစုံ" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; transition: 0.3s;">
 
-                <input name="Email" type="email" placeholder="အီးမေးလ် လိပ်စာ" required 
+                <label for="member-email" class="sr-only">Email address</label><input id="member-email" name="Email" type="email" placeholder="အီးမေးလ် လိပ်စာ" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
-                <input name="Phone" type="tel" placeholder="ဖုန်းနံပါတ် (၀၉xxxxxxxxx)" required 
+                <label for="member-phone" class="sr-only">Phone number (optional)</label><input id="member-phone" name="Phone" type="tel" placeholder="ဖုန်းနံပါတ် (ရွေးချယ်နိုင်သည်)"> 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
                 <input name="Address" type="text" placeholder="နေရပ်လိပ်စာ (မြို့နယ်)" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
-                <select name="Skill" required 
+                <label for="member-skill" class="sr-only">Primary skill or interest</label><select id="member-skill" name="Skill" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
                     <option value="" disabled selected>ကျွမ်းကျင်မှု / ဝါသနာ</option>
                     <option value="IT/Technology">IT / နည်းပညာ</option>
@@ -940,7 +939,7 @@
         const successBox = document.getElementById("success-msg");
 
         // Validation: အကုန်ဖြည့်ထားလား စစ်ဆေးခြင်း
-        if (!form.Name.value || !form.Email.value || !form.Phone.value || !form.Address.value || !form.Skill.value) {
+        if (!form.Name.value || !form.Email.value || !form.Skill.value) {
             alert("ကျေးဇူးပြု၍ အချက်အလက်များ အားလုံး ပြည့်စုံစွာ ဖြည့်ပေးပါ။");
             return;
         }
@@ -1102,7 +1101,7 @@
             <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600 border-2 border-white"></span>
         </div>
         <button type="button" class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
-            <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
+            <img src="favicon.svg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
         </button>
     </div>
 </div>
@@ -1113,7 +1112,7 @@
         <div class="absolute inset-0 bg-black/10"></div>
         <div class="flex items-center gap-3 relative z-10">
             <div class="w-10 h-10 rounded-full border-2 border-white/30 p-0.5 bg-white shadow-sm">
-                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
+                <img src="favicon.svg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
             </div>
             <div>
                 <h4 class="font-black text-sm tracking-tight">BYA Information Assistant</h4>
@@ -1131,7 +1130,7 @@
          style="touch-action: pan-y; -webkit-overflow-scrolling: touch;">
         <div class="flex gap-2">
             <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm">
-                <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover">
+                <img src="favicon.svg" alt="BYA Logo" class="w-full h-full object-cover">
             </div>
             <div class="bg-white dark:bg-zinc-800 p-3 rounded-2xl rounded-tl-none shadow-sm text-[13px] leading-relaxed dark:text-gray-200 border border-gray-100 dark:border-white/5 max-w-[85%]">
                 <span data-lang="my">မင်္ဂလာပါ! BYA AI မှ ကြိုဆိုပါတယ်။ ဘာများကူညီပေးရမလဲ?</span>
@@ -1230,7 +1229,7 @@
             bubble.textContent = text;
             div.appendChild(bubble);
         } else {
-            div.innerHTML = `<div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA" class="w-full h-full object-cover"></div><div class="${msgStyle} px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed">${text}</div>`;
+            div.innerHTML = `<div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm"><img src="favicon.svg" alt="BYA" class="w-full h-full object-cover"></div><div class="${msgStyle} px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed">${text}</div>`;
         }
         chatBox.appendChild(div);
         setTimeout(scrollToBottom, 100);
