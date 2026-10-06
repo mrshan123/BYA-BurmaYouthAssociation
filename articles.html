@@ -377,6 +377,7 @@
 <meta property="og:description" content="Ideas, guidance and insights for Myanmar youth.">
 <meta property="og:url" content="https://mrshan123.github.io/BYA-BurmaYouthAssociation/articles.html">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/css/bya-global.css">
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 
@@ -384,47 +385,31 @@
         <i class="fas fa-arrow-up text-xl"></i>
     </a>
 
-    <nav class="bg-maroon text-white p-4 sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-full border-2 border-white/20">
-                    <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-full h-full object-cover scale-150">
-                </div>
-                <h1 class="text-2xl font-bold tracking-tighter">BYA</h1>
-            </div>
-            
-            <ul class="hidden lg:flex space-x-6">
-                <li><a href="index.html" class="hover:text-red-200 transition"><span data-lang="my">ပင်မစာမျက်နှာ</span><span data-lang="en">Home</span></a></li>
-                <li><a href="about.html" class="hover:text-red-200 transition"><span data-lang="my">ကျွန်ုပ်တို့အကြောင်း</span><span data-lang="en">About</span></a></li>
-                <li><a href="learning.html" class="hover:text-red-200 transition"><span data-lang="my">လေ့လာရန်</span><span data-lang="en">Learning</span></a></li>
-                <li><a href="index.html" class="hover:text-red-200 transition"><span data-lang="my">လုပ်ငန်းခွင် လမ်းညွှန်</span><span data-lang="en">Career Center</span></a></li>
-                <li><a href="articles.html" class="hover:text-red-200 transition"><span data-lang="my">ဆောင်းပါးများ</span><span data-lang="en">Articles</span></a></li>
-            </ul>
-
-            <div class="flex items-center space-x-3 md:space-x-5">
-                <button onclick="toggleTheme()" class="p-2 hover:bg-red-900 rounded-full transition">
-                    <i id="theme-icon" class="fas fa-moon"></i>
-                </button>
-                <button onclick="toggleLang()" class="bg-white/20 px-3 py-1 rounded text-sm font-bold border border-white/30 hover:bg-white/40 transition">
-                    <span id="lang-btn-text">EN</span>
-                </button>
-                <button onclick="openModal()" class="hidden sm:block bg-white text-maroon px-6 py-2 rounded-full font-bold hover:bg-red-50 transition shadow-md">BECOME A MEMBER</button>
-                <button id="menu-btn" class="lg:hidden text-2xl focus:outline-none">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden lg:hidden bg-maroon-dark mt-4">
-            <ul class="flex flex-col p-4 space-y-4 text-center">
-                <li><a href="index.html" class="block hover:text-red-200"><span data-lang="my">ပင်မစာမျက်နှာ</span><span data-lang="en">Home</span></a></li>
-                <li><a href="about.html" class="block hover:text-red-200"><span data-lang="my">ကျွန်ုပ်တို့အကြောင်း</span><span data-lang="en">About</span></a></li>
-                <li><a href="learning.html" class="block hover:text-red-200"><span data-lang="my">လေ့လာရန်</span><span data-lang="en">Learning</span></a></li>
-                <li><a href="index.html" class="block hover:text-red-200"><span data-lang="my">လုပ်ငန်းခွင် လမ်းညွှန်</span><span data-lang="en">Career Center</span></a></li>
-                <li><a href="articles.html" class="block hover:text-red-200"><span data-lang="my">ဆောင်းပါးများ</span><span data-lang="en">Articles</span></a></li>
-            </ul>
-        </div>
-    </nav>
+    <nav class="bg-maroon text-white p-4 sticky top-0 z-50 shadow-lg" aria-label="Primary navigation">
+<div class="global-container flex justify-between items-center">
+<a href="index.html" class="flex items-center gap-3 no-nav-line" aria-label="Burma Youth Association home">
+<img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA Logo" class="w-11 h-11 rounded-full object-cover border border-white/20">
+<strong class="text-2xl tracking-tight">BYA</strong>
+</a>
+<ul class="hidden xl:flex items-center gap-5 text-sm font-semibold">
+<li><a href="index.html"><span data-lang="my">ပင်မ</span><span data-lang="en">Home</span></a></li>
+<li><a href="about.html"><span data-lang="my">အကြောင်း</span><span data-lang="en">About</span></a></li>
+<li><a href="programs.html"><span data-lang="my">အစီအစဉ်များ</span><span data-lang="en">Programs</span></a></li>
+<li><a href="learning.html"><span data-lang="my">လေ့လာရန်</span><span data-lang="en">Learning</span></a></li>
+<li><a href="opportunities.html"><span data-lang="my">အခွင့်အလမ်း</span><span data-lang="en">Opportunities</span></a></li>
+<li><a href="articles.html"><span data-lang="my">ဆောင်းပါး</span><span data-lang="en">Stories</span></a></li>
+<li><a href="get-involved.html"><span data-lang="my">ပါဝင်ရန်</span><span data-lang="en">Get Involved</span></a></li>
+</ul>
+<div class="flex items-center gap-2">
+<button onclick="toggleTheme()" class="p-2 rounded-full" aria-label="Toggle theme"><i id="theme-icon" class="fas fa-moon"></i></button>
+<button onclick="toggleLang()" class="bg-white/15 px-3 py-1 rounded-full text-xs font-bold" aria-label="Switch language"><span id="lang-btn-text">EN</span></button>
+<a href="get-involved.html" class="hidden md:inline-block bg-white text-maroon px-5 py-2 rounded-full font-bold text-sm no-nav-line">JOIN BYA</a>
+<button id="menu-btn" class="xl:hidden text-2xl" aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+</div></div>
+<div id="mobile-menu" class="hidden xl:hidden bg-maroon-dark mt-3 rounded-xl">
+<ul class="flex flex-col p-5 gap-4 text-center font-semibold">
+<li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="programs.html">Programs</a></li><li><a href="learning.html">Learning</a></li><li><a href="opportunities.html">Opportunities</a></li><li><a href="articles.html">Stories</a></li><li><a href="get-involved.html">Get Involved</a></li><li><a href="transparency.html">Transparency</a></li><li><a href="contact.html">Contact</a></li>
+</ul></div></nav>
 
     <section class="relative h-[600px] flex items-center justify-center text-center text-white overflow-hidden">
         <div class="absolute inset-0 bg-black/60 z-10"></div>
