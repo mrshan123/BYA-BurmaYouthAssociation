@@ -1,0 +1,40 @@
+/* BYA Design System v3 — active interaction layer */
+:root{
+  --bya-maroon:#800000;--bya-dark:#4d0000;--bya-deep:#210006;--bya-gold:#b8860b;
+  --bya-cream:#fffaf5;--bya-ink:#1b1720;--bya-muted:#6b6470;--bya-border:rgba(128,0,0,.12);
+  --bya-shadow:0 18px 50px rgba(32,0,8,.10);--bya-radius:20px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:var(--bya-cream);color:var(--bya-ink);font-family:Inter,"Noto Sans Myanmar","Noto Sans",system-ui,sans-serif}
+a,button,input,select,textarea{transition:color .2s ease,background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease,opacity .2s ease}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(184,134,11,.8);outline-offset:3px}
+button,.btn,.cta,.nav-link,.card,.global-card,.program-card,.resource-card{cursor:pointer}
+.btn,.cta{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:48px;padding:.8rem 1.15rem;border-radius:999px;font-weight:800;text-decoration:none}
+.btn-primary,.cta-primary{background:linear-gradient(135deg,var(--bya-maroon),#a00000);color:#fff;box-shadow:0 10px 25px rgba(128,0,0,.2)}
+.btn-primary:hover,.cta-primary:hover{transform:translateY(-2px);box-shadow:0 15px 32px rgba(128,0,0,.28)}
+.btn-secondary,.cta-secondary{background:#fff;color:var(--bya-maroon);border:1px solid rgba(128,0,0,.16)}
+.btn-secondary:hover,.cta-secondary:hover{transform:translateY(-2px);border-color:var(--bya-gold);box-shadow:0 10px 25px rgba(32,0,8,.08)}
+.card,.global-card,.program-card,.resource-card{border:1px solid var(--bya-border);border-radius:var(--bya-radius);background:rgba(255,255,255,.88);box-shadow:var(--bya-shadow)}
+.card:hover,.global-card:hover,.program-card:hover,.resource-card:hover{transform:translateY(-5px);border-color:rgba(184,134,11,.38);box-shadow:0 25px 55px rgba(32,0,8,.14)}
+.nav-link{position:relative;padding:.55rem .2rem}
+.nav-link:after{content:"";position:absolute;left:0;right:100%;bottom:.15rem;height:2px;background:var(--bya-gold);transition:right .25s ease}
+.nav-link:hover:after,.nav-link[aria-current="page"]:after{right:0}
+.section-label,.eyebrow{color:var(--bya-gold);font-size:.75rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+.gold-rule{width:64px;height:3px;margin:1rem 0;background:linear-gradient(90deg,var(--bya-gold),transparent)}
+.site-header,.bya-header{position:sticky;top:0;z-index:1000;backdrop-filter:blur(16px);background:rgba(255,250,245,.9);border-bottom:1px solid rgba(128,0,0,.08)}
+.dark .site-header,.dark .bya-header{background:rgba(22,7,12,.9)}
+.mobile-menu{max-height:0;overflow:hidden;opacity:0;transform:translateY(-8px);transition:max-height .3s ease,opacity .25s ease,transform .3s ease}
+.mobile-menu.open,.mobile-menu.active{max-height:80vh;opacity:1;transform:translateY(0)}
+.menu-toggle{width:46px;height:46px;border-radius:14px;border:1px solid rgba(128,0,0,.15);background:#fff}
+.dark .menu-toggle{background:#29141a;color:#fff}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible,.reveal.is-visible{opacity:1;transform:none}
+.hero-gradient{background:radial-gradient(circle at 80% 10%,rgba(184,134,11,.20),transparent 30%),linear-gradient(135deg,#4d0000,#800000 55%,#2b0007)}
+.badge,.status-badge{display:inline-flex;align-items:center;gap:.35rem;border-radius:999px;padding:.35rem .7rem;font-size:.72rem;font-weight:800;background:rgba(128,0,0,.07);color:var(--bya-maroon)}
+.status-live{background:#e8f7ef;color:#17663d}.status-building{background:#fff4d6;color:#805c00}.status-planned{background:#eeeaf0;color:#5f5664}
+.form-field{width:100%;min-height:48px;border:1px solid #ddd4d7;border-radius:14px;padding:.75rem 1rem;background:#fff}
+.form-field:focus{border-color:var(--bya-gold);box-shadow:0 0 0 4px rgba(184,134,11,.12)}
+.notice{border-left:4px solid var(--bya-gold);border-radius:12px;background:#fff7df;padding:1rem 1.1rem}
+.dark{background:#16070c;color:#f8edf0}.dark .card,.dark .global-card,.dark .program-card,.dark .resource-card{background:#241116;border-color:rgba(255,255,255,.09);color:#f8edf0}.dark .btn-secondary,.dark .cta-secondary,.dark .menu-toggle{background:#29141a;color:#fff;border-color:rgba(255,255,255,.12)}
+@media(max-width:768px){.btn,.cta{width:100%}.hero-gradient{min-height:72vh}.card:hover,.global-card:hover,.program-card:hover,.resource-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1!important;transform:none!important}}
