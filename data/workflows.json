@@ -1,0 +1,13 @@
+{
+  "version":"11.0",
+  "workflows":{
+    "membership":["submitted","under-review","approved","rejected","suspended"],
+    "volunteer":["submitted","screening","approved","active","completed","declined"],
+    "event":["draft","review","published","closed","archived"],
+    "opportunity":["draft","verification","published","expired","archived"],
+    "course":["draft","review","published","retired"],
+    "certificate":["pending","issued","revoked"],
+    "partner":["inquiry","due-diligence","review","approved","active","closed"],
+    "safeguarding":["new","triage","assigned","escalated","resolved","closed"]
+  }
+}

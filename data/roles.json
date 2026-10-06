@@ -1,15 +1,16 @@
 {
-  "version":"9.0",
-  "roles":[
-    {"id":"super-admin","name":"Super Admin","scope":"all"},
-    {"id":"admin","name":"Admin","scope":"operations"},
-    {"id":"program-manager","name":"Program Manager","scope":"programs"},
-    {"id":"community-manager","name":"Community Manager","scope":"community"},
-    {"id":"learning-manager","name":"Learning Manager","scope":"learning"},
-    {"id":"research-lead","name":"Research Lead","scope":"research"},
-    {"id":"partnership-manager","name":"Partnership Manager","scope":"partnerships"},
-    {"id":"safeguarding-officer","name":"Safeguarding Officer","scope":"safeguarding"},
-    {"id":"content-editor","name":"Content Editor","scope":"content"},
-    {"id":"viewer","name":"Viewer","scope":"read-only"}
-  ]
+  "version":"11.0",
+  "roles":{
+    "Super Admin":["*"],
+    "Admin":["members","applications","events","opportunities","learning","reports","settings"],
+    "Program Manager":["programs","events","applications"],
+    "Community Manager":["members","volunteers","events"],
+    "Learning Manager":["courses","resources","enrollments","certificates"],
+    "Research Lead":["research","publications","impact"],
+    "Partnership Manager":["partners"],
+    "Safeguarding Officer":["safeguarding"],
+    "Content Editor":["content","resources","news"],
+    "Viewer":["read:approved-public-data"]
+  },
+  "rule":"Permissions must be enforced server-side; this file is a policy reference, not an authorization mechanism."
 }
