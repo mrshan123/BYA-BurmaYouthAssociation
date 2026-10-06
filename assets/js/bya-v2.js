@@ -113,3 +113,10 @@
     });
   }
 })();
+
+/* BYA v3 interaction helpers */
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+  document.querySelectorAll('.reveal').forEach(el=>{if(!('IntersectionObserver' in window)){el.classList.add('visible');return;} const o=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}}),{threshold:.12});o.observe(el)});
+  document.querySelectorAll('[data-scroll-to]').forEach(el=>el.addEventListener('click',e=>{const t=document.querySelector(el.dataset.scrollTo);if(t){e.preventDefault();t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}}));
+});
