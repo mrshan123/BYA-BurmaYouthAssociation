@@ -51,3 +51,7 @@ img{content-visibility:auto}
 }
 
 .skip-link{position:fixed;left:16px;top:-80px;z-index:20000;background:#fff;color:#800000;padding:12px 18px;border-radius:0 0 12px 12px;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:top .2s}.skip-link:focus{top:0}
+
+
+/* v3 overrides */
+@import url('./bya-v3.css');
