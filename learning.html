@@ -971,9 +971,9 @@
                 <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" class="w-full h-full object-cover rounded-full">
             </div>
             <div>
-                <h4 class="font-black text-sm tracking-tight">BYA Smart AI</h4>
+                <h4 class="font-black text-sm tracking-tight">BYA Information Assistant</h4>
                 <div class="flex items-center gap-1.5 text-[9px] font-bold text-red-200 uppercase tracking-widest">
-                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse shadow-[0_0_5px_#4ade80]"></span> Active Now
+                    <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse shadow-[0_0_5px_#4ade80]"></span> Information Assistant
                 </div>
             </div>
         </div>
@@ -1012,7 +1012,7 @@
                 <i class="fas fa-paper-plane text-[12px]"></i>
             </button>
         </div>
-        <p class="text-[8px] text-center text-gray-400 mt-2 font-bold tracking-widest uppercase">BYA Next-Gen Assistant</p>
+        <p class="text-[8px] text-center text-gray-400 mt-2 font-bold tracking-widest uppercase">BYA Information Assistant</p>
     </div>
 </div>
 
@@ -1075,14 +1075,18 @@
     function addMessage(sender, text) {
         const div = document.createElement('div');
         div.className = sender === 'user' ? 'flex justify-end' : 'flex gap-2';
-        const msgStyle = sender === 'user' 
-            ? 'bg-maroon text-white rounded-2xl rounded-tr-none shadow-md' 
+        const msgStyle = sender === 'user'
+            ? 'bg-maroon text-white rounded-2xl rounded-tr-none shadow-md'
             : 'bg-white dark:bg-zinc-800 p-3 rounded-2xl rounded-tl-none shadow-sm dark:text-gray-200 border border-gray-100 dark:border-white/5';
-        
-        div.innerHTML = `
-            ${sender === 'ai' ? '<div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" class="w-full h-full object-cover"></div>' : ''}
-            <div class="${msgStyle} px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed">${text}</div>
-        `;
+
+        if (sender === 'user') {
+            const bubble = document.createElement('div');
+            bubble.className = msgStyle + ' px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed';
+            bubble.textContent = text;
+            div.appendChild(bubble);
+        } else {
+            div.innerHTML = `<div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center border border-maroon overflow-hidden shrink-0 shadow-sm"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA" class="w-full h-full object-cover"></div><div class="${msgStyle} px-4 py-2.5 text-[13px] max-w-[80%] leading-relaxed">${text}</div>`;
+        }
         chatBox.appendChild(div);
         setTimeout(scrollToBottom, 100);
     }
