@@ -56,6 +56,20 @@
     "partnershipPortal": "building",
     "credentialVerification": "building",
     "aiAssistant": "not deployed",
-    "backendForms": "configuration required"
-  }
+    "backendForms": "configuration required",
+    "careerCenter": "building",
+    "community": "building",
+    "resourceCenter": "building",
+    "smartAI": "beta-faq-only"
+  },
+  "platformArchitecture": [
+    "About",
+    "Learn",
+    "Opportunities",
+    "Community",
+    "Impact",
+    "Get Involved",
+    "Verify",
+    "Trust & Safety"
+  ]
 }
