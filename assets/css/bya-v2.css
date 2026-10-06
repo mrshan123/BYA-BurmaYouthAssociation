@@ -49,3 +49,5 @@ img{content-visibility:auto}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
   .reveal{transform:none!important}
 }
+
+.skip-link{position:fixed;left:16px;top:-80px;z-index:20000;background:#fff;color:#800000;padding:12px 18px;border-radius:0 0 12px 12px;font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:top .2s}.skip-link:focus{top:0}
