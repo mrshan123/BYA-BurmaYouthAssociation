@@ -399,7 +399,7 @@
 </ul>
 <div class="flex items-center gap-2">
 <button type="button" onclick="toggleTheme()" class="p-2 rounded-full" aria-label="Toggle theme"><i id="theme-icon" class="fas fa-moon"></i></button>
-<button type="button" onclick="toggleLang()" class="bg-white/15 px-3 py-1 rounded-full text-xs font-bold" aria-label="Switch language"><span id="lang-btn-text">EN</span></button>
+<div class="lang-switch-group" role="group" aria-label="Language"><button type="button" data-lang-switch="my" aria-pressed="false">MY</button><button type="button" data-lang-switch="en" aria-pressed="false">EN</button></div>
 <a href="get-involved.html" class="hidden md:inline-block bg-white text-maroon px-5 py-2 rounded-full font-bold text-sm no-nav-line">JOIN BYA</a>
 <button type="button" id="menu-btn" class="xl:hidden text-2xl" aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
 </div></div>
