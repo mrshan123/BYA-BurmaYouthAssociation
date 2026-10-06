@@ -95,6 +95,25 @@
     menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu.classList.add("hidden")));
   }
 
+  // Unified mobile menu controller: works across legacy and v3 navigation variants.
+  const mobileMenu=document.getElementById("mobile-menu");
+  const mobileBtn=document.getElementById("menu-btn");
+  if(mobileMenu&&mobileBtn){
+    const setMenu=(open)=>{
+      mobileMenu.classList.toggle("hidden",!open);
+      mobileMenu.classList.toggle("open",open);
+      mobileMenu.classList.toggle("active",open);
+      mobileBtn.setAttribute("aria-expanded",String(open));
+      mobileBtn.setAttribute("aria-label",open?"Close navigation menu":"Open navigation menu");
+      const icon=mobileBtn.querySelector("i");
+      if(icon){icon.classList.toggle("fa-bars",!open);icon.classList.toggle("fa-xmark",open);}
+    };
+    setMenu(!mobileMenu.classList.contains("hidden")&&!mobileMenu.classList.contains("open")?false:false);
+    mobileBtn.addEventListener("click",()=>setMenu(mobileMenu.classList.contains("hidden")));
+    mobileMenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
+    addEventListener("resize",()=>{if(innerWidth>=1280)setMenu(false)},{passive:true});
+  }
+
   // Close modal/dialog-like overlays with Escape.
   addEventListener("keydown",e=>{
     if(e.key!=="Escape") return;
