@@ -1,42 +1,42 @@
-const CACHE_NAME = 'bya-cache-v2';
+const CACHE_NAME = "bya-cache-v3";
+const APP_SHELL = [
+  "./",
+  "./index.html",
+  "./about.html",
+  "./learning.html",
+  "./articles.html",
+  "./manifest.json",
+  "./site.webmanifest",
+  "./assets/css/bya-v2.css",
+  "./assets/js/bya-v2.js"
+];
 
-// 1. Install လုပ်တဲ့အခါ Cache အဟောင်းတွေကို ဖျက်ပြီး အသစ်ယူမယ်
-self.addEventListener('install', event => {
-  self.skipWaiting();
+self.addEventListener("install", event => {
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)).then(()=>self.skipWaiting()));
 });
 
-// 2. Fetch လုပ်တဲ့အခါ Cache ထဲမှာရှိရင် ပြမယ်၊ မရှိရင် အင်တာနက်ကနေယူပြီး Cache ထဲ အလိုအလျောက်သိမ်းမယ်
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response; // Cache ထဲမှာရှိရင် အဲဒါကိုသုံးမယ်
-        }
-        
-        // မရှိရင် Network ကနေဆွဲမယ်
-        return fetch(event.request).then(networkResponse => {
-          // ရလာတဲ့ Data ကို Cache ထဲ အလိုအလျောက် သိမ်းပေးမယ်
-          return caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-        });
-      })
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim())
   );
 });
 
-// 3. Cache အဟောင်းတွေကို ရှင်းလင်းပေးခြင်း
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cache => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
-          }
-        })
-      );
+self.addEventListener("fetch", event => {
+  const req=event.request;
+  if(req.method!=="GET") return;
+  const url=new URL(req.url);
+  if(url.origin!==location.origin) return;
+
+  event.respondWith(
+    caches.match(req).then(cached=>{
+      const network=fetch(req).then(res=>{
+        if(res.ok){
+          const copy=res.clone();
+          caches.open(CACHE_NAME).then(cache=>cache.put(req,copy));
+        }
+        return res;
+      }).catch(()=>cached || caches.match("./404.html"));
+      return cached || network;
     })
   );
 });
