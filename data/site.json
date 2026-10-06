@@ -60,7 +60,14 @@
     "careerCenter": "building",
     "community": "building",
     "resourceCenter": "building",
-    "smartAI": "beta-faq-only"
+    "smartAI": "beta-faq-only",
+    "ecosystem": "building",
+    "membership": "architecture",
+    "events": "registry-ready",
+    "research": "building",
+    "donations": "not-live",
+    "partnersRegistry": "registry-ready",
+    "impactFramework": "active"
   },
   "platformArchitecture": [
     "About",
@@ -70,6 +77,19 @@
     "Impact",
     "Get Involved",
     "Verify",
+    "Trust & Safety"
+  ],
+  "architectureVersion": "V8 Pro Ecosystem",
+  "ecosystemLayers": [
+    "Identity",
+    "Learning",
+    "Opportunities",
+    "Community",
+    "Leadership & Governance",
+    "Research & Policy",
+    "Partnerships",
+    "Impact & Evidence",
+    "Verification",
     "Trust & Safety"
   ]
 }
