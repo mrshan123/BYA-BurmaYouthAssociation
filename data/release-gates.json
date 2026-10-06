@@ -1,0 +1,17 @@
+{
+  "version": "12.0",
+  "status": "planning",
+  "gates": [
+    {"id":"G01","name":"Backend","required":true,"status":"not-started"},
+    {"id":"G02","name":"Database","required":true,"status":"not-started"},
+    {"id":"G03","name":"Authentication","required":true,"status":"not-started"},
+    {"id":"G04","name":"Server-side authorization","required":true,"status":"not-started"},
+    {"id":"G05","name":"Privacy and retention","required":true,"status":"not-started"},
+    {"id":"G06","name":"Safeguarding controls","required":true,"status":"not-started"},
+    {"id":"G07","name":"Audit logging","required":true,"status":"not-started"},
+    {"id":"G08","name":"Backup and recovery","required":true,"status":"not-started"},
+    {"id":"G09","name":"Accessibility and bilingual QA","required":true,"status":"not-started"},
+    {"id":"G10","name":"Security and performance QA","required":true,"status":"not-started"}
+  ],
+  "releasePolicy":"Do not treat the static GitHub Pages frontend as a secure member/admin system."
+}

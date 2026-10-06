@@ -1,0 +1,11 @@
+{
+  "version":"12.0",
+  "channels":["in-app","email"],
+  "types":[
+    "account.verification","account.password-reset","membership.received","membership.approved","membership.rejected",
+    "application.received","application.status-changed","event.registration","event.reminder",
+    "learning.enrollment","learning.completed","certificate.issued","opportunity.new",
+    "partner.request-received","safeguarding.case-update"
+  ],
+  "rule":"Only approved transactional messages may be sent; marketing messages require appropriate consent."
+}

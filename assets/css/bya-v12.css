@@ -1,0 +1,5 @@
+:root{--bya-maroon:#800000;--bya-deep:#4d0000;--bya-gold:#b8860b;--bya-cream:#f8f2e7;--bya-ink:#211b18;--bya-border:rgba(128,0,0,.16)}
+.bya-v12-section{padding:clamp(2rem,5vw,5rem) 0}.bya-v12-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.bya-v12-card{background:rgba(255,255,255,.72);border:1px solid var(--bya-border);border-radius:18px;padding:1.25rem;box-shadow:0 12px 35px rgba(77,0,0,.08)}
+.bya-v12-kicker{color:var(--bya-gold);font-weight:800;letter-spacing:.12em;text-transform:uppercase}.bya-v12-title{color:var(--bya-deep);font-weight:900}
+@media(prefers-color-scheme:dark){.bya-v12-card{background:rgba(30,20,20,.8);color:#f7efe5}.bya-v12-title{color:#f1c96a}}

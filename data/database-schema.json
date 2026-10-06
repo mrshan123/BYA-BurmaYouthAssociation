@@ -1,0 +1,25 @@
+{
+  "version":"12.0",
+  "status":"schema-definition-only",
+  "engineRecommendation":"PostgreSQL",
+  "tables":{
+    "users":["id","email","passwordHashOrIdentityProviderId","status","createdAt","lastLoginAt"],
+    "profiles":["id","userId","fullName","phone","dateOfBirth","education","location","bio","avatarUrl","updatedAt"],
+    "members":["id","userId","membershipType","status","joinedAt","verifiedAt"],
+    "applications":["id","userId","type","status","submittedAt","reviewedAt","reviewerId"],
+    "events":["id","title","status","startAt","endAt","registrationDeadline","venue","onlineUrl","accessibility","safeguardingContact"],
+    "registrations":["id","eventId","userId","status","registeredAt","attendanceStatus"],
+    "courses":["id","title","level","language","duration","status"],
+    "enrollments":["id","courseId","userId","progress","status","completedAt"],
+    "certificates":["id","userId","programId","issueDate","status","verificationCode"],
+    "opportunities":["id","title","type","organization","deadline","verified","sourceUrl","lastChecked"],
+    "partners":["id","organization","type","scope","status","evidenceUrl"],
+    "research":["id","title","type","status","publishedAt","evidenceUrl"],
+    "impactMetrics":["id","definition","source","reportingPeriod","methodology","value","evidenceUrl","lastUpdated"],
+    "safeguardingCases":["id","severity","status","assignedOfficerId","createdAt","closedAt"],
+    "notifications":["id","userId","type","status","createdAt","readAt"],
+    "auditLogs":["id","actorId","action","entity","entityId","createdAt","metadata"]
+  },
+  "constraints":["unique email","unique certificate verificationCode","foreign-key integrity","timestamps in UTC","soft-delete where legally appropriate"],
+  "privacy":"Collect only data required for the stated purpose and enforce retention/deletion policy."
+}
