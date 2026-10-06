@@ -4,9 +4,28 @@
     "shortName": "BYA",
     "founded": "2026",
     "identity": "Architect of Youth Development",
-    "focus": ["Youth Learning","Career Development","Digital Skills","Community","Research & Education Development","Opportunity Access"],
-    "languages": ["my","en"],
-    "brand": {"maroon":"#800000","deepMaroon":"#4D0000","gold":"#B8860B"}
+    "focus": [
+      "Youth Learning",
+      "Career Development",
+      "Digital Skills",
+      "Community",
+      "Research & Education Development",
+      "Opportunity Access"
+    ],
+    "languages": [
+      "en",
+      "my"
+    ],
+    "brand": {
+      "maroon": "#800000",
+      "deepMaroon": "#4D0000",
+      "gold": "#B8860B"
+    },
+    "alignment": [
+      "UN SDG 4",
+      "UN SDG 8",
+      "UN SDG 10"
+    ]
   },
   "principles": [
     "Truthful communication",
@@ -16,5 +35,27 @@
     "Responsible volunteerism",
     "Transparency and accountability"
   ],
-  "status": "Growing youth organization; public impact metrics will be published only when verified."
+  "status": "Growing youth organization; public impact metrics will be published only when verified.",
+  "governance": {
+    "status": "developing",
+    "currentLeadership": "Founder / Architect of Youth Development",
+    "plannedLayers": [
+      "Board of Directors",
+      "Executive Team",
+      "Advisory Board",
+      "Youth Leadership"
+    ]
+  },
+  "transparency": {
+    "impactMetricRule": "Definition + Source + Reporting Period + Methodology + Last Updated + Evidence Link",
+    "legalStatus": "Not represented as registered NGO/non-profit unless officially verified",
+    "reportsStatus": "Building"
+  },
+  "platform": {
+    "learningHub": "building",
+    "partnershipPortal": "building",
+    "credentialVerification": "building",
+    "aiAssistant": "not deployed",
+    "backendForms": "configuration required"
+  }
 }
