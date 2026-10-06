@@ -5,10 +5,20 @@
 
   // Persist language across pages without replacing the site's existing language engine.
   const savedLang=localStorage.getItem("bya_lang");
-  if(savedLang==="en") body.classList.add("lang-en");
+  const queryLang=new URLSearchParams(location.search).get("lang");
+  const initialSavedLang=(queryLang==="en"||queryLang==="my")?queryLang:savedLang;
+  if(initialSavedLang==="en") body.classList.add("lang-en");
 
   // Unified language control. Preserve the legacy engine where present, otherwise provide a standalone fallback.
   const legacyToggle=window.toggleLang;
+  window.setBYALanguage=function(lang){
+    if(lang!=="en"&&lang!=="my") return;
+    body.classList.toggle("lang-en",lang==="en");
+    localStorage.setItem("bya_lang",lang); root.lang=lang;
+    document.querySelectorAll("[data-lang]").forEach(el=>{el.setAttribute("aria-hidden",el.getAttribute("data-lang")!==lang?"true":"false");});
+    document.querySelectorAll("[data-lang-switch]").forEach(el=>el.setAttribute("aria-pressed",el.getAttribute("data-lang-switch")===lang?"true":"false"));
+    const label=document.getElementById("lang-btn-text"); if(label) label.textContent=lang==="en"?"MY":"EN";
+  };
   if(typeof legacyToggle==="function"){
     window.toggleLang=function(){
       legacyToggle();
@@ -138,4 +148,20 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('a[href="#"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
   document.querySelectorAll('.reveal').forEach(el=>{if(!('IntersectionObserver' in window)){el.classList.add('visible');return;} const o=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');o.unobserve(x.target)}}),{threshold:.12});o.observe(el)});
   document.querySelectorAll('[data-scroll-to]').forEach(el=>el.addEventListener('click',e=>{const t=document.querySelector(el.dataset.scrollTo);if(t){e.preventDefault();t.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}}));
+});
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+  window.setBYALanguage(document.documentElement.lang==="en"?"en":(localStorage.getItem("bya_lang")||"my"));
+  document.querySelectorAll("[data-lang-switch]").forEach(btn=>btn.addEventListener("click",()=>{
+    window.setBYALanguage(btn.getAttribute("data-lang-switch"));
+  }));
+  document.querySelectorAll('a[href^="http"]').forEach(a=>{
+    if(a.hostname!==location.hostname){
+      a.setAttribute("target","_blank");
+      const rel=new Set((a.getAttribute("rel")||"").split(/\s+/).filter(Boolean));
+      rel.add("noopener"); rel.add("noreferrer"); a.setAttribute("rel",[...rel].join(" "));
+      if(!a.querySelector(".external-link-icon")) a.insertAdjacentHTML("beforeend",' <span class="external-link-icon" aria-hidden="true">↗</span>');
+    }
+  });
 });
