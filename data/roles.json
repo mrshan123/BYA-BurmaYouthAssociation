@@ -1,0 +1,15 @@
+{
+  "version":"9.0",
+  "roles":[
+    {"id":"super-admin","name":"Super Admin","scope":"all"},
+    {"id":"admin","name":"Admin","scope":"operations"},
+    {"id":"program-manager","name":"Program Manager","scope":"programs"},
+    {"id":"community-manager","name":"Community Manager","scope":"community"},
+    {"id":"learning-manager","name":"Learning Manager","scope":"learning"},
+    {"id":"research-lead","name":"Research Lead","scope":"research"},
+    {"id":"partnership-manager","name":"Partnership Manager","scope":"partnerships"},
+    {"id":"safeguarding-officer","name":"Safeguarding Officer","scope":"safeguarding"},
+    {"id":"content-editor","name":"Content Editor","scope":"content"},
+    {"id":"viewer","name":"Viewer","scope":"read-only"}
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "version":"9.0",
+  "status":"starter-index",
+  "items":[
+    {"title":"BYA Ecosystem","type":"page","url":"ecosystem.html","tags":["learn","community","impact","partnership"]},
+    {"title":"Learning Hub","type":"page","url":"learning-hub.html","tags":["courses","learning","skills"]},
+    {"title":"Career Center","type":"page","url":"career-center.html","tags":["jobs","internships","scholarships","fellowships"]},
+    {"title":"Community","type":"page","url":"community.html","tags":["youth","volunteer","events"]},
+    {"title":"Research","type":"page","url":"research.html","tags":["research","policy","youth voice"]},
+    {"title":"Reports","type":"page","url":"reports.html","tags":["annual report","transparency","evidence"]},
+    {"title":"Safeguarding","type":"page","url":"safeguarding.html","tags":["safety","report","protection"]},
+    {"title":"Join BYA","type":"page","url":"join.html","tags":["membership","volunteer","participation"]}
+  ]
+}

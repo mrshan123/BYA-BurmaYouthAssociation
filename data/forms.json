@@ -1,0 +1,9 @@
+{
+  "version":"9.0",
+  "status":"configuration-required",
+  "provider":"provider-neutral",
+  "endpoints":{"membership":"","volunteer":"","contact":"","partner":"","eventRegistration":"","resourceSuggestion":""},
+  "antiSpam":{"honeypot":true,"minimumFormAgeMs":1200},
+  "consent":{"required":true,"privacyUrl":"privacy.html"},
+  "notes":"Leave endpoints blank until an approved backend/provider is configured. No secrets belong in this file."
+}
