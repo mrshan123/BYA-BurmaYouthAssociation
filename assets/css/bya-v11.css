@@ -1,0 +1,9 @@
+:root{--bya-maroon:#800000;--bya-dark:#4d0000;--bya-gold:#b8860b;--bya-cream:#f8f2e8;--bya-ink:#171717;--bya-muted:#6f6a63}
+.bya-v11-section{max-width:1240px;margin:auto;padding:clamp(28px,5vw,72px) 20px}
+.bya-v11-kicker{letter-spacing:.14em;text-transform:uppercase;color:var(--bya-gold);font-weight:800;font-size:.78rem}
+.bya-v11-title{color:var(--bya-dark);font-weight:900;line-height:1.08}
+.bya-v11-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.bya-v11-card{padding:24px;border:1px solid rgba(77,0,0,.13);border-radius:20px;background:#fff;box-shadow:0 12px 34px rgba(0,0,0,.06)}
+.bya-v11-flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.bya-v11-step{padding:10px 14px;border-radius:999px;background:var(--bya-cream);color:var(--bya-dark);font-weight:800}
+.bya-v11-arrow{color:var(--bya-gold);font-weight:900}
