@@ -1,0 +1,19 @@
+{
+  "version":"12.0",
+  "status":"contract-only",
+  "basePath":"/api/v1",
+  "authentication":{"strategy":"secure-server-session-or-oidc","clientSecretsAllowed":false},
+  "resources":{
+    "users":["GET /me","PATCH /me","DELETE /me"],
+    "membership":["POST /membership/applications","GET /membership/status"],
+    "events":["GET /events","POST /events/{eventId}/registrations","DELETE /events/{eventId}/registrations/{registrationId}"],
+    "learning":["GET /courses","POST /courses/{courseId}/enrollments","GET /enrollments/{enrollmentId}"],
+    "opportunities":["GET /opportunities"],
+    "applications":["GET /applications","POST /applications"],
+    "certificates":["GET /certificates","GET /certificates/{verificationCode}"],
+    "notifications":["GET /notifications","POST /notifications/{id}/read"],
+    "admin":["GET /admin/dashboard","GET /admin/audit-logs"]
+  },
+  "security":{"authorization":"server-side-rbac","rateLimiting":true,"csrfProtection":true,"inputValidation":true,"auditPrivilegedActions":true},
+  "rule":"This file defines an implementation contract only. It does not create a live API."
+}
