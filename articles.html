@@ -692,10 +692,10 @@
                     <img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div>
-                    <h4 style="font-weight: bold;">BYA Smart AI</h4>
+                    <h4 style="font-weight: bold;">BYA Information Assistant</h4>
                     <div style="display: flex; align-items: center; gap: 5px;">
                         <span style="width: 8px; height: 8px; background: #4ade80; border-radius: 50%;"></span>
-                        <span style="font-size: 10px;">Active Now</span>
+                        <span style="font-size: 10px;">Information Assistant</span>
                     </div>
                 </div>
             </div>
@@ -977,14 +977,17 @@
             div.style.gap = "10px";
             if (sender === 'user') {
                 div.style.justifyContent = "flex-end";
-                div.innerHTML = `<div class="chat-message-user">${text}</div>`;
+                const bubble = document.createElement('div');
+                bubble.className = "chat-message-user";
+                bubble.textContent = text;
+                div.appendChild(bubble);
             } else {
-                div.innerHTML = `<div style="width:30px; height:30px; border-radius:50%; background:#800000; overflow:hidden;"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" style="width:100%; height:100%; object-fit:cover;"></div><div class="chat-message-ai">${text}</div>`;
+                div.innerHTML = `<div style="width:30px;height:30px;border-radius:50%;background:#800000;overflow:hidden;"><img src="https://i.ibb.co/tFRLR7G/BYA-Logo.jpg" alt="BYA" style="width:100%;height:100%;object-fit:cover;"></div><div class="chat-message-ai">${text}</div>`;
             }
             chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
-        
+
         function sendAIMessage() {
             const msg = aiInput.value.trim();
             if (!msg) return;
