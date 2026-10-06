@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://mrshan123.github.io/BYA-BurmaYouthAssociation/sitemap.xml
+Host: mrshan123.github.io
