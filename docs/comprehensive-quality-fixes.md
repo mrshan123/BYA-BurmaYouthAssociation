@@ -26,10 +26,12 @@
 ### Search safety and coverage
 - Replaced Search Result HTML-string rendering with DOM nodes and `textContent`, reducing the risk of HTML injection from index data.
 - Added validation so Search Result destinations must be simple, same-site `.html` paths.
-- Expanded `data/search-index.json` from the starter set to include the 30 page URLs listed in the sitemap.
+- Expanded `data/search-index.json` from the starter set to include all 31 page URLs listed in the sitemap.
 
 ### Metadata and offline support
-- Added missing canonical links to pages that did not have them.
+- Added missing canonical links to pages that did not have them, including the Search page.
+- Repaired the Get Involved page's outdated `index.html#join-us-upgrade` link so it opens the membership form directly.
+- Added the Search page to the sitemap and offline app shell.
 - Bumped the Service Worker cache version to invalidate the older app-shell cache.
 - Added current published pages, CSS/JS variants and the Search Index to the app-shell list.
 - Changed app-shell installation to use `Promise.allSettled` so one unavailable cache asset does not prevent every other asset from being cached.
@@ -46,7 +48,7 @@ Source-level checks on the proposed branch confirmed:
 - Homepage has one `h1`.
 - Membership phone markup no longer has the stray style text.
 - Homepage has no `target="_blank"` links missing `rel`.
-- Search Index is marked `site-index` and contains all 30 sitemap pages.
+- Search Index is marked `site-index` and contains all 31 sitemap pages.
 - About and Learning each have one `h1`; Articles has one `h1`.
 - Search rendering no longer uses `innerHTML` for result titles, types or URLs.
 - Service Worker version is bumped and the search index is listed for caching.
