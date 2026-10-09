@@ -895,7 +895,7 @@
                 <p style="color: #666; font-size: 13px; margin-top: 5px;">BYA မိသားစုဝင်အဖြစ် စတင်ပူးပေါင်းလိုက်ပါ</p>
             </div>
 
-            <form id="bya-sheet-form" style="display: flex; flex-direction: column; gap: 15px;">
+            <form id="bya-sheet-form" onsubmit="event.preventDefault(); handleByaSubmit();" style="display: flex; flex-direction: column; gap: 15px;">
                 <label for="member-name" class="sr-only">Full name</label><input id="member-name" name="Name" type="text" placeholder="သင့်နာမည် အပြည့်အစုံ" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; transition: 0.3s;">
 
@@ -1008,7 +1008,7 @@
                 <p style="color: #666; font-size: 13px; margin-top: 5px;">ကျွန်ုပ်တို့ထံ စာတိုပေးပို့ မေးမြန်းနိုင်ပါသည်</p>
             </div>
 
-            <form id="contact-form-modal">
+            <form id="contact-form-modal" onsubmit="event.preventDefault(); handleContactSubmit();">
                 <div style="margin-bottom: 15px;">
                     <input name="Name" type="text" autocomplete="name" aria-label="Your name" placeholder="သင့်နာမည်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
                 </div>
