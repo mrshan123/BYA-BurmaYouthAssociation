@@ -93,18 +93,6 @@
     top.addEventListener("click",e=>{e.preventDefault();scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});});
   }
 
-  // Mobile menu accessibility enhancement.
-  const menu=document.getElementById("mobile-menu");
-  const menuBtn=document.getElementById("menu-btn");
-  if(menu&&menuBtn){
-    menuBtn.setAttribute("aria-expanded",String(!menu.classList.contains("hidden")));
-    menuBtn.setAttribute("aria-controls","mobile-menu");
-    menuBtn.addEventListener("click",()=>{
-      requestAnimationFrame(()=>menuBtn.setAttribute("aria-expanded",String(!menu.classList.contains("hidden"))));
-    });
-    menu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>menu.classList.add("hidden")));
-  }
-
   // Unified mobile menu controller: works across legacy and v3 navigation variants.
   const mobileMenu=document.getElementById("mobile-menu");
   const mobileBtn=document.getElementById("menu-btn");
