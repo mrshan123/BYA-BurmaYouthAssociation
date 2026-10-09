@@ -183,10 +183,10 @@
          alt="Youth Education Background">
 
     <div class="relative z-20 px-4 max-w-3xl floating">
-        <h2 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
              <span data-lang="my">အစက ကျွန်ုပ်တို့၊ အဆုံးက <br><span class="text-red-400">သင်၏အောင်မြင်မှု</span></span>
             <span data-lang="en" class="hidden">Started by Us<br><span class="text-red-400">Completed by Your Success</span></span>
-        </h2>
+        </h1>
         <p class="text-lg md:text-xl mb-10 opacity-90">
             <span data-lang="my">ကျွန်ုပ်တို့၏ အောင်မြင်မှုမှတ်တမ်းများကို လေ့လာပါ၊ ကျွန်ုပ်တို့နှင့်အတူ အားသွန်ခွန်စိုက် ကြိုးပမ်းလိုက်ပါ။</span>
             <span data-lang="en" class="hidden">Learn about BYA's origin, values and the work we are building with young people.</span>
@@ -196,7 +196,7 @@
                 <span data-lang="my">သင်တန်းများကြည့်မည်</span>
                 <span data-lang="en" class="hidden">Browse Courses</span>
             </a>
-            <a href="#" class="border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-maroon-700 transition-all btn-active">
+            <a href="#our-story" class="border-2 border-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-maroon-700 transition-all btn-active">
                 <span data-lang="my">ကျွန်ုပ် တို့အကြောင်း</span>
                 <span data-lang="en" class="hidden">About Us</span>
             </a>
@@ -217,7 +217,7 @@
         <section class="relative py-28 px-4 border-t border-gray-100 dark:border-white/5 reveal">
     <div class="max-w-6xl mx-auto">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <div id="our-story" class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
             
             <div class="lg:col-span-4 sticky top-24">
                 <div class="relative">
@@ -598,7 +598,7 @@
             <h5 class="text-lg font-bold mb-6">Contact</h5>
             <div class="flex justify-center md:justify-start space-x-6 text-2xl">
                 <a href="https://www.facebook.com/61576906013024" class="hover:text-red-300 transition"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hover:text-red-300 transition"><i class="fab fa-telegram"></i></a>
+                <span class="text-gray-400" title="Telegram profile not configured" aria-label="Telegram profile not configured"><i class="fab fa-telegram" aria-hidden="true"></i></span>
             </div>
         </div>
 
@@ -922,7 +922,7 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600 border-2 border-white"></span>
         </div>
-        <button type="button" class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
+        <button type="button" aria-label="Open BYA information assistant" aria-expanded="false" class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
             <img src="favicon.svg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
         </button>
     </div>
@@ -943,7 +943,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" id="close-ai" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
+        <button type="button" id="close-ai" aria-label="Close BYA information assistant" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
             <i class="fas fa-times text-sm"></i>
         </button>
     </div>
@@ -971,10 +971,10 @@
 
     <div class="p-4 bg-white dark:bg-[#1a1a1a] border-t dark:border-white/10 shrink-0 relative">
         <div class="flex gap-2 items-center bg-gray-100 dark:bg-zinc-800/50 p-1.5 pl-4 rounded-full border border-transparent focus-within:border-maroon/20 focus-within:bg-white dark:focus-within:bg-zinc-800 transition-all shadow-inner">
-            <input type="text" id="user-input" autocomplete="off" 
+            <input type="text" id="user-input" aria-label="Message BYA information assistant" autocomplete="off" 
                    placeholder="စာရိုက်ရန်..." 
                    class="bg-transparent flex-grow text-[14px] outline-none dark:text-white py-1.5">
-            <button type="button" id="send-ai" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
+            <button type="button" id="send-ai" aria-label="Send message" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
                 <i class="fas fa-paper-plane text-[12px]"></i>
             </button>
         </div>
@@ -988,7 +988,7 @@
         { keys: ["bya", "အကြောင်း", "association", "အဖွဲ့အစည်း",], my: "BYA သည် မြန်မာလူငယ်များအတွက် ပညာရပ်နှင့် အလုပ်အကိုင်များကို တစ်နေရာတည်းတွင် ဖန်တီးပေးသော Community ဖြစ်သည်။", en: "BYA is a community for Myanmar youth." },
         { keys: ["founder", "ဘယ်သူ", "တည်ထောင်", "နာမည်",], my: "BYA ကို Founder <b>Mr. Aung Shan Hein</b> မှ ဦးစီးတည်ထောင်ခဲ့ပါသည်။", en: "BYA was founded by <b>Mr. Aung Shan Hein</b>." },
         { keys: ["သင်တန်း", "course", "study", "လေ့လာ", "ဘာတွေ", "ဘလို",], my: "ကျွန်ုပ်တို့၏ Learning Lab တွင် ကမ္ဘာ့အဆင့်မီ Free Courses များကို လေ့လာနိုင်ပါသည်။", en: "You can explore free courses in our Learning Lab." },
-        { keys: ["facebook", "fb", "page"], my: "ကျွန်ုပ်တို့၏ Facebook Page ကို <a href='https://www.facebook.com/61576906013024' target='_blank' class='text-maroon font-bold underline'>ဒီမှာ</a> သွားနိုင်ပါသည်။", en: "Visit our Facebook Page <a href='https://www.facebook.com/61576906013024' target='_blank' class='text-maroon font-bold underline'>here</a>." },
+        { keys: ["facebook", "fb", "page"], my: `ကျွန်ုပ်တို့၏ Facebook Page ကို <a href="https://www.facebook.com/61576906013024" target="_blank" rel="noopener noreferrer" class="text-maroon font-bold underline">ဒီမှာ</a> သွားနိုင်ပါသည်။`, en: `Visit our Facebook Page <a href="https://www.facebook.com/61576906013024" target="_blank" rel="noopener noreferrer" class="text-maroon font-bold underline">here</a>.` },
         { keys: ["ကျေးဇူး", "thanks", "thank"], my: "ရပါတယ်ခင်ဗျာ။ အမြဲကူညီဖို့ အသင့်ရှိပါတယ်။", en: "You're welcome!" }
     ];
 

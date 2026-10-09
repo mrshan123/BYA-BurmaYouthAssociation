@@ -1,7 +1,8 @@
-const CACHE_NAME = "bya-cache-v4";
+const CACHE_NAME = "bya-cache-v5";
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./search.html",
   "./about.html",
   "./learning.html",
   "./articles.html",
@@ -13,18 +14,42 @@ const APP_SHELL = [
   "./contact.html",
   "./privacy.html",
   "./safeguarding.html",
+  "./terms.html",
+  "./accessibility.html",
+  "./learning-hub.html",
+  "./partner.html",
+  "./verify.html",
+  "./governance.html",
+  "./sdg.html",
+  "./reports.html",
+  "./join.html",
+  "./community.html",
+  "./career-center.html",
+  "./resource-center.html",
+  "./assistant.html",
+  "./ecosystem.html",
+  "./membership.html",
+  "./events.html",
+  "./research.html",
+  "./donate.html",
   "./404.html",
   "./manifest.json",
+  "./data/search-index.json",
   "./favicon.svg",
   "./assets/css/bya-v2.css",
   "./assets/css/bya-global.css",
-  "./assets/js/bya-v2.js"
+  "./assets/css/bya-v3.css",
+  "./assets/css/bya-v7.css",
+  "./assets/css/bya-v8.css",
+  "./assets/css/bya-v9.css",
+  "./assets/js/bya-v2.js",
+  "./assets/js/bya-v9.js"
 ];
 
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(APP_SHELL))
+      .then(cache => Promise.allSettled(APP_SHELL.map(asset => cache.add(asset))))
       .then(() => self.skipWaiting())
   );
 });

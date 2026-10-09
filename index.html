@@ -151,6 +151,13 @@
 <link rel="stylesheet" href="assets/css/bya-v7.css">
 <link rel="stylesheet" href="assets/css/bya-v8.css">
 <link rel="stylesheet" href="assets/css/bya-v9.css">
+
+<style>
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+</style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -876,30 +883,28 @@
 
     </script>
 
-<div id="registerModal" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; font-family: sans-serif;">
+<div id="registerModal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" aria-hidden="true" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; font-family: sans-serif;">
     <div style="background: #fff; width: 95%; max-width: 450px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); max-height: 90vh; overflow-y: auto;">
         
-        <button type="button" onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer; line-height: 1;">&times;</button>
+        <button type="button" onclick="closeModal()" aria-label="Close membership form" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer; line-height: 1;">&times;</button>
 
         <div style="padding: 40px 30px;">
             <div style="text-align: center; margin-bottom: 25px;">
-                <h2 style="color: #800000; font-size: 24px; font-weight: 800; margin: 0; letter-spacing: 1px;">BECOME A MEMBER</h2>
+                <h2 id="register-modal-title" style="color: #800000; font-size: 24px; font-weight: 800; margin: 0; letter-spacing: 1px;">BECOME A MEMBER</h2>
                 <div style="width: 40px; height: 3px; background: #800000; margin: 10px auto;"></div>
                 <p style="color: #666; font-size: 13px; margin-top: 5px;">BYA မိသားစုဝင်အဖြစ် စတင်ပူးပေါင်းလိုက်ပါ</p>
             </div>
 
-            <form id="bya-sheet-form" style="display: flex; flex-direction: column; gap: 15px;">
+            <form id="bya-sheet-form" onsubmit="event.preventDefault(); handleByaSubmit();" style="display: flex; flex-direction: column; gap: 15px;">
                 <label for="member-name" class="sr-only">Full name</label><input id="member-name" name="Name" type="text" placeholder="သင့်နာမည် အပြည့်အစုံ" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; transition: 0.3s;">
 
                 <label for="member-email" class="sr-only">Email address</label><input id="member-email" name="Email" type="email" placeholder="အီးမေးလ် လိပ်စာ" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
-                <label for="member-phone" class="sr-only">Phone number (optional)</label><input id="member-phone" name="Phone" type="tel" placeholder="ဖုန်းနံပါတ် (ရွေးချယ်နိုင်သည်)"> 
-                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                <label for="member-phone" class="sr-only">Phone number (optional)</label><input id="member-phone" name="Phone" type="tel" autocomplete="tel" placeholder="ဖုန်းနံပါတ် (ရွေးချယ်နိုင်သည်)" style="width:100%; padding:14px; border:1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
-                <input name="Address" type="text" placeholder="နေရပ်လိပ်စာ (မြို့နယ်)" required 
-                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                <label for="member-address" class="sr-only">Township or address</label><input id="member-address" name="Address" type="text" autocomplete="address-level2" placeholder="နေရပ်လိပ်စာ (မြို့နယ်)" required style="width:100%; padding:14px; border:1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
                 <label for="member-skill" class="sr-only">Primary skill or interest</label><select id="member-skill" name="Skill" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
@@ -912,13 +917,13 @@
                     <option value="Other">အခြား...</option>
                 </select>
                 
-                <button type="button" onclick="handleByaSubmit()" id="submit-btn" 
+                <button type="submit" id="submit-btn" 
                     style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; transition: 0.3s; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">
                     REGISTER NOW
                 </button>
             </form>
 
-            <div id="success-msg" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 12px; border-radius: 12px; background: #f0fff4; animation: fadeIn 0.5s;">
+            <div id="success-msg" role="status" aria-live="polite" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 12px; border-radius: 12px; background: #f0fff4; animation: fadeIn 0.5s;">
                 တောင်းဆိုချက်ကို ပို့ရန် ကြိုးစားပြီးပါပြီ။ သို့သော် Browser မှ လက်ခံရရှိမှုကို အတည်မပြုနိုင်သေးပါ။
             </div>
         </div>
@@ -929,14 +934,27 @@
     const modal = document.getElementById('registerModal');
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxb8iFHB3hMM9K73CQocwZuNOgmXUtyOy6S3R9-rw6EhI51h4ZbVqExcnKD2HFKPBUJeQ/exec';
 
+    let registerModalTrigger = null;
+    let contactModalTrigger = null;
+
     function openModal() {
+        registerModalTrigger = document.activeElement;
         modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        modal.querySelector('input, select, textarea, button')?.focus();
     }
 
     function closeModal() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        registerModalTrigger?.focus?.();
+    }
+
+    // Allow the Get Involved page to open the membership form directly.
+    if (new URLSearchParams(window.location.search).get('openRegister') === '1') {
+        openModal();
     }
 
     async function handleByaSubmit() {
@@ -944,11 +962,8 @@
         const btn = document.getElementById("submit-btn");
         const successBox = document.getElementById("success-msg");
 
-        // Validation: အကုန်ဖြည့်ထားလား စစ်ဆေးခြင်း
-        if (!form.Name.value || !form.Email.value || !form.Skill.value) {
-            alert("ကျေးဇူးပြု၍ အချက်အလက်များ အားလုံး ပြည့်စုံစွာ ဖြည့်ပေးပါ။");
-            return;
-        }
+        // Use native required/type validation so every required field is checked consistently.
+        if (!form.reportValidity()) return;
 
         btn.innerHTML = "ခဏစောင့်ပါ...";
         btn.disabled = true;
@@ -961,24 +976,19 @@
                 body: new FormData(form)
             });
 
+            successBox.textContent = "တောင်းဆိုချက်ကို ပို့ပြီးပါပြီ။ သို့သော် Browser က သိမ်းဆည်းပြီးကြောင်း အတည်မပြုနိုင်ပါ။ အချက်အလက်များကို မဖျက်ထားပါ။ ပြန်လည်ဆက်သွယ်မှု မရရှိပါက BYA ကို ဆက်သွယ်ပေးပါ။";
             successBox.style.display = "block";
-            btn.innerHTML = "အောင်မြင်ပါသည်!";
-            btn.style.background = "#28a745";
-            form.reset();
-
-            setTimeout(() => {
-                closeModal();
-                successBox.style.display = "none";
-                btn.innerHTML = "REGISTER NOW";
-                btn.style.background = "#800000";
-                btn.disabled = false;
-                btn.style.opacity = "1";
-            }, 3000);
+            btn.innerHTML = "REQUEST SENT — NOT VERIFIED";
+            btn.style.background = "#8a6d3b";
+            // no-cors returns an opaque response; preserve the user's entries and do not claim delivery.
+            btn.disabled = false;
+            btn.style.opacity = "1";
 
         } catch (error) {
             console.error('Error!', error.message);
             alert("တစ်ခုခု မှားယွင်းနေပါသည်။ ပြန်လည် ကြိုးစားကြည့်ပါ။");
             btn.disabled = false;
+            btn.style.opacity = "1";
             btn.innerHTML = "REGISTER NOW";
         }
     }
@@ -992,28 +1002,28 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     #bya-sheet-form input:focus { border-color: #800000 !important; background: #fff !important; }
 </style>
-<div id="contactModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center;">
+<div id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-hidden="true" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center;">
     <div style="background: #fff; width: 90%; max-width: 450px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
         
-        <button type="button" onclick="closeContactModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer;">&times;</button>
+        <button type="button" onclick="closeContactModal()" aria-label="Close contact form" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer;">&times;</button>
 
         <div style="padding: 40px;">
             <div style="text-align: center; margin-bottom: 30px;">
-                <h2 style="color: #800000; font-size: 24px; font-weight: 800; margin: 0;">CONTACT BYA</h2>
+                <h2 id="contact-modal-title" style="color: #800000; font-size: 24px; font-weight: 800; margin: 0;">CONTACT BYA</h2>
                 <p style="color: #666; font-size: 13px; margin-top: 5px;">ကျွန်ုပ်တို့ထံ စာတိုပေးပို့ မေးမြန်းနိုင်ပါသည်</p>
             </div>
 
-            <form id="contact-form-modal">
+            <form id="contact-form-modal" onsubmit="event.preventDefault(); handleContactSubmit();">
                 <div style="margin-bottom: 15px;">
-                    <input name="Name" type="text" placeholder="သင့်နာမည်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                    <input name="Name" type="text" autocomplete="name" aria-label="Your name" placeholder="သင့်နာမည်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
                 </div>
 
                 <div style="margin-bottom: 15px;">
-                    <input name="Contact" type="text" placeholder="အီးမေးလ် သို့မဟုတ် ဖုန်းနံပါတ်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                    <input name="Contact" type="text" autocomplete="email" aria-label="Email address or phone number" placeholder="အီးမေးလ် သို့မဟုတ် ဖုန်းနံပါတ်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
                 </div>
                 
                 <div style="margin-bottom: 15px;">
-                    <select name="Subject" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
+                    <select name="Subject" aria-label="Message subject" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
                         <option value="" disabled selected>ဘာအကြောင်းအရာလဲ?</option>
                         <option value="စုံစမ်းရန်">စုံစမ်းမေးမြန်းရန်</option>
                         <option value="အကြံပေးရန်">အကြံပေးရန်</option>
@@ -1023,15 +1033,15 @@
                 </div>
 
                 <div style="margin-bottom: 25px;">
-                    <textarea name="Message" placeholder="သင်ပြောချင်တဲ့ အကြောင်းအရာ..." rows="4" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; font-family: sans-serif; resize: none;"></textarea>
+                    <textarea name="Message" aria-label="Your message" placeholder="သင်ပြောချင်တဲ့ အကြောင်းအရာ..." rows="4" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; font-family: sans-serif; resize: none;"></textarea>
                 </div>
                 
-                <button type="button" onclick="handleContactSubmit()" id="contact-sub-btn" style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; transition: 0.3s; text-transform: uppercase;">
+                <button type="submit" id="contact-sub-btn" style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; transition: 0.3s; text-transform: uppercase;">
                     SEND MESSAGE
                 </button>
             </form>
 
-            <div id="contact-success-msg" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 10px; border-radius: 10px; background: #f0fff4;">
+            <div id="contact-success-msg" role="status" aria-live="polite" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 10px; border-radius: 10px; background: #f0fff4;">
                 တောင်းဆိုချက်ကို ပို့ရန် ကြိုးစားပြီးပါပြီ။ သို့သော် Browser မှ လက်ခံရရှိမှုကို အတည်မပြုနိုင်သေးပါ။
             </div>
         </div>
@@ -1043,8 +1053,11 @@
     const contactURL = 'https://script.google.com/macros/s/AKfycbw0KdGF_YKiHks__LguOxin0ZaodL1MEbgudG6Jdm_gFP3-E50u_-mTDOYN8Fls-MHfJg/exec';
 
     function openContactModal() {
+        contactModalTrigger = document.activeElement;
         contactModal.style.display = 'flex';
+        contactModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        contactModal.querySelector('input, select, textarea, button')?.focus();
     }
 
     // Allow the Contact page to open this modal directly via ?openContact=1.
@@ -1054,19 +1067,36 @@
 
     function closeContactModal() {
         contactModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        contactModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        contactModalTrigger?.focus?.();
     }
+
+    document.addEventListener('keydown', event => {
+        const activeModal = modal.style.display === 'flex' ? modal : (contactModal.style.display === 'flex' ? contactModal : null);
+        if (!activeModal) return;
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            if (activeModal === modal) closeModal(); else closeContactModal();
+            return;
+        }
+        if (event.key === 'Tab') {
+            const focusable = Array.from(activeModal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+                .filter(element => element.offsetParent !== null);
+            if (!focusable.length) { event.preventDefault(); activeModal.focus(); return; }
+            const first = focusable[0], last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        }
+    });
 
     async function handleContactSubmit() {
         const form = document.getElementById('contact-form-modal');
         const btn = document.getElementById("contact-sub-btn");
         const successBox = document.getElementById("contact-success-msg");
 
-        // Input စစ်ဆေးတဲ့နေရာမှာ Contact အကွက်ကိုပါ ထည့်စစ်ထားပါတယ်
-        if (!form.Name.value || !form.Contact.value || !form.Subject.value || !form.Message.value) {
-            alert("ကျေးဇူးပြု၍ အချက်အလက်များ အားလုံး ပြည့်စုံစွာ ဖြည့်ပေးပါ။");
-            return;
-        }
+        // Use native required/type validation before sending.
+        if (!form.reportValidity()) return;
 
         btn.innerHTML = "SENDING...";
         btn.disabled = true;
@@ -1078,22 +1108,17 @@
                 body: new FormData(form)
             });
 
+            successBox.textContent = "တောင်းဆိုချက်ကို ပို့ပြီးပါပြီ။ သို့သော် Browser က သိမ်းဆည်းပြီးကြောင်း အတည်မပြုနိုင်ပါ။ အချက်အလက်များကို မဖျက်ထားပါ။ ပြန်လည်ဆက်သွယ်မှု မရရှိပါက BYA ကို ဆက်သွယ်ပေးပါ။";
             successBox.style.display = "block";
-            btn.innerHTML = "SENT!";
-            btn.style.background = "#28a745";
-            form.reset();
-
-            setTimeout(() => {
-                closeContactModal();
-                successBox.style.display = "none";
-                btn.innerHTML = "SEND MESSAGE";
-                btn.style.background = "#800000";
-                btn.disabled = false;
-            }, 3000);
+            btn.innerHTML = "REQUEST SENT — NOT VERIFIED";
+            btn.style.background = "#8a6d3b";
+            // no-cors returns an opaque response; preserve the user's entries and do not claim delivery.
+            btn.disabled = false;
 
         } catch (error) {
             alert("တစ်ခုခုမှားယွင်းနေပါသည်။");
             btn.disabled = false;
+            btn.style.background = "#800000";
             btn.innerHTML = "SEND MESSAGE";
         }
     }
@@ -1111,7 +1136,7 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600 border-2 border-white"></span>
         </div>
-        <button type="button" class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
+        <button type="button" aria-label="Open BYA information assistant" aria-expanded="false" class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
             <img src="favicon.svg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
         </button>
     </div>
@@ -1132,7 +1157,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" id="close-ai" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
+        <button type="button" id="close-ai" aria-label="Close BYA information assistant" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
             <i class="fas fa-times text-sm"></i>
         </button>
     </div>
@@ -1160,10 +1185,10 @@
 
     <div class="p-4 bg-white dark:bg-[#1a1a1a] border-t dark:border-white/10 shrink-0 relative">
         <div class="flex gap-2 items-center bg-gray-100 dark:bg-zinc-800/50 p-1.5 pl-4 rounded-full border border-transparent focus-within:border-maroon/20 focus-within:bg-white dark:focus-within:bg-zinc-800 transition-all shadow-inner">
-            <input type="text" id="user-input" autocomplete="off" 
+            <input type="text" id="user-input" aria-label="Message BYA information assistant" autocomplete="off" 
                    placeholder="စာရိုက်ရန်..." 
                    class="bg-transparent flex-grow text-[14px] outline-none dark:text-white py-1.5">
-            <button type="button" id="send-ai" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
+            <button type="button" id="send-ai" aria-label="Send message" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
                 <i class="fas fa-paper-plane text-[12px]"></i>
             </button>
         </div>
@@ -1177,7 +1202,7 @@
         { keys: ["bya", "အကြောင်း", "association", "အဖွဲ့အစည်း",], my: "BYA သည် မြန်မာလူငယ်များအတွက် ပညာရပ်နှင့် အလုပ်အကိုင်များကို တစ်နေရာတည်းတွင် ဖန်တီးပေးသော Community ဖြစ်သည်။", en: "BYA is a community for Myanmar youth." },
         { keys: ["founder", "ဘယ်သူ", "တည်ထောင်", "နာမည်",], my: "BYA ကို Founder <b>Mr. Aung Shan Hein</b> မှ ဦးစီးတည်ထောင်ခဲ့ပါသည်။", en: "BYA was founded by <b>Mr. Aung Shan Hein</b>." },
         { keys: ["သင်တန်း", "course", "study", "လေ့လာ", "ဘာတွေ", "ဘလို",], my: "ကျွန်ုပ်တို့၏ Learning Lab တွင် ကမ္ဘာ့အဆင့်မီ Free Courses များကို လေ့လာနိုင်ပါသည်။", en: "You can explore free courses in our Learning Lab." },
-        { keys: ["facebook", "fb", "page"], my: "ကျွန်ုပ်တို့၏ Facebook Page ကို <a href='https://www.facebook.com/61576906013024' target='_blank' class='text-maroon font-bold underline'>ဒီမှာ</a> သွားနိုင်ပါသည်။", en: "Visit our Facebook Page <a href='https://www.facebook.com/61576906013024' target='_blank' class='text-maroon font-bold underline'>here</a>." },
+        { keys: ["facebook", "fb", "page"], my: `ကျွန်ုပ်တို့၏ Facebook Page ကို <a href="https://www.facebook.com/61576906013024" target="_blank" rel="noopener noreferrer" class="text-maroon font-bold underline">ဒီမှာ</a> သွားနိုင်ပါသည်။`, en: `Visit our Facebook Page <a href="https://www.facebook.com/61576906013024" target="_blank" rel="noopener noreferrer" class="text-maroon font-bold underline">here</a>.` },
         { keys: ["ကျေးဇူး", "thanks", "thank"], my: "ရပါတယ်ခင်ဗျာ။ အမြဲကူညီဖို့ အသင့်ရှိပါတယ်။", en: "You're welcome!" }
     ];
 
@@ -1199,6 +1224,8 @@
 
     aiToggle.onclick = () => {
         aiWin.classList.toggle('hidden');
+        aiToggle.setAttribute('aria-expanded', String(!aiWin.classList.contains('hidden')));
+        aiToggle.setAttribute('aria-label', aiWin.classList.contains('hidden') ? 'Open BYA information assistant' : 'Close BYA information assistant');
         setTimeout(() => {
             aiWin.classList.toggle('translate-y-4');
             aiWin.classList.toggle('opacity-0');
@@ -1209,6 +1236,8 @@
     };
 
     closeAi.onclick = () => {
+        aiToggle.setAttribute('aria-expanded', 'false');
+        aiToggle.setAttribute('aria-label', 'Open BYA information assistant');
         aiWin.classList.add('translate-y-4', 'opacity-0');
         aiWin.classList.remove('translate-y-0', 'opacity-100');
         setTimeout(() => aiWin.classList.add('hidden'), 300);

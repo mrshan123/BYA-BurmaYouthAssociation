@@ -1,14 +1,330 @@
 {
-  "version":"9.0",
-  "status":"starter-index",
-  "items":[
-    {"title":"BYA Ecosystem","type":"page","url":"ecosystem.html","tags":["learn","community","impact","partnership"]},
-    {"title":"Learning Hub","type":"page","url":"learning-hub.html","tags":["courses","learning","skills"]},
-    {"title":"Career Center","type":"page","url":"career-center.html","tags":["jobs","internships","scholarships","fellowships"]},
-    {"title":"Community","type":"page","url":"community.html","tags":["youth","volunteer","events"]},
-    {"title":"Research","type":"page","url":"research.html","tags":["research","policy","youth voice"]},
-    {"title":"Reports","type":"page","url":"reports.html","tags":["annual report","transparency","evidence"]},
-    {"title":"Safeguarding","type":"page","url":"safeguarding.html","tags":["safety","report","protection"]},
-    {"title":"Join BYA","type":"page","url":"join.html","tags":["membership","volunteer","participation"]}
+  "version": "10.1",
+  "status": "site-index",
+  "items": [
+    {
+      "title": "Home",
+      "type": "home",
+      "url": "index.html",
+      "tags": [
+        "Burma",
+        "Youth",
+        "Association",
+        "Myanmar",
+        "youth",
+        "learning",
+        "careers"
+      ]
+    },
+    {
+      "title": "Search BYA",
+      "type": "search",
+      "url": "search.html",
+      "tags": [
+        "search",
+        "find",
+        "content",
+        "pages"
+      ]
+    },
+    {
+      "title": "About BYA",
+      "type": "about",
+      "url": "about.html",
+      "tags": [
+        "mission",
+        "vision",
+        "values",
+        "history",
+        "organization"
+      ]
+    },
+    {
+      "title": "Learning",
+      "type": "learning",
+      "url": "learning.html",
+      "tags": [
+        "courses",
+        "skills",
+        "study",
+        "education",
+        "resources"
+      ]
+    },
+    {
+      "title": "Articles & Insights",
+      "type": "articles",
+      "url": "articles.html",
+      "tags": [
+        "knowledge",
+        "articles",
+        "workplace",
+        "career",
+        "advice"
+      ]
+    },
+    {
+      "title": "Programs",
+      "type": "programs",
+      "url": "programs.html",
+      "tags": [
+        "program",
+        "activities",
+        "youth",
+        "development"
+      ]
+    },
+    {
+      "title": "Impact & Accountability",
+      "type": "impact",
+      "url": "impact.html",
+      "tags": [
+        "impact",
+        "outcomes",
+        "accountability"
+      ]
+    },
+    {
+      "title": "Opportunities",
+      "type": "opportunities",
+      "url": "opportunities.html",
+      "tags": [
+        "jobs",
+        "internships",
+        "scholarships",
+        "fellowships"
+      ]
+    },
+    {
+      "title": "Get Involved",
+      "type": "volunteer",
+      "url": "get-involved.html",
+      "tags": [
+        "volunteer",
+        "participation",
+        "join"
+      ]
+    },
+    {
+      "title": "Transparency",
+      "type": "transparency",
+      "url": "transparency.html",
+      "tags": [
+        "transparency",
+        "governance",
+        "accountability"
+      ]
+    },
+    {
+      "title": "Contact BYA",
+      "type": "contact",
+      "url": "contact.html",
+      "tags": [
+        "contact",
+        "email",
+        "message"
+      ]
+    },
+    {
+      "title": "Privacy & Data Protection",
+      "type": "privacy",
+      "url": "privacy.html",
+      "tags": [
+        "privacy",
+        "personal",
+        "data"
+      ]
+    },
+    {
+      "title": "Safeguarding",
+      "type": "safeguarding",
+      "url": "safeguarding.html",
+      "tags": [
+        "safety",
+        "protection",
+        "report",
+        "concerns"
+      ]
+    },
+    {
+      "title": "Terms of Use",
+      "type": "terms",
+      "url": "terms.html",
+      "tags": [
+        "terms",
+        "conditions"
+      ]
+    },
+    {
+      "title": "Accessibility",
+      "type": "accessibility",
+      "url": "accessibility.html",
+      "tags": [
+        "accessibility",
+        "inclusion"
+      ]
+    },
+    {
+      "title": "Learning Hub",
+      "type": "learning",
+      "url": "learning-hub.html",
+      "tags": [
+        "courses",
+        "learning",
+        "skills",
+        "resources"
+      ]
+    },
+    {
+      "title": "Partner With BYA",
+      "type": "partnership",
+      "url": "partner.html",
+      "tags": [
+        "partners",
+        "collaborate"
+      ]
+    },
+    {
+      "title": "Credential Verification",
+      "type": "verification",
+      "url": "verify.html",
+      "tags": [
+        "verify",
+        "credential",
+        "certificate"
+      ]
+    },
+    {
+      "title": "Governance & Leadership",
+      "type": "governance",
+      "url": "governance.html",
+      "tags": [
+        "leadership",
+        "governance",
+        "accountability"
+      ]
+    },
+    {
+      "title": "SDG Alignment",
+      "type": "sdg",
+      "url": "sdg.html",
+      "tags": [
+        "sustainable",
+        "development",
+        "goals"
+      ]
+    },
+    {
+      "title": "Reports & Evidence",
+      "type": "reports",
+      "url": "reports.html",
+      "tags": [
+        "reports",
+        "evidence",
+        "transparency"
+      ]
+    },
+    {
+      "title": "Join BYA",
+      "type": "membership",
+      "url": "join.html",
+      "tags": [
+        "membership",
+        "volunteer",
+        "join"
+      ]
+    },
+    {
+      "title": "Community",
+      "type": "community",
+      "url": "community.html",
+      "tags": [
+        "youth",
+        "volunteer",
+        "events"
+      ]
+    },
+    {
+      "title": "Career Center",
+      "type": "career",
+      "url": "career-center.html",
+      "tags": [
+        "jobs",
+        "internships",
+        "scholarships",
+        "career"
+      ]
+    },
+    {
+      "title": "Resource Center",
+      "type": "resources",
+      "url": "resource-center.html",
+      "tags": [
+        "resources",
+        "guides",
+        "tools"
+      ]
+    },
+    {
+      "title": "BYA Smart AI",
+      "type": "assistant",
+      "url": "assistant.html",
+      "tags": [
+        "assistant",
+        "ai",
+        "help"
+      ]
+    },
+    {
+      "title": "BYA Ecosystem",
+      "type": "ecosystem",
+      "url": "ecosystem.html",
+      "tags": [
+        "ecosystem",
+        "learning",
+        "community",
+        "impact"
+      ]
+    },
+    {
+      "title": "Membership",
+      "type": "membership",
+      "url": "membership.html",
+      "tags": [
+        "membership",
+        "participation"
+      ]
+    },
+    {
+      "title": "Events",
+      "type": "events",
+      "url": "events.html",
+      "tags": [
+        "events",
+        "activities",
+        "community"
+      ]
+    },
+    {
+      "title": "Research & Policy",
+      "type": "research",
+      "url": "research.html",
+      "tags": [
+        "research",
+        "policy",
+        "youth",
+        "voice"
+      ]
+    },
+    {
+      "title": "Support BYA",
+      "type": "donation",
+      "url": "donate.html",
+      "tags": [
+        "support",
+        "donation",
+        "contribute"
+      ]
+    }
   ]
 }
