@@ -952,6 +952,11 @@
         registerModalTrigger?.focus?.();
     }
 
+    // Allow the Get Involved page to open the membership form directly.
+    if (new URLSearchParams(window.location.search).get('openRegister') === '1') {
+        openModal();
+    }
+
     async function handleByaSubmit() {
         const form = document.getElementById('bya-sheet-form');
         const btn = document.getElementById("submit-btn");
