@@ -106,7 +106,7 @@
       const icon=mobileBtn.querySelector("i");
       if(icon){icon.classList.toggle("fa-bars",!open);icon.classList.toggle("fa-xmark",open);}
     };
-    setMenu(!mobileMenu.classList.contains("hidden")&&!mobileMenu.classList.contains("open")?false:false);
+    setMenu(false);
     mobileBtn.addEventListener("click",()=>setMenu(mobileMenu.classList.contains("hidden")));
     mobileMenu.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
     addEventListener("resize",()=>{if(innerWidth>=1280)setMenu(false)},{passive:true});
