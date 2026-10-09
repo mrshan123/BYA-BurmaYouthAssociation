@@ -33,6 +33,7 @@ const APP_SHELL = [
   "./donate.html",
   "./404.html",
   "./manifest.json",
+  "./data/search-index.json",
   "./favicon.svg",
   "./assets/css/bya-v2.css",
   "./assets/css/bya-global.css",
@@ -47,7 +48,7 @@ const APP_SHELL = [
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(APP_SHELL))
+      .then(cache => Promise.allSettled(APP_SHELL.map(asset => cache.add(asset))))
       .then(() => self.skipWaiting())
   );
 });
