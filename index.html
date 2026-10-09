@@ -883,14 +883,14 @@
 
     </script>
 
-<div id="registerModal" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; font-family: sans-serif;">
+<div id="registerModal" role="dialog" aria-modal="true" aria-labelledby="register-modal-title" aria-hidden="true" style="display:none; position:fixed; z-index:10000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; font-family: sans-serif;">
     <div style="background: #fff; width: 95%; max-width: 450px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); max-height: 90vh; overflow-y: auto;">
         
-        <button type="button" onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer; line-height: 1;">&times;</button>
+        <button type="button" onclick="closeModal()" aria-label="Close membership form" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer; line-height: 1;">&times;</button>
 
         <div style="padding: 40px 30px;">
             <div style="text-align: center; margin-bottom: 25px;">
-                <h2 style="color: #800000; font-size: 24px; font-weight: 800; margin: 0; letter-spacing: 1px;">BECOME A MEMBER</h2>
+                <h2 id="register-modal-title" style="color: #800000; font-size: 24px; font-weight: 800; margin: 0; letter-spacing: 1px;">BECOME A MEMBER</h2>
                 <div style="width: 40px; height: 3px; background: #800000; margin: 10px auto;"></div>
                 <p style="color: #666; font-size: 13px; margin-top: 5px;">BYA မိသားစုဝင်အဖြစ် စတင်ပူးပေါင်းလိုက်ပါ</p>
             </div>
@@ -917,7 +917,7 @@
                     <option value="Other">အခြား...</option>
                 </select>
                 
-                <button type="button" onclick="handleByaSubmit()" id="submit-btn" 
+                <button type="submit" id="submit-btn" 
                     style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; transition: 0.3s; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">
                     REGISTER NOW
                 </button>
@@ -934,14 +934,22 @@
     const modal = document.getElementById('registerModal');
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxb8iFHB3hMM9K73CQocwZuNOgmXUtyOy6S3R9-rw6EhI51h4ZbVqExcnKD2HFKPBUJeQ/exec';
 
+    let registerModalTrigger = null;
+    let contactModalTrigger = null;
+
     function openModal() {
+        registerModalTrigger = document.activeElement;
         modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        modal.querySelector('input, select, textarea, button')?.focus();
     }
 
     function closeModal() {
         modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        registerModalTrigger?.focus?.();
     }
 
     async function handleByaSubmit() {
@@ -989,28 +997,28 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     #bya-sheet-form input:focus { border-color: #800000 !important; background: #fff !important; }
 </style>
-<div id="contactModal" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center;">
+<div id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-hidden="true" style="display:none; position:fixed; z-index:10001; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center;">
     <div style="background: #fff; width: 90%; max-width: 450px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
         
-        <button type="button" onclick="closeContactModal()" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer;">&times;</button>
+        <button type="button" onclick="closeContactModal()" aria-label="Close contact form" style="position: absolute; top: 15px; right: 20px; font-size: 30px; border: none; background: none; color: #666; cursor: pointer;">&times;</button>
 
         <div style="padding: 40px;">
             <div style="text-align: center; margin-bottom: 30px;">
-                <h2 style="color: #800000; font-size: 24px; font-weight: 800; margin: 0;">CONTACT BYA</h2>
+                <h2 id="contact-modal-title" style="color: #800000; font-size: 24px; font-weight: 800; margin: 0;">CONTACT BYA</h2>
                 <p style="color: #666; font-size: 13px; margin-top: 5px;">ကျွန်ုပ်တို့ထံ စာတိုပေးပို့ မေးမြန်းနိုင်ပါသည်</p>
             </div>
 
             <form id="contact-form-modal">
                 <div style="margin-bottom: 15px;">
-                    <input name="Name" type="text" placeholder="သင့်နာမည်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                    <input name="Name" type="text" autocomplete="name" aria-label="Your name" placeholder="သင့်နာမည်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
                 </div>
 
                 <div style="margin-bottom: 15px;">
-                    <input name="Contact" type="text" placeholder="အီးမေးလ် သို့မဟုတ် ဖုန်းနံပါတ်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                    <input name="Contact" type="text" autocomplete="email" aria-label="Email address or phone number" placeholder="အီးမေးလ် သို့မဟုတ် ဖုန်းနံပါတ်" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
                 </div>
                 
                 <div style="margin-bottom: 15px;">
-                    <select name="Subject" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
+                    <select name="Subject" aria-label="Message subject" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
                         <option value="" disabled selected>ဘာအကြောင်းအရာလဲ?</option>
                         <option value="စုံစမ်းရန်">စုံစမ်းမေးမြန်းရန်</option>
                         <option value="အကြံပေးရန်">အကြံပေးရန်</option>
@@ -1020,10 +1028,10 @@
                 </div>
 
                 <div style="margin-bottom: 25px;">
-                    <textarea name="Message" placeholder="သင်ပြောချင်တဲ့ အကြောင်းအရာ..." rows="4" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; font-family: sans-serif; resize: none;"></textarea>
+                    <textarea name="Message" aria-label="Your message" placeholder="သင်ပြောချင်တဲ့ အကြောင်းအရာ..." rows="4" required style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none; font-family: sans-serif; resize: none;"></textarea>
                 </div>
                 
-                <button type="button" onclick="handleContactSubmit()" id="contact-sub-btn" style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; transition: 0.3s; text-transform: uppercase;">
+                <button type="submit" id="contact-sub-btn" style="width:100%; padding:16px; background:#800000; color:#fff; border:none; border-radius:12px; font-weight:bold; cursor:pointer; transition: 0.3s; text-transform: uppercase;">
                     SEND MESSAGE
                 </button>
             </form>
@@ -1040,8 +1048,11 @@
     const contactURL = 'https://script.google.com/macros/s/AKfycbw0KdGF_YKiHks__LguOxin0ZaodL1MEbgudG6Jdm_gFP3-E50u_-mTDOYN8Fls-MHfJg/exec';
 
     function openContactModal() {
+        contactModalTrigger = document.activeElement;
         contactModal.style.display = 'flex';
+        contactModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        contactModal.querySelector('input, select, textarea, button')?.focus();
     }
 
     // Allow the Contact page to open this modal directly via ?openContact=1.
@@ -1051,8 +1062,28 @@
 
     function closeContactModal() {
         contactModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        contactModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        contactModalTrigger?.focus?.();
     }
+
+    document.addEventListener('keydown', event => {
+        const activeModal = modal.style.display === 'flex' ? modal : (contactModal.style.display === 'flex' ? contactModal : null);
+        if (!activeModal) return;
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            if (activeModal === modal) closeModal(); else closeContactModal();
+            return;
+        }
+        if (event.key === 'Tab') {
+            const focusable = Array.from(activeModal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+                .filter(element => element.offsetParent !== null);
+            if (!focusable.length) { event.preventDefault(); activeModal.focus(); return; }
+            const first = focusable[0], last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        }
+    });
 
     async function handleContactSubmit() {
         const form = document.getElementById('contact-form-modal');
