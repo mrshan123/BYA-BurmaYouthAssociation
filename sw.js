@@ -2,6 +2,7 @@ const CACHE_NAME = "bya-cache-v5";
 const APP_SHELL = [
   "./",
   "./index.html",
+  "./search.html",
   "./about.html",
   "./learning.html",
   "./articles.html",
