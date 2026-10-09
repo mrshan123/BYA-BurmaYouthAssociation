@@ -19,7 +19,10 @@
 ### Headings and accessibility
 - Corrected the primary heading level on About and Learning.
 - Removed the second `h1` from the Articles page by changing the article banner heading to `h2`.
-- Added a screen-reader label to the article search field.
+- Added screen-reader labels to the article search field and icon-only search button.
+- Fixed invalid quote nesting in the inline AI assistant's Facebook-link answer; inline script syntax checks now pass for the audited pages.
+- Added accessible labels and expanded-state updates to AI assistant controls.
+- Removed duplicate mobile-menu event listeners so one controller manages menu state.
 - Added a reduced-motion media query on the homepage.
 - Added `rel="noopener noreferrer"` to external links opening a new tab on the pages where this was missing.
 
@@ -48,14 +51,16 @@ Source-level checks on the proposed branch confirmed:
 - Homepage has one `h1`.
 - Membership phone markup no longer has the stray style text.
 - Homepage has no `target="_blank"` links missing `rel`.
-- Search Index is marked `site-index` and contains all 31 sitemap pages.
+- Search Index is marked `site-index` and contains all 31 sitemap pages (the sitemap root URL corresponds to `index.html`).
+- Across the 31 sitemap pages, source-level checks found one `h1` per page, canonical metadata on every page, no images missing `alt`, no duplicate IDs, and no `_blank` links missing `rel`.
+- Inline JavaScript blocks and the shared JavaScript files passed syntax compilation checks after the script fixes.
 - About and Learning each have one `h1`; Articles has one `h1`.
 - Search rendering no longer uses `innerHTML` for result titles, types or URLs.
 - Service Worker version is bumped and the search index is listed for caching.
 
 ## Not claimed as passed
 
-No real-browser automation, screen-reader test, mobile viewport test, Lighthouse run, link crawler, external endpoint persistence test, or GitHub Pages deployment-log confirmation was completed in this source patch. These remain required before calling the live site production-ready.
+No real-browser automation, screen-reader test, mobile viewport test, Lighthouse run, live HTTP link crawler, external endpoint persistence test, or GitHub Pages deployment-log confirmation was completed in this source patch. Static link and fragment checks were performed against the source; external URLs and actual rendered behavior still require live tests. These remain required before calling the live site production-ready.
 
 ## Recommended final QA checklist
 1. Confirm GitHub Pages publishes from `main` and check the latest deployment status.
