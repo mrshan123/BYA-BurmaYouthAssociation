@@ -922,7 +922,7 @@
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600 border-2 border-white"></span>
         </div>
-        <button type="button" class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
+        <button type="button" aria-label="Open BYA information assistant" aria-expanded="false" class="w-14 h-14 md:w-16 md:h-16 rounded-full p-1 bg-white shadow-[0_10px_30px_rgba(128,0,0,0.3)] border-2 border-maroon overflow-hidden hover:scale-110 active:scale-95 transition-all duration-300">
             <img src="favicon.svg" alt="BYA Logo" class="w-full h-full object-cover rounded-full">
         </button>
     </div>
@@ -943,7 +943,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" id="close-ai" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
+        <button type="button" id="close-ai" aria-label="Close BYA information assistant" class="relative z-10 w-8 h-8 rounded-full hover:bg-white/20 transition flex items-center justify-center">
             <i class="fas fa-times text-sm"></i>
         </button>
     </div>
@@ -971,10 +971,10 @@
 
     <div class="p-4 bg-white dark:bg-[#1a1a1a] border-t dark:border-white/10 shrink-0 relative">
         <div class="flex gap-2 items-center bg-gray-100 dark:bg-zinc-800/50 p-1.5 pl-4 rounded-full border border-transparent focus-within:border-maroon/20 focus-within:bg-white dark:focus-within:bg-zinc-800 transition-all shadow-inner">
-            <input type="text" id="user-input" autocomplete="off" 
+            <input type="text" id="user-input" aria-label="Message BYA information assistant" autocomplete="off" 
                    placeholder="စာရိုက်ရန်..." 
                    class="bg-transparent flex-grow text-[14px] outline-none dark:text-white py-1.5">
-            <button type="button" id="send-ai" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
+            <button type="button" id="send-ai" aria-label="Send message" class="bg-maroon text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-red-800 hover:shadow-lg active:scale-90 transition-all shrink-0">
                 <i class="fas fa-paper-plane text-[12px]"></i>
             </button>
         </div>
