@@ -151,6 +151,13 @@
 <link rel="stylesheet" href="assets/css/bya-v7.css">
 <link rel="stylesheet" href="assets/css/bya-v8.css">
 <link rel="stylesheet" href="assets/css/bya-v9.css">
+
+<style>
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+</style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-800">
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -895,11 +902,9 @@
                 <label for="member-email" class="sr-only">Email address</label><input id="member-email" name="Email" type="email" placeholder="အီးမေးလ် လိပ်စာ" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
-                <label for="member-phone" class="sr-only">Phone number (optional)</label><input id="member-phone" name="Phone" type="tel" placeholder="ဖုန်းနံပါတ် (ရွေးချယ်နိုင်သည်)"> 
-                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                <label for="member-phone" class="sr-only">Phone number (optional)</label><input id="member-phone" name="Phone" type="tel" autocomplete="tel" placeholder="ဖုန်းနံပါတ် (ရွေးချယ်နိုင်သည်)" style="width:100%; padding:14px; border:1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
-                <input name="Address" type="text" placeholder="နေရပ်လိပ်စာ (မြို့နယ်)" required 
-                    style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
+                <label for="member-address" class="sr-only">Township or address</label><input id="member-address" name="Address" type="text" autocomplete="address-level2" placeholder="နေရပ်လိပ်စာ (မြို့နယ်)" required style="width:100%; padding:14px; border:1px solid #eee; border-radius:12px; background:#f9f9f9; outline:none;">
 
                 <label for="member-skill" class="sr-only">Primary skill or interest</label><select id="member-skill" name="Skill" required 
                     style="width:100%; padding:14px; border: 1px solid #eee; border-radius:12px; background:#f9f9f9; color: #666; outline:none; cursor: pointer;">
@@ -918,7 +923,7 @@
                 </button>
             </form>
 
-            <div id="success-msg" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 12px; border-radius: 12px; background: #f0fff4; animation: fadeIn 0.5s;">
+            <div id="success-msg" role="status" aria-live="polite" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 12px; border-radius: 12px; background: #f0fff4; animation: fadeIn 0.5s;">
                 တောင်းဆိုချက်ကို ပို့ရန် ကြိုးစားပြီးပါပြီ။ သို့သော် Browser မှ လက်ခံရရှိမှုကို အတည်မပြုနိုင်သေးပါ။
             </div>
         </div>
@@ -944,11 +949,8 @@
         const btn = document.getElementById("submit-btn");
         const successBox = document.getElementById("success-msg");
 
-        // Validation: အကုန်ဖြည့်ထားလား စစ်ဆေးခြင်း
-        if (!form.Name.value || !form.Email.value || !form.Skill.value) {
-            alert("ကျေးဇူးပြု၍ အချက်အလက်များ အားလုံး ပြည့်စုံစွာ ဖြည့်ပေးပါ။");
-            return;
-        }
+        // Use native required/type validation so every required field is checked consistently.
+        if (!form.reportValidity()) return;
 
         btn.innerHTML = "ခဏစောင့်ပါ...";
         btn.disabled = true;
@@ -961,24 +963,19 @@
                 body: new FormData(form)
             });
 
+            successBox.textContent = "တောင်းဆိုချက်ကို ပို့ပြီးပါပြီ။ သို့သော် Browser က သိမ်းဆည်းပြီးကြောင်း အတည်မပြုနိုင်ပါ။ အချက်အလက်များကို မဖျက်ထားပါ။ ပြန်လည်ဆက်သွယ်မှု မရရှိပါက BYA ကို ဆက်သွယ်ပေးပါ။";
             successBox.style.display = "block";
-            btn.innerHTML = "အောင်မြင်ပါသည်!";
-            btn.style.background = "#28a745";
-            form.reset();
-
-            setTimeout(() => {
-                closeModal();
-                successBox.style.display = "none";
-                btn.innerHTML = "REGISTER NOW";
-                btn.style.background = "#800000";
-                btn.disabled = false;
-                btn.style.opacity = "1";
-            }, 3000);
+            btn.innerHTML = "REQUEST SENT — NOT VERIFIED";
+            btn.style.background = "#8a6d3b";
+            // no-cors returns an opaque response; preserve the user's entries and do not claim delivery.
+            btn.disabled = false;
+            btn.style.opacity = "1";
 
         } catch (error) {
             console.error('Error!', error.message);
             alert("တစ်ခုခု မှားယွင်းနေပါသည်။ ပြန်လည် ကြိုးစားကြည့်ပါ။");
             btn.disabled = false;
+            btn.style.opacity = "1";
             btn.innerHTML = "REGISTER NOW";
         }
     }
@@ -1031,7 +1028,7 @@
                 </button>
             </form>
 
-            <div id="contact-success-msg" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 10px; border-radius: 10px; background: #f0fff4;">
+            <div id="contact-success-msg" role="status" aria-live="polite" style="display:none; margin-top:20px; text-align:center; color:#28a745; font-weight:bold; border: 1px solid #28a745; padding: 10px; border-radius: 10px; background: #f0fff4;">
                 တောင်းဆိုချက်ကို ပို့ရန် ကြိုးစားပြီးပါပြီ။ သို့သော် Browser မှ လက်ခံရရှိမှုကို အတည်မပြုနိုင်သေးပါ။
             </div>
         </div>
@@ -1062,11 +1059,8 @@
         const btn = document.getElementById("contact-sub-btn");
         const successBox = document.getElementById("contact-success-msg");
 
-        // Input စစ်ဆေးတဲ့နေရာမှာ Contact အကွက်ကိုပါ ထည့်စစ်ထားပါတယ်
-        if (!form.Name.value || !form.Contact.value || !form.Subject.value || !form.Message.value) {
-            alert("ကျေးဇူးပြု၍ အချက်အလက်များ အားလုံး ပြည့်စုံစွာ ဖြည့်ပေးပါ။");
-            return;
-        }
+        // Use native required/type validation before sending.
+        if (!form.reportValidity()) return;
 
         btn.innerHTML = "SENDING...";
         btn.disabled = true;
@@ -1078,22 +1072,17 @@
                 body: new FormData(form)
             });
 
+            successBox.textContent = "တောင်းဆိုချက်ကို ပို့ပြီးပါပြီ။ သို့သော် Browser က သိမ်းဆည်းပြီးကြောင်း အတည်မပြုနိုင်ပါ။ အချက်အလက်များကို မဖျက်ထားပါ။ ပြန်လည်ဆက်သွယ်မှု မရရှိပါက BYA ကို ဆက်သွယ်ပေးပါ။";
             successBox.style.display = "block";
-            btn.innerHTML = "SENT!";
-            btn.style.background = "#28a745";
-            form.reset();
-
-            setTimeout(() => {
-                closeContactModal();
-                successBox.style.display = "none";
-                btn.innerHTML = "SEND MESSAGE";
-                btn.style.background = "#800000";
-                btn.disabled = false;
-            }, 3000);
+            btn.innerHTML = "REQUEST SENT — NOT VERIFIED";
+            btn.style.background = "#8a6d3b";
+            // no-cors returns an opaque response; preserve the user's entries and do not claim delivery.
+            btn.disabled = false;
 
         } catch (error) {
             alert("တစ်ခုခုမှားယွင်းနေပါသည်။");
             btn.disabled = false;
+            btn.style.background = "#800000";
             btn.innerHTML = "SEND MESSAGE";
         }
     }
@@ -1177,7 +1166,7 @@
         { keys: ["bya", "အကြောင်း", "association", "အဖွဲ့အစည်း",], my: "BYA သည် မြန်မာလူငယ်များအတွက် ပညာရပ်နှင့် အလုပ်အကိုင်များကို တစ်နေရာတည်းတွင် ဖန်တီးပေးသော Community ဖြစ်သည်။", en: "BYA is a community for Myanmar youth." },
         { keys: ["founder", "ဘယ်သူ", "တည်ထောင်", "နာမည်",], my: "BYA ကို Founder <b>Mr. Aung Shan Hein</b> မှ ဦးစီးတည်ထောင်ခဲ့ပါသည်။", en: "BYA was founded by <b>Mr. Aung Shan Hein</b>." },
         { keys: ["သင်တန်း", "course", "study", "လေ့လာ", "ဘာတွေ", "ဘလို",], my: "ကျွန်ုပ်တို့၏ Learning Lab တွင် ကမ္ဘာ့အဆင့်မီ Free Courses များကို လေ့လာနိုင်ပါသည်။", en: "You can explore free courses in our Learning Lab." },
-        { keys: ["facebook", "fb", "page"], my: "ကျွန်ုပ်တို့၏ Facebook Page ကို <a href='https://www.facebook.com/61576906013024' target='_blank' class='text-maroon font-bold underline'>ဒီမှာ</a> သွားနိုင်ပါသည်။", en: "Visit our Facebook Page <a href='https://www.facebook.com/61576906013024' target='_blank' class='text-maroon font-bold underline'>here</a>." },
+        { keys: ["facebook", "fb", "page"], my: "ကျွန်ုပ်တို့၏ Facebook Page ကို <a href='https://www.facebook.com/61576906013024' target="_blank" class='text-maroon font-bold underline' rel="noopener noreferrer">ဒီမှာ</a> သွားနိုင်ပါသည်။", en: "Visit our Facebook Page <a href='https://www.facebook.com/61576906013024' target="_blank" class='text-maroon font-bold underline' rel="noopener noreferrer">here</a>." },
         { keys: ["ကျေးဇူး", "thanks", "thank"], my: "ရပါတယ်ခင်ဗျာ။ အမြဲကူညီဖို့ အသင့်ရှိပါတယ်။", en: "You're welcome!" }
     ];
 
